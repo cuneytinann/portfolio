@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Cüneyt İnan CV</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        crossorigin="anonymous" />
+
+    <style ayrinti>
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: clamp(12px, 10px + 0.6vw, 18px);
+            font-size: 16px;
+            scrollbar-width: auto;
+            scrollbar-color: auto auto;
+            margin: 0;
+            padding: 0;
+            --arkaplan-renk: aliceblue;
+        }
+
+        body {
+            margin: 0;
+            padding: 1rem;
+            background-color: var(--arkaplan-renk);
+        }
+
+        img.arkaplan {
+            position: absolute;
+            z-index: -9;
+            width: 100%;
+            height: auto;
+            opacity: 0.2;
+            top: 0;
+            left: 0;
+        }
+
+        a,
+        a:visited,
+        a:hover {
+            color: black;
+            text-decoration-line: none;
+        }
+
+        p {
+            margin: 0;
+            padding: 0;
+        }
+
+        .fa-phone {
+            color: blue;
+        }
+
+        .fa-whatsapp {
+            color: greenyellow;
+        }
+
+        .fa-icon {
+            color: yellow;
+        }
+
+        .fa-instagram {
+            color: rgb(243, 111, 243);
+        }
+
+        .fa-linkedin {
+            color: rgb(82, 82, 250);
+        }
+
+        .fa-google {
+            color: rgb(221, 71, 51);
+        }
+
+        .fa-html5 {
+            color: rgb(233, 90, 7);
+        }
+
+        .fa-css {
+            color: rgb(92, 176, 255);
+        }
+
+        .fa-js {
+            color: rgb(216, 216, 2);
+        }
+
+        .iletisim-bilgi_akan-metin {
+            display: inline-flex;
+            align-items: center;
+            width: max-content;
+            will-change: transform;
+            transform: translate3d(0, 0, 0);
+            animation: ticker var(--dur, 20s) linear infinite;
+        }
+
+        .iletisim-bilgi:hover .iletisim-bilgi_akan-metin {
+            animation-play-state: paused;
+        }
+
+        .iletisim-bilgi_ic-parca {
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .iletisim-bilgi_baglanti {
+            flex: 0 0 auto;
+            white-space: nowrap;
+        }
+
+        .iletisim-bilgi_baglanti a {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .iletisim-bilgi_bosluk-ayar {
+            flex: 0 0 auto;
+            width: var(--gap, 4rem);
+        }
+
+        @keyframes ticker {
+            to {
+                transform: translate3d(calc(-1 * var(--shift, 0px)), 0, 0);
+            }
+        }
+
+        .tiklama-arka {
+            position: fixed;
+            inset: 0;
+            display: none;
+            z-index: 9999;
+            background: rgba(0, 0, 0, 0);
+        }
+
+        .tiklama-arka.is-open {
+            display: block;
+        }
+
+        .tiklama-menusu {
+            position: fixed;
+            left: 50%;
+            top: var(--ctc-top, 3rem);
+            transform: translateX(-50%);
+            width: min(32.5rem, 96vw);
+            background: var(--ctc-bg, #141414);
+            color: var(--ctc-fg, #ffffff);
+            border: 0.0625rem solid var(--ctc-border, rgba(255, 255, 255, .12));
+            border-radius: var(--ctc-radius, 0.875rem);
+            box-shadow: 0 0.75rem 2.25rem rgba(0, 0, 0, .35);
+            overflow: hidden;
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+        }
+
+        .tiklama-menusu_baslik {
+            color: rgb(255, 248, 148);
+            font-size: 1.2rem;
+            font-weight: 600;
+            padding: 0.75rem 0.875rem;
+            border-bottom: 0.0625rem solid rgba(255, 255, 255, .12);
+            display: flex;
+            gap: 0.625rem;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .tiklama-menusu_buton {
+            width: 100%;
+            padding: 0.875rem;
+            font-size: 0.9375rem;
+            background: transparent;
+            color: inherit;
+            border: 0;
+            border-bottom: 0.0625rem solid rgba(255, 255, 255, .10);
+            text-align: left;
+            cursor: pointer;
+        }
+
+        .tiklama-menusu_buton:hover {
+            background: rgba(255, 255, 255, .06);
+        }
+
+        .tiklama-menusu_buton:nth-child(2) {
+            text-decoration: underline;
+            color: #658cf7;
+        }
+
+        .tiklama-menusu_buton:last-child {
+            border-bottom: 0;
+        }
+
+        .tiklama-etiketi {
+            font-size: 1.2rem;
+            opacity: 0.8;
+        }
+
+        .ilerleme {
+            --percent: 0;
+            width: 6rem;
+            height: 6rem;
+            border-radius: 50%;
+            background:
+                conic-gradient(#3c6df5 calc(var(--percent) * 1%),
+                    #e0e0e0 0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            border: 1px solid black;
+        }
+
+        .ilerleme::before {
+            content: "";
+            position: absolute;
+            width: 3rem;
+            height: 3rem;
+            background: var(--arkaplan-renk);
+            border-radius: 50%;
+            border: 1px solid black;
+        }
+
+        .ilerleme * {
+            position: relative;
+            font-size: 1.2rem;
+            font-weight: bold;
+            z-index: 3;
+        }
+
+        .ogrenecegim .ilerleme {
+            flex-direction: column;
+            width: 12rem;
+            height: 12rem;
+        }
+
+        .ogrenecegim .ilerleme::before {
+            width: 9rem;
+            height: 9rem;
+        }
+    </style>
+
+    <style>
+        .png-ikon,
+        .fa-brands {
+            height: 1.6rem;
+            line-height: 1.6rem;
+            width: auto;
+        }
+
+        .fa-brands {
+            font-size: 1.5rem;
+        }
+
+        .iletisim-bilgi {
+            height: 2rem;
+            line-height: 2rem;
+            margin-bottom: 1rem;
+            border: solid red;
+            border-width: 1px 0;
+            box-shadow: 0 0 3px;
+            overflow: hidden;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .iletisim-bilgi span {
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: rgb(0, 0, 0);
+        }
+
+        .iletisim-bilgi a:hover span {
+            color: rgba(101, 94, 233, 0.7);
+        }
+
+        .ilk-bakis {
+            display: flex;
+            gap: 1rem;
+            flex-direction: row-reverse;
+            /* switch butonu eklenebilir */
+        }
+
+        .sag-taraf {
+            flex: 3;
+        }
+
+        .sol-taraf {
+            flex: 1;
+        }
+
+        .ilk-bakis>* {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .ad-uyruk {
+            display: flex;
+            align-items: last baseline;
+            justify-content: space-between;
+        }
+
+        .ad {
+            font-size: 2rem;
+            color: rgb(0, 0, 0);
+            font-weight: 700;
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        .kep {
+            width: 2.2rem;
+            /* height: 2rem; */
+            bottom: 0.6rem;
+            left: 0.1rem;
+            transform: rotate(-37deg);
+            position: absolute;
+        }
+
+        .yeni-mezun {
+            display: flex;
+            flex-direction: column;
+            font-size: 0.75rem;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: 500;
+            position: absolute;
+            color: rgb(0, 0, 0);
+            top: 0;
+            right: -3rem;
+            background-color: rgba(255, 255, 255, 0.3);
+            border: 2px groove rgba(255, 255, 255, 0.3);
+            padding: 0.1rem 0.2rem;
+        }
+
+        .uyruk {
+            height: 2rem;
+            width: auto;
+        }
+
+        .selfie {
+            width: 100%;
+            height: auto;
+            border: 4px dashed green;
+        }
+
+        .dogum {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .dogum-tarihi,
+        .dogum-yeri {
+            font-size: 1rem;
+            color: rgb(0, 0, 0);
+            font-weight: 600;
+        }
+
+        .ehliyet {
+            font-weight: 700;
+        }
+
+        .bolum {
+            font-size: 1.4rem;
+            color: purple;
+            text-align: center;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+
+        .universite {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: blue;
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .kart-bilgi {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .kart-sol {
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+        }
+
+        .kart-etiket {
+            font-weight: 600;
+            letter-spacing: 0.02em;
+        }
+
+        .kart-metin {
+            font-size: 0.75rem;
+            opacity: 0.75;
+            text-decoration: underline;
+        }
+
+        .kart-sag {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: rgb(92, 78, 214);
+            text-shadow: 1px 1px 3px rgb(150, 150, 255);
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.75rem;
+            background: aliceblue;
+            border: 1px solid #e6e6e6;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        .cubuk-bar {
+            height: 1rem;
+            border-radius: 9rem;
+            width: 100%;
+            background: #eee;
+            overflow: hidden;
+            margin-bottom: 1rem;
+            outline: 1px solid rgb(0, 0, 0);
+        }
+
+        .cubuk-dolgu {
+            height: 100%;
+            border-radius: 9rem;
+            width: var(--w);
+            background: var(--grad);
+        }
+
+        .tema-agno {
+            --w: 77%;
+            --grad: linear-gradient(90deg, #d7f5d7 0%, #a7e6a7 50%, #6fd16f 100%);
+        }
+
+        .cubuk-bayrak {
+            height: 1.5rem;
+            width: auto;
+        }
+
+        .tema-dil {
+            --w: 70%;
+            --grad: linear-gradient(90deg, #ffd84a 0%, #ff9a2e 45%, #ff4a2e 75%, #b30000 100%);
+        }
+
+        .staj {
+            font-size: 1.5rem;
+            color: #39ca39;
+            font-weight: 600;
+            -webkit-text-stroke: 1px rgb(12, 97, 23);
+        }
+
+        .mikrobiyoloji,
+        .modellab {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.1rem;
+            font-weight: 550;
+            color: rgb(192, 28, 192);
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            text-shadow: 1px 1px 1px black;
+        }
+
+        .modellab {
+            color: #6f9b6f;
+        }
+
+        .mikrobiyoloji img,
+        .modellab img {
+            width: 2rem;
+            height: auto;
+        }
+
+        .hakkinda {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            padding: 1rem 1.5rem 1.25rem;
+            border: 0.5rem ridge rgb(197, 150, 21);
+            font-weight: 500;
+            color: rgb(0, 0, 0);
+            font-size: 0.875rem;
+            text-align: justify;
+            background: url("images/defter.png") repeat-x left top / auto 100%;
+            opacity: 0.9;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.5;
+            text-indent: 1.5em;
+        }
+
+        .hakkimda {
+            color: rgb(255, 48, 48);
+            text-indent: 0;
+            font-size: 1.5rem;
+            font-weight: bolder;
+            line-height: 1;
+        }
+
+        .iki-paragraf {
+            display: flex;
+            row-gap: 0.5rem;
+            column-gap: 1rem;
+        }
+
+        .hakkinda a {
+            color: rgb(14, 33, 83);
+            font-weight: 600;
+        }
+
+        .grafikler {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem 0 0 1rem;
+        }
+
+        .esit4 {
+            flex: 0 0 fit-content;
+            display: grid;
+            column-gap: 1.5rem;
+            row-gap: 0.75rem;
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .dil-siyah,
+        .dil-beyaz {
+            display: flex;
+            align-items: center;
+            padding: 0.2rem 0.4rem;
+            height: 2rem;
+            width: fit-content;
+            border-radius: 0.5rem;
+            border-width: 1px;
+            border-style: dotted;
+        }
+
+        .dil-siyah {
+            border-color: white;
+            background-color: black;
+        }
+
+        .dil-beyaz {
+            border-color: black;
+            background-color: white;
+        }
+
+        .esit4 div,
+        .ogrenecegim {
+            display: flex;
+            flex-direction: column;
+            row-gap: 0.5rem;
+        }
+
+        .ogrenecegim {
+            flex: 0 0 fit-content;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .ogrenecegim span {
+            font-size: 1.7rem;
+            font-weight: 700;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            color: rgb(241, 75, 75);
+            -webkit-text-stroke: 1px #681212;
+        }
+
+        .ogrenecegim label {
+            font-size: 1.6rem;
+            color: blue;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        }
+
+        .ogrenecegim img {
+            position: absolute;
+            z-index: -1;
+            opacity: 0.5;
+            border-radius: 1rem;
+        }
+
+        .bilisim {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 1rem;
+            position: relative;
+        }
+
+        .bilisim * {
+            display: flex;
+            align-items: center;
+            font-size: 1.2rem;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            gap: 1rem;
+        }
+
+        .bilisim>* img {
+            height: 2rem;
+            width: auto;
+        }
+
+        .bilisim-baslik {
+            color: #000000;
+            -webkit-text-stroke: 1px rgb(22, 177, 86);
+            font-size: 1.75rem;
+            font-weight: 600;
+            width: max-content;
+            padding: 0.4rem 0.8rem;
+            border-radius: 0.7rem;
+            box-shadow: 0 0 1rem rgb(36, 167, 19);
+        }
+
+        .pc-protein {
+            position: absolute;
+            opacity: 0.5;
+            width: 7rem;
+            top: 6rem;
+            left: 0;
+        }
+
+        .pc-algoritma {
+            position: absolute;
+            opacity: 0.5;
+            width: 4rem;
+            top: 40%;
+            right: 1rem;
+        }
+
+        .pc-kodlama {
+            position: absolute;
+            opacity: 0.7;
+            width: 4rem;
+            top: 0.5rem;
+            left: 0;
+        }
+
+        @media (max-width: 768px) {
+
+            .ilk-bakis {
+                flex-direction: column;
+            }
+
+            .iki-paragraf {
+                flex-direction: column;
+            }
+
+            .grafikler {
+                flex-direction: column;
+                padding: 0.5rem;
+            }
+
+            .esit4,
+            .ogrenecegim {
+                margin: 0.5rem auto;
+            }
+
+        }
+
+        @media (max-width: 480px) {}
+    </style>
+
+
+</head>
+
+<body>
+
+    <div class="iletisim-bilgi">
+
+        <a class="js-contact-phone" href="https://wa.me/905343273462" data-phone="905343273462">
+            <i class="fa-solid fa-phone"></i> / <i class="fa-brands fa-whatsapp"></i>
+            <span>: +90 534 327 34 62 </span>
+        </a>
+
+        <a class="js-contact-email" href="https://mail.google.com/mail/?view=cm&fs=1&to=cuneytinan37@gmail.com"
+            data-email="cuneytinan37@gmail.com" target="_blank" rel="noopener">
+            <i class="fa-brands fa-google"></i><span>: cuneytinan37</span>
+        </a>
+
+        <a data-ctc-brand="Instagram" href="https://www.instagram.com/cuneytinann/" target="_blank" rel="noopener">
+            <i class="fa-brands fa-instagram"></i>
+            <span>/cuneytinann</span>
+        </a>
+
+        <a data-ctc-brand="LinkedIn" href="https://www.linkedin.com/in/cuneytinan/" target="_blank" rel="noopener"> <i
+                class="fa-brands fa-linkedin"></i>
+            <span> /cuneytinan </span>
+        </a>
+
+        <a data-ctc-brand="GitHub" href="https://github.com/cuneytinann" target="_blank" rel="noopener"> <i
+                class="fa-brands fa-github"></i> <span>/cuneytinann </span> </a>
+
+        <a data-ctc-brand="GameBanana" href="https://gamebanana.com/members/1405829" target="_blank" rel="noopener">
+            <img class="png-ikon" src="images/gamebanana.png">
+            <span> /1405829 </span> </a>
+
+        <a data-ctc-brand="Instagram" href="https://www.instagram.com/yarati.ci.fikir/" target="_blank" rel="noopener">
+            <i class="fa-brands fa-instagram"></i>
+            <span>/yarati.ci.fikir</span>
+        </a>
+
+        <a data-ctc-brand="VSCO" href="https://vsco.co/cuneytinan/gallery" target="_blank" rel="noopener">
+            <i class="fa-brands fa-vsco"></i>
+            <span>/cuneytinan</span>
+        </a>
+
+        <a data-ctc-brand="Instagram" href="https://www.instagram.com/science.art_/" target="_blank" rel="noopener">
+            <i class="fa-brands fa-instagram"></i>
+            <span>/science.art_</span>
+        </a>
+
+    </div>
+
+
+    <div class="ilk-bakis">
+
+        <div class="sol-taraf">
+
+
+            <div class="ad-uyruk">
+                <span class="ad"> <img class="kep" src="images/graduated.png"> Cüneyt İNAN <span class="yeni-mezun"
+                        title="01.09.2025"> <span>Yeni</span><span>Mezun</span></span> </span>
+                <img class="uyruk" src="images/bayrak.png">
+            </div>
+
+            <img class="selfie" src="images/selfie.jpg">
+
+            <div class="dogum">
+                <span class="dogum-tarihi"> 20.01.2001</span>
+                <span class="ehliyet">B <i class="fa-solid fa-car-side"></i></span>
+                <span class="dogum-yeri"> Gebze / Kocaeli</span>
+            </div>
+
+            <span class="bolum">Moleküler Biyoloji ve Genetik (%100 İngilizce)</span>
+
+            <span class="universite">Gebze Teknik Üniversitesi</span>
+
+            <div class="kart-bilgi">
+                <div class="kart-sol">
+                    <span class="kart-etiket">AGNO</span>
+                    <span class="kart-metin">3.08 / 4.00</span>
+                </div>
+                <div class="kart-sag">
+                    3.08
+                </div>
+            </div>
+
+            <div class="cubuk-bar" role="progressbar" aria-label="AGNO" aria-valuemin="0" aria-valuemax="4"
+                aria-valuenow="3.08">
+                <div class="cubuk-dolgu tema-agno"></div>
+            </div>
+
+            <span class="kart-etiket">B2 = Upper-Intermediate (Independent User)</span>
+
+            <div class="kart-bilgi">
+                <div class="kart-sol"> <img class="cubuk-bayrak" src="images/english.jpg" alt="English" /></div>
+
+                <div class="kart-sag">
+                    B2
+                </div>
+            </div>
+
+            <div class="cubuk-bar" role="progressbar" aria-label="English level" aria-valuemin="0" aria-valuemax="100"
+                aria-valuenow="70">
+                <div class="cubuk-dolgu tema-dil"></div>
+            </div>
+
+            <div class="staj">Staj:</div>
+            <div class="mikrobiyoloji" title="22.01.2024 - 16.02.2024">1-Mikrobiyoloji ve Bitki Laboratuvarı <img
+                    src="images/mikrobiyoloji.png"></div>
+            <div class="modellab" title="22.07.2024 - 16.08.2024">2-ModelLab Ofisi (Sanal Laboratuvar) <img
+                    src="images/modellab.png"></div>
+
+        </div>
+
+
+        <div class="sag-taraf">
+
+            <div class="hakkinda">
+                <span class="hakkimda"> Hakkımda...</span>
+                <div class="iki-paragraf">
+                    <p>
+                        Gebze Teknik Üniversitesi Moleküler Biyoloji ve Genetik Bölümü’nden, %100 İngilizce yürütülen
+                        lisans eğitimimi 2025 yılında 3.08 genel not ortalamasıyla tamamladım. Akademik çalışmalarımın
+                        yanı sıra mantıksal algoritmalar ve 3B modelleme alanlarında
+                        edindiğim deneyimler doğrultusunda,
+                        bölümümle kesişen Biyoinformatik alanında uzmanlaşmayı hedefliyorum. İlgi alanlarım arasında
+                        felsefe ve bilim yer almakta; satranç, görsel sanatlar ve doğa aktiviteleriyle ilgilenmekteyim.
+                    </p>
+
+                    <p>
+                        Erken yaşlarda (12–16), algoritmik bilgi gerektiren Valve’ın GoldSrc tabanlı 3B modelleme
+                        ortamında, topluluk içinde tanınan çalışmalar ürettim ve bu çalışmalar aracılığıyla maddi ve
+                        manevi kazanımlar elde ettim. Bu süreçte edindiğim bağlantılarla, günümüzde popüler bir medya
+                        markası hâline gelen <a href="https://www.instagram.com/darkwebhaber/?hl=tr">DarkWeb
+                            Haber</a>’in kurucu ekibinde yer aldım. Hâlihazırda, Instagram’da bilim
+                        odaklı bir platform olan <a
+                            href="https://www.instagram.com/science.art_/?hl=tr">science.art_</a> hesabında moderatörlük
+                        yapmaktayım. Analitik düşünme,
+                        mantıksal akıl yürütme ve soyut düşünme yönlerimin güçlü olması nedeniyle; algoritma mimarisi ve
+                        yapılandırılmış sistemlerde problem çözme gerektiren alanlara yönelmenin benim için uygun
+                        olduğunu değerlendiriyorum.
+                    </p>
+                </div>
+
+                <p>
+                    Adaptif yapım, yenilikçi düşünme yaklaşımım ve detaylara verdiğim önem ile uzun vadeli hedeflere
+                    odaklanırım.
+                    Uzmanlaşmanın istikrar, yoğun odaklanma ve sürekli gelişim gerektirdiğinin farkında olarak,
+                    çalıştığım alanlarda kalıcı değer üretmeyi amaçlıyorum.
+                </p>
+
+            </div>
+
+            <div class="grafikler">
+
+                <div class="esit4">
+
+                    <div title="C# (C Sharp)">
+                        <span class="dil-beyaz"><img class="png-ikon" src="images/csharp.png"></span>
+                        <div class="ilerleme" data-value="85">
+                            <span></span>
+                        </div>
+                    </div>
+
+                    <div title="HTML">
+                        <span class="dil-siyah"><i class="fa-brands fa-html5"></i></span>
+                        <div class="ilerleme" data-value="95">
+                            <span></span>
+                        </div>
+                    </div>
+
+                    <div title="CSS">
+                        <span class="dil-beyaz"><i class="fa-brands fa-css"></i></span>
+                        <div class="ilerleme" data-value="75">
+                            <span></span>
+                        </div>
+                    </div>
+
+                    <div title="JavaScript">
+                        <span class="dil-siyah"><i class="fa-brands fa-js"></i></span>
+                        <div class="ilerleme" data-value="25">
+                            <span></span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="ogrenecegim">
+                    <span> Öğreneceğim: </span>
+                    <div class="ilerleme" data-value="0">
+                        <label>MySql</label>
+                        <label>PostgreSQL</label>
+                        <label>MongoDB</label>
+                        <label>PHP</label>
+                    </div>
+                </div>
+
+                <div class="bilisim">
+                    <img class="pc-protein" src="images/protein-3d.png">
+                    <img class="pc-kodlama" src="images/kodlama.png">
+
+                    <div class="bilisim-baslik"> Bilişim
+                        Becerileri <img src="images/bilisim.png"></div>
+                    <div class="algoritma">Algoritma Kurma / Mantıksal Analiz <img src="images/algoritma.png"></div>
+                    <div class="modelleme">
+                        3B Modelleme / Çizim <img src="images/3b-modelleme.png"></div>
+                    <div class="klavye">Klavye Hızlı Yazabilme <img src="images/klavye-hizi.png"></div>
+                    <div class="molekuler">Moleküler Modelleme Programları <img src="images/molekuler-modelleme.png">
+                    </div>
+                    <div class="video-kurgu"> Video Kurgusu <img src="images/video-editing.png"></div>
+
+                    <img class="pc-algoritma" src="images/pc-algoritma.png">
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+
+
+    <script>
+        // --- Unified action sheet for all ticker links (copy + open; phone/email get extra actions) ---
+        (() => {
+            const openInNewTab = (url) => {
+                const w = window.open(url, "_blank", "noopener");
+                if (!w) window.location.href = url;
+            };
+
+            const openInApp = (url) => {
+                // For schemes like mailto: / tel: use same-tab navigation
+                window.location.href = url;
+            };
+
+            const copyText = async (text) => {
+                try {
+                    await navigator.clipboard.writeText(text);
+                    return true;
+                } catch (_) {
+                    const ta = document.createElement("textarea");
+                    ta.value = text;
+                    ta.setAttribute("readonly", "");
+                    ta.style.position = "fixed";
+                    ta.style.left = "-9999px";
+                    document.body.appendChild(ta);
+                    ta.select();
+                    try {
+                        const ok = document.execCommand("copy");
+                        document.body.removeChild(ta);
+                        return ok;
+                    } catch (e) {
+                        document.body.removeChild(ta);
+                        return false;
+                    }
+                }
+            };
+
+            const isLikelyMobile = () =>
+                window.matchMedia("(pointer: coarse)").matches || /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+            // Single overlay/sheet (single source)
+            const overlay = document.createElement("div");
+            overlay.className = "tiklama-arka";
+            overlay.innerHTML = `
+            <div class="tiklama-menusu" role="dialog" aria-modal="true" aria-label="Bağlantı seçenekleri">
+                <div class="tiklama-menusu_baslik">
+                    <div id="ctcTitle">Bağlantı</div>
+                    <div class="tiklama-etiketi" id="ctcLabel"></div>
+                </div>
+                <div id="ctcActions"></div>
+            </div>
+        `;
+            document.body.appendChild(overlay);
+
+            const titleEl = overlay.querySelector("#ctcTitle");
+            const labelEl = overlay.querySelector("#ctcLabel");
+            const actionsEl = overlay.querySelector("#ctcActions");
+
+            let active = null; // { type, href, label, phoneDigits, email, gmailUrl }
+
+            const closeSheet = () => overlay.classList.remove("is-open");
+            const positionSheetUnderTicker = () => {
+                const band = document.querySelector(".iletisim-bilgi");
+                if (!band) return;
+
+                const r = band.getBoundingClientRect();
+                const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+
+                // 0.5rem spacing under the ticker band
+                const topRem = (r.bottom + (0.5 * rootPx)) / rootPx;
+                overlay.style.setProperty("--ctc-top", `${topRem}rem`);
+            };
+
+            const openSheet = (payload) => {
+                active = payload;
+                titleEl.textContent = payload.title || "Bağlantı";
+                labelEl.textContent = payload.label || "";
+
+                actionsEl.innerHTML = (payload.actions || [])
+                    .map(a => `<button type="button" class="tiklama-menusu_buton" data-act="${a.act}">${a.text}</button>`)
+                    .join("");
+
+                positionSheetUnderTicker();
+                overlay.classList.add("is-open");
+            };
+
+            const flashBtn = (btn, okText, failText) => {
+                const prev = btn.textContent;
+                btn.textContent = okText;
+                setTimeout(() => { btn.textContent = prev; }, 900);
+            };
+
+            overlay.addEventListener("click", (e) => {
+                if (e.target === overlay) closeSheet();
+            });
+
+            document.addEventListener("keydown", (e) => {
+                if (e.key === "Escape" && overlay.classList.contains("is-open")) closeSheet();
+            });
+
+            // Keep the menu anchored under the ticker if layout changes
+            window.addEventListener("resize", () => {
+                if (overlay.classList.contains("is-open")) positionSheetUnderTicker();
+            });
+            window.addEventListener("scroll", () => {
+                if (overlay.classList.contains("is-open")) positionSheetUnderTicker();
+            }, { passive: true });
+
+            overlay.querySelector(".tiklama-menusu").addEventListener("click", async (e) => {
+                const btn = e.target.closest("button[data-act]");
+                if (!btn) return;
+
+                const act = btn.getAttribute("data-act");
+                const p = active;
+
+                if (!p) {
+                    closeSheet();
+                    return;
+                }
+
+                if (act === "cancel") {
+                    closeSheet();
+                    return;
+                }
+
+                if (act === "copy") {
+                    const ok = await copyText(p.copyValue || p.href || "");
+                    flashBtn(btn, ok ? "Kopyalandı" : "Kopyalanamadı", "Kopyalanamadı");
+                    return;
+                }
+
+                // Open actions
+                if (act === "open") {
+                    closeSheet();
+                    openInNewTab(p.openUrl || p.href);
+                    return;
+                }
+
+                if (act === "gmail") {
+                    closeSheet();
+                    const w = window.open(p.gmailUrl, "_blank", "noopener");
+                    if (!w) openInApp(`mailto:${encodeURIComponent(p.email)}`);
+                    return;
+                }
+
+                if (act === "mailto") {
+                    closeSheet();
+                    openInApp(`mailto:${encodeURIComponent(p.email)}`);
+                    return;
+                }
+
+                if (act === "call") {
+                    closeSheet();
+                    openInApp(`tel:+${p.phoneDigits}`);
+                    return;
+                }
+
+                if (act === "wa") {
+                    closeSheet();
+                    openInNewTab(`https://wa.me/${p.phoneDigits}`);
+                    return;
+                }
+
+                closeSheet();
+            });
+
+            const cleanLabel = (a) => (a.textContent || "").trim().replace(/\s+/g, " ");
+
+            const extractPhoneDigits = (a) => {
+                const fromData = (a.dataset.phone || "").replace(/\D/g, "");
+                if (fromData) return fromData;
+
+                const href = (a.getAttribute("href") || "").trim();
+                if (href.startsWith("tel:")) return href.replace(/^tel:\+?/, "").replace(/\D/g, "");
+
+                const wa = href.match(/wa\.me\/(\d+)/i);
+                if (wa && wa[1]) return wa[1];
+
+                return "";
+            };
+
+            const extractEmail = (a) => {
+                const fromData = (a.dataset.email || "").trim();
+                if (fromData) return fromData;
+
+                const href = (a.getAttribute("href") || "").trim();
+                if (href.startsWith("mailto:")) return decodeURIComponent(href.slice(7)).split("?")[0].trim();
+
+                const toParam = href.match(/[?&]to=([^&]+)/i);
+                if (toParam && toParam[1]) return decodeURIComponent(toParam[1]).trim();
+
+                return "";
+            };
+
+            const getType = (a) => {
+                const href = (a.getAttribute("href") || "").trim();
+                if (a.dataset.phone || href.startsWith("tel:") || /wa\.me\//i.test(href)) return "phone";
+                if (a.dataset.email || href.startsWith("mailto:") || /mail\.google\.com\/mail/i.test(href)) return "email";
+                return "link";
+            };
+
+            const buildPayload = (a) => {
+                const type = getType(a);
+                const href = (a.getAttribute("href") || "").trim();
+                const label = cleanLabel(a) || href;
+
+                if (type === "phone") {
+                    const digits = extractPhoneDigits(a);
+                    const actions = [
+                        { act: "copy", text: "Kopyala" },
+                        { act: "wa", text: "Yeni sekmede aç (WhatsApp)" },
+                    ];
+                    if (isLikelyMobile()) actions.splice(1, 0, { act: "call", text: "Ara" });
+                    actions.push({ act: "cancel", text: "İptal" });
+
+                    return {
+                        type,
+                        title: "Telefon",
+                        label,
+                        href,
+                        phoneDigits: digits,
+                        copyValue: digits ? `+${digits}` : "",
+                        openUrl: digits ? `https://wa.me/${digits}` : href,
+                        actions
+                    };
+                }
+
+                if (type === "email") {
+                    const email = extractEmail(a);
+                    const gmailUrl = /mail\.google\.com\/mail/i.test(href)
+                        ? href
+                        : `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(email)}`;
+
+                    const actions = [
+                        { act: "copy", text: "Kopyala" },
+                        { act: "gmail", text: "Yeni sekmede aç (Gmail)" },
+                        { act: "mailto", text: "E-posta uygulamasında gönder" },
+                        { act: "cancel", text: "İptal" },
+                    ];
+
+                    return {
+                        type,
+                        title: "E-posta",
+                        label,
+                        href,
+                        email,
+                        gmailUrl,
+                        copyValue: email,
+                        openUrl: gmailUrl,
+                        actions
+                    };
+                }
+
+                // Generic links
+                const brand = (a.dataset.ctcBrand || "").trim();
+                const brandTitle = brand ? `${brand} bağlantısı` : "Bağlantı";
+                return {
+                    type: "link",
+                    title: brandTitle,
+                    label,
+                    href,
+                    copyValue: href,
+                    openUrl: href,
+                    actions: [
+                        { act: "copy", text: "Kopyala" },
+                        { act: "open", text: "Yeni sekmede aç" },
+                        { act: "cancel", text: "İptal" },
+                    ]
+                };
+            };
+
+            // Intercept only ticker links
+            document.addEventListener("click", (e) => {
+                if (e.target.closest(".tiklama-arka")) return;
+
+                const a = e.target.closest(".iletisim-bilgi a");
+                if (!a) return;
+
+                // sheet shows instead of direct navigation
+                e.preventDefault();
+
+                const payload = buildPayload(a);
+                if (!payload || (!payload.href && !payload.email && !payload.phoneDigits)) return;
+
+                openSheet(payload);
+            });
+        })();
+
+
+        /*
+          Amaç: Kayar yazı (ticker) içinde düz metin yerine .linkler içindeki <a> linklerini
+          ikonlarıyla ve tıklanabilirliği korunacak şekilde göstermek.
+ 
+          Kullanım:
+            createStateInfoTickerFromSelector(".linkler a", { gapRem: 4, remPerSecond: 6, hoverPause: true });
+        */
+
+        createStateInfoTickerFromSelector(
+            ".iletisim-bilgi > *",
+            {
+                gapRem: 4,         // rem cinsinden boşluk
+                remPerSecond: 6,   // saniyede kaç rem kayacak (hız)
+                hoverPause: true   // hover durdurma (true/false)
+            }
+        );
+
+        function createStateInfoTickerFromSelector(selector, options = {}) {
+            const nodes = Array.from(document.querySelectorAll(selector || ""));
+            return createStateInfoTicker(nodes, options);
+        }
+
+        // createStateInfoTicker artık hem string mesajları hem de DOM elementlerini kabul eder.
+        function createStateInfoTicker(items, options = {}) {
+            const container = document.querySelector(".iletisim-bilgi");
+            if (!container) return;
+
+            const rawList = Array.isArray(items) ? items : [];
+            const list = rawList
+                .map(x => (typeof x === "string") ? x.trim() : x)
+                .filter(x => (typeof x === "string") ? x.length > 0 : (x && x.nodeType === 1));
+
+            // En az 2 öğe yoksa animasyon yerine tek öğeyi bas.
+            if (list.length < 2) {
+                container.innerHTML = "";
+                if (list.length === 1) {
+                    if (typeof list[0] === "string") {
+                        container.textContent = list[0];
+                    } else {
+                        container.appendChild(list[0].cloneNode(true));
+                    }
+                }
+                return;
+            }
+
+            const opts = {
+                gapRem: Number.isFinite(options.gapRem) ? options.gapRem : 4,
+                remPerSecond: Number.isFinite(options.remPerSecond) ? options.remPerSecond : 6,
+                hoverPause: options.hoverPause !== false
+            };
+
+            container.innerHTML = "";
+
+            // Hover pause istemiyorsa, parent'a pointer-events kapatmak yerine sadece hover kuralı zaten etkisiz olur.
+            // Linklerin tıklanabilir kalması için pointer-events'i KAPATMIYORUZ.
+            if (!opts.hoverPause) {
+                container.classList.add("no-hover-pause");
+            } else {
+                container.classList.remove("no-hover-pause");
+            }
+
+            const track = document.createElement("div");
+            track.className = "iletisim-bilgi_akan-metin";
+            track.style.setProperty("--gap", `${opts.gapRem}rem`);
+            container.appendChild(track);
+
+            // 1) set oluştur: item + gap + item + gap ... (SONDA DA GAP VAR)
+            const set = document.createElement("div");
+            set.className = "iletisim-bilgi_ic-parca";
+            track.appendChild(set);
+
+            const appendGap = () => {
+                const gapEl = document.createElement("span");
+                gapEl.className = "iletisim-bilgi_bosluk-ayar";
+                set.appendChild(gapEl);
+            };
+
+            for (const it of list) {
+                const item = document.createElement("span");
+                item.className = "iletisim-bilgi_baglanti";
+
+                if (typeof it === "string") {
+                    item.textContent = it;
+                } else {
+                    // Linkleri (ikonlar dahil) klonlayıp ekliyoruz; tıklama özelliği korunur.
+                    const cloned = it.cloneNode(true);
+
+                    // İsterseniz linklerin yeni sekmede açılması için:
+                    // cloned.setAttribute("target", "_blank");
+                    // cloned.setAttribute("rel", "noopener noreferrer");
+
+                    item.appendChild(cloned);
+                }
+
+                set.appendChild(item);
+                appendGap();
+            }
+
+            // 2) klonla (kesintisiz devam için)
+            const clone = set.cloneNode(true);
+            track.appendChild(clone);
+
+            const recalc = () => {
+                // animasyonu durdur -> ölç -> yeniden başlat
+                track.style.animation = "none";
+                track.offsetHeight; // reflow
+
+                const shiftPx = set.scrollWidth; // tek turun genişliği (gap'ler dahil)
+                track.style.setProperty("--shift", `${shiftPx}px`);
+
+                // rem/s hızına göre duration hesapla:
+                const rootFontPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+                const shiftRem = shiftPx / rootFontPx;
+                const durationSec = shiftRem / Math.max(0.1, opts.remPerSecond);
+                track.style.setProperty("--dur", `${durationSec}s`);
+
+                track.style.animation = "";
+            };
+
+            // Mobilde font/layout stabilitesi için 2 frame sonra ölç
+            requestAnimationFrame(() => requestAnimationFrame(recalc));
+
+            // Resize / orientation / mobil adres çubuğu vb.
+            let t;
+            window.addEventListener("resize", () => {
+                clearTimeout(t);
+                t = setTimeout(recalc, 150);
+            });
+        }
+
+        document.querySelectorAll(".ilerleme").forEach(el => {
+            const value = el.getAttribute("data-value");
+            el.style.setProperty("--percent", value);
+            el.querySelector("span").textContent = "%" + value;
+        });
+    </script>
+
+    <img class="arkaplan" src="images/arkaplan.png">
+
+</body>
+
+</html>
