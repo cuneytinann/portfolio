@@ -109,6 +109,7 @@
         .iletisim-bilgi_ic-parca {
             display: inline-flex;
             align-items: center;
+            background-color: rgba(230, 5, 5, 0.25);
         }
 
         .iletisim-bilgi_baglanti {
@@ -138,7 +139,7 @@
             inset: 0;
             display: none;
             z-index: 9999;
-            background: rgba(0, 0, 0, 0);
+            background: rgba(82, 180, 167, 0);
         }
 
         .tiklama-arka.is-open {
@@ -150,7 +151,7 @@
             left: 50%;
             top: var(--ctc-top, 3rem);
             transform: translateX(-50%);
-            width: min(32.5rem, 96vw);
+            width: 20rem;
             background: var(--ctc-bg, #141414);
             color: var(--ctc-fg, #ffffff);
             border: 0.0625rem solid var(--ctc-border, rgba(255, 255, 255, .12));
@@ -317,7 +318,6 @@
 
         .kep {
             width: 2.2rem;
-            /* height: 2rem; */
             bottom: 0.6rem;
             left: 0.1rem;
             transform: rotate(-37deg);
@@ -520,11 +520,27 @@
         }
 
         .esit4 {
-            flex: 0 0 fit-content;
+            flex: content;
             display: grid;
             column-gap: 1.5rem;
-            row-gap: 0.75rem;
+            row-gap: 1.5rem;
             grid-template-columns: repeat(2, 1fr);
+        }
+
+        .ogrenecegim {
+            flex: content;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .bilisim {
+            flex: content;
+            display: flex;
+            flex-direction: column;
+            row-gap: 1rem;
+            position: relative;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         .dil-siyah,
@@ -553,14 +569,7 @@
         .ogrenecegim {
             display: flex;
             flex-direction: column;
-            row-gap: 0.5rem;
-        }
-
-        .ogrenecegim {
-            flex: 0 0 fit-content;
-            justify-content: center;
-            align-items: center;
-            position: relative;
+            /* row-gap: 0.5rem; */
         }
 
         .ogrenecegim span {
@@ -580,69 +589,75 @@
         .ogrenecegim img {
             position: absolute;
             z-index: -1;
-            opacity: 0.5;
+            opacity: 0.3;
             border-radius: 1rem;
+            right: 0;
         }
 
         .bilisim {
-            flex: 0 0 fit-content;
-            display: flex;
+            display: inline-flex;
             flex-direction: column;
             row-gap: 1rem;
             position: relative;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0 auto;
-        }
-
-        .bilisim>* {
-            display: flex;
-            column-gap: 1rem;
-            text-wrap: nowrap;
-        }
-
-        .bilisim span {
-            font-size: 1.2rem;
-            text-decoration: underline;
-        }
-
-        .kati-ikonlar {
-            height: 2rem;
-            width: auto;
         }
 
         .bilisim-baslik {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            justify-content: center;
             color: #000000;
             -webkit-text-stroke: 1px rgb(22, 177, 86);
             font-size: 1.75rem;
             font-weight: 600;
-            align-self: center;
             padding: 0.4rem 0.8rem;
             border-radius: 0.7rem;
             box-shadow: 0 0 1rem rgb(36, 167, 19);
         }
 
+        .bilisim>div:not(.bilisim-baslik) {
+            display: grid;
+            grid-template-columns: 2.6rem 1fr;
+            column-gap: 1rem;
+            align-items: start;
+        }
+
+        .bilisim>div:not(.bilisim-baslik)>span {
+            font-size: 1.2rem;
+            text-decoration: underline;
+            min-width: 0;
+        }
+
+        .kati-ikonlar {
+            height: 2rem;
+            width: auto;
+            justify-self: center;
+            align-self: start;
+        }
+
         .pc-kodlama {
             position: absolute;
             opacity: 0.3;
-            width: 4rem;
-            top: 1rem;
-            left: -4rem;
+            width: 3rem;
+            bottom: 25%;
+            left: 30%;
         }
 
         .pc-protein {
             position: absolute;
-            opacity: 0.4;
+            opacity: 0.5;
             width: 7rem;
-            top: 6rem;
-            right: 0;
+            top: 5.5rem;
+            left: clamp(224px, calc(211.48px + 3.48vw), 256px);
         }
 
         .pc-algoritma {
             position: absolute;
-            opacity: 0.5;
+            opacity: 0.2;
             width: 4rem;
-            top: 1rem;
-            right: -4rem;
+            top: 30%;
+            left: 20%;
         }
 
         @media (max-width: 768px) {
@@ -655,17 +670,20 @@
 
             .grafikler {
                 padding: 0.5rem;
+                overflow: hidden;
             }
 
             .esit4,
-            .ogrenecegim,
-            .bilisim {
-                margin: 0.5rem auto;
+            .ogrenecegim {
+                margin: 0 auto;
+            }
+
+            .ogrenecegim img {
+                right: auto;
             }
 
             .bilisim {
-                width: 100%;
-                overflow-x: hidden;
+                margin-top: 4rem;
             }
 
         }
@@ -860,6 +878,7 @@
                 </div>
 
                 <div class="ogrenecegim">
+                    <img src="images/ogrenme-listesi.png">
                     <span> Öğreneceğim: </span>
                     <div class="ilerleme" data-value="0">
                         <label>MySql</label>
@@ -872,22 +891,29 @@
                 <div class="bilisim">
 
 
-
-                    <div class="bilisim-baslik"><img class="pc-kodlama" src="images/kodlama.png"> Bilişim
+                    <div class="bilisim-baslik"> Bilişim
                         Becerileri <img class="kati-ikonlar" src="images/bilisim.png"> </div>
-                    <div class="algoritma"><img class="kati-ikonlar" src="images/algoritma.png"> <img
-                            class="pc-algoritma" src="images/pc-algoritma.png"> <span>Algoritma
+
+                    <div class="algoritma"><img class="kati-ikonlar" src="images/algoritma.png"> <span>Algoritma
                             Kurma / Mantıksal Analiz</span></div>
+
                     <div class="modelleme"><img class="kati-ikonlar" src="images/3b-modelleme.png"> <span>3B Modelleme /
                             Çizim</span></div>
                     <div class="klavye"><img class="kati-ikonlar" src="images/klavye-hizi.png"><span>Klavye Hızlı
                             Yazabilme </span></div>
-                    <div class="molekuler"><img class="kati-ikonlar" src="images/molekuler-modelleme.png"><img
-                            class="pc-protein" src="images/protein-3d.png"><span>Moleküler Modelleme
-                            Programları</span>
-                    </div>
+                    <div class="molekuler"><img class="kati-ikonlar"
+                            src="images/molekuler-modelleme.png"><span>Moleküler Modelleme
+                            Programları</span></div>
+
+
                     <div class="video-kurgu"><img class="kati-ikonlar" src="images/video-editing.png"><span>Video
                             Kurgusu</span></div>
+
+                    <img class="pc-protein" src="images/protein-3d.png">
+
+                    <img class="pc-algoritma" src="images/pc-algoritma.png">
+
+                    <img class="pc-kodlama" src="images/kodlama.png">
                 </div>
 
 
@@ -1111,7 +1137,7 @@
                     const digits = extractPhoneDigits(a);
                     const actions = [
                         { act: "copy", text: "Kopyala" },
-                        { act: "wa", text: "Yeni sekmede aç (WhatsApp)" },
+                        { act: "wa", text: "WhatsApp'dan Ulaş!" },
                     ];
                     if (isLikelyMobile()) actions.splice(1, 0, { act: "call", text: "Ara" });
                     actions.push({ act: "cancel", text: "İptal" });
@@ -1136,8 +1162,8 @@
 
                     const actions = [
                         { act: "copy", text: "Kopyala" },
-                        { act: "gmail", text: "Yeni sekmede aç (Gmail)" },
-                        { act: "mailto", text: "E-posta uygulamasında gönder" },
+                        { act: "gmail", text: "gmail'den e-posta gönder" },
+                        { act: "mailto", text: "Başka e-posta uygulaması kullan" },
                         { act: "cancel", text: "İptal" },
                     ];
 
