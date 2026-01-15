@@ -585,10 +585,9 @@
         }
 
         .bilisim {
-            flex: 1;
+            flex: auto;
             display: flex;
             align-items: center;
-            justify-content: center;
             flex-direction: column;
             gap: 1rem;
             position: relative;
@@ -596,10 +595,9 @@
 
         .bilisim * {
             display: flex;
-            align-items: center;
+            gap: 1rem;
             font-size: 1.2rem;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            gap: 1rem;
             text-decoration: underline;
         }
 
@@ -613,16 +611,24 @@
             -webkit-text-stroke: 1px rgb(22, 177, 86);
             font-size: 1.75rem;
             font-weight: 600;
-            width: max-content;
+            /* width: max-content; */
             padding: 0.4rem 0.8rem;
             border-radius: 0.7rem;
             box-shadow: 0 0 1rem rgb(36, 167, 19);
             text-decoration: none;
         }
 
+        .pc-kodlama {
+            position: absolute;
+            opacity: 0.4;
+            width: 4rem;
+            top: 0.5rem;
+            left: 0;
+        }
+
         .pc-protein {
             position: absolute;
-            opacity: 0.5;
+            opacity: 0.4;
             width: 7rem;
             top: 6rem;
             left: 0;
@@ -630,18 +636,10 @@
 
         .pc-algoritma {
             position: absolute;
-            opacity: 0.5;
+            opacity: 0.4;
             width: 4rem;
             top: 40%;
-            right: 1rem;
-        }
-
-        .pc-kodlama {
-            position: absolute;
-            opacity: 0.7;
-            width: 4rem;
-            top: 0.5rem;
-            left: 0;
+            right: 10%;
         }
 
         @media (max-width: 768px) {
