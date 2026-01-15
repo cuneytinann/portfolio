@@ -28,16 +28,21 @@
             margin: 0;
             padding: 1rem;
             background-color: var(--arkaplan-renk);
+            position: relative;
+            z-index: 0;
         }
 
-        img.arkaplan {
-            position: absolute;
-            z-index: -9;
-            width: 100%;
-            height: auto;
-            opacity: 0.2;
-            top: 0;
-            left: 0;
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+            background-image: url("images/arkaplan.png");
+            background-size: 100% auto;
+            background-repeat: repeat-y;
+            background-position: top center;
+            opacity: 0.25;
         }
 
         a,
@@ -241,7 +246,7 @@
         }
     </style>
 
-    <style>
+    <style yerlesim>
         .png-ikon,
         .fa-brands {
             height: 1.6rem;
@@ -279,7 +284,7 @@
             display: flex;
             gap: 1rem;
             flex-direction: row-reverse;
-            /* switch butonu eklenebilir */
+            /* switch edilebilir. sağ - sol */
         }
 
         .sag-taraf {
@@ -595,6 +600,7 @@
             font-size: 1.2rem;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             gap: 1rem;
+            text-decoration: underline;
         }
 
         .bilisim>* img {
@@ -611,6 +617,7 @@
             padding: 0.4rem 0.8rem;
             border-radius: 0.7rem;
             box-shadow: 0 0 1rem rgb(36, 167, 19);
+            text-decoration: none;
         }
 
         .pc-protein {
@@ -1312,7 +1319,7 @@
         });
     </script>
 
-    <img class="arkaplan" src="images/arkaplan.png">
+
 
 </body>
 
