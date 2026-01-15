@@ -585,21 +585,23 @@
         }
 
         .bilisim {
-            flex: 1;
-            flex: content;
+            flex: 0 0 fit-content;
             display: flex;
-            align-items: center;
             flex-direction: column;
-            gap: 1rem;
+            row-gap: 1rem;
             position: relative;
-            text-align: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0 auto;
         }
 
-        .bilisim * {
+        .bilisim>* {
             display: flex;
-            gap: 1rem;
+            column-gap: 1rem;
+            text-wrap: nowrap;
+        }
+
+        .bilisim span {
             font-size: 1.2rem;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             text-decoration: underline;
         }
 
@@ -613,19 +615,18 @@
             -webkit-text-stroke: 1px rgb(22, 177, 86);
             font-size: 1.75rem;
             font-weight: 600;
-            /* width: max-content; */
+            align-self: center;
             padding: 0.4rem 0.8rem;
             border-radius: 0.7rem;
             box-shadow: 0 0 1rem rgb(36, 167, 19);
-            text-decoration: none;
         }
 
         .pc-kodlama {
             position: absolute;
-            opacity: 0.4;
+            opacity: 0.3;
             width: 4rem;
-            top: 0.5rem;
-            left: 0;
+            top: 1rem;
+            left: -4rem;
         }
 
         .pc-protein {
@@ -633,15 +634,15 @@
             opacity: 0.4;
             width: 7rem;
             top: 6rem;
-            left: 0;
+            right: 0;
         }
 
         .pc-algoritma {
             position: absolute;
-            opacity: 0.4;
+            opacity: 0.5;
             width: 4rem;
-            top: 40%;
-            right: 10%;
+            top: 1rem;
+            right: -4rem;
         }
 
         @media (max-width: 768px) {
@@ -664,21 +665,8 @@
 
             .bilisim {
                 width: 100%;
+                overflow-x: hidden;
             }
-
-            .pc-kodlama {
-                width: 3rem;
-            }
-
-            .pc-protein {
-                width: 5rem;
-            }
-
-            .pc-algoritma {
-               width: 2.5rem;
-               right: 0;
-            }
-
 
         }
 
@@ -885,19 +873,21 @@
 
 
 
-                    <div class="bilisim-baslik"> <img class="pc-kodlama" src="images/kodlama.png"> Bilişim
-                        Becerileri <img class="kati-ikonlar" src="images/bilisim.png"></div>
-                    <div class="algoritma"> <img class="pc-algoritma" src="images/pc-algoritma.png"> <span>Algoritma
-                            Kurma / Mantıksal Analiz</span><img class="kati-ikonlar" src="images/algoritma.png"></div>
-                    <div class="modelleme"> <span>3B Modelleme / Çizim</span> <img class="kati-ikonlar"
-                            src="images/3b-modelleme.png"></div>
-                    <div class="klavye"><span>Klavye Hızlı Yazabilme </span><img class="kati-ikonlar"
-                            src="images/klavye-hizi.png"></div>
-                    <div class="molekuler"><img class="pc-protein" src="images/protein-3d.png"><span>Moleküler Modelleme
-                            Programları</span> <img class="kati-ikonlar" src="images/molekuler-modelleme.png">
+                    <div class="bilisim-baslik"><img class="pc-kodlama" src="images/kodlama.png"> Bilişim
+                        Becerileri <img class="kati-ikonlar" src="images/bilisim.png"> </div>
+                    <div class="algoritma"><img class="kati-ikonlar" src="images/algoritma.png"> <img
+                            class="pc-algoritma" src="images/pc-algoritma.png"> <span>Algoritma
+                            Kurma / Mantıksal Analiz</span></div>
+                    <div class="modelleme"><img class="kati-ikonlar" src="images/3b-modelleme.png"> <span>3B Modelleme /
+                            Çizim</span></div>
+                    <div class="klavye"><img class="kati-ikonlar" src="images/klavye-hizi.png"><span>Klavye Hızlı
+                            Yazabilme </span></div>
+                    <div class="molekuler"><img class="kati-ikonlar" src="images/molekuler-modelleme.png"><img
+                            class="pc-protein" src="images/protein-3d.png"><span>Moleküler Modelleme
+                            Programları</span>
                     </div>
-                    <div class="video-kurgu"><span>Video Kurgusu</span><img class="kati-ikonlar"
-                            src="images/video-editing.png"></div>
+                    <div class="video-kurgu"><img class="kati-ikonlar" src="images/video-editing.png"><span>Video
+                            Kurgusu</span></div>
                 </div>
 
 
