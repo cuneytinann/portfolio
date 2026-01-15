@@ -585,12 +585,14 @@
         }
 
         .bilisim {
-            flex: auto;
+            flex: 1;
+            flex: content;
             display: flex;
             align-items: center;
             flex-direction: column;
             gap: 1rem;
             position: relative;
+            text-align: center;
         }
 
         .bilisim * {
@@ -601,7 +603,7 @@
             text-decoration: underline;
         }
 
-        .bilisim>* img {
+        .kati-ikonlar {
             height: 2rem;
             width: auto;
         }
@@ -644,23 +646,39 @@
 
         @media (max-width: 768px) {
 
-            .ilk-bakis {
-                flex-direction: column;
-            }
-
-            .iki-paragraf {
+            .ilk-bakis,
+            .iki-paragraf,
+            .grafikler {
                 flex-direction: column;
             }
 
             .grafikler {
-                flex-direction: column;
                 padding: 0.5rem;
             }
 
             .esit4,
-            .ogrenecegim {
+            .ogrenecegim,
+            .bilisim {
                 margin: 0.5rem auto;
             }
+
+            .bilisim {
+                width: 100%;
+            }
+
+            .pc-kodlama {
+                width: 3rem;
+            }
+
+            .pc-protein {
+                width: 5rem;
+            }
+
+            .pc-algoritma {
+               width: 2.5rem;
+               right: 0;
+            }
+
 
         }
 
@@ -864,20 +882,22 @@
                 </div>
 
                 <div class="bilisim">
-                    <img class="pc-protein" src="images/protein-3d.png">
-                    <img class="pc-kodlama" src="images/kodlama.png">
 
-                    <div class="bilisim-baslik"> Bilişim
-                        Becerileri <img src="images/bilisim.png"></div>
-                    <div class="algoritma">Algoritma Kurma / Mantıksal Analiz <img src="images/algoritma.png"></div>
-                    <div class="modelleme">
-                        3B Modelleme / Çizim <img src="images/3b-modelleme.png"></div>
-                    <div class="klavye">Klavye Hızlı Yazabilme <img src="images/klavye-hizi.png"></div>
-                    <div class="molekuler">Moleküler Modelleme Programları <img src="images/molekuler-modelleme.png">
+
+
+                    <div class="bilisim-baslik"> <img class="pc-kodlama" src="images/kodlama.png"> Bilişim
+                        Becerileri <img class="kati-ikonlar" src="images/bilisim.png"></div>
+                    <div class="algoritma"> <img class="pc-algoritma" src="images/pc-algoritma.png"> <span>Algoritma
+                            Kurma / Mantıksal Analiz</span><img class="kati-ikonlar" src="images/algoritma.png"></div>
+                    <div class="modelleme"> <span>3B Modelleme / Çizim</span> <img class="kati-ikonlar"
+                            src="images/3b-modelleme.png"></div>
+                    <div class="klavye"><span>Klavye Hızlı Yazabilme </span><img class="kati-ikonlar"
+                            src="images/klavye-hizi.png"></div>
+                    <div class="molekuler"><img class="pc-protein" src="images/protein-3d.png"><span>Moleküler Modelleme
+                            Programları</span> <img class="kati-ikonlar" src="images/molekuler-modelleme.png">
                     </div>
-                    <div class="video-kurgu"> Video Kurgusu <img src="images/video-editing.png"></div>
-
-                    <img class="pc-algoritma" src="images/pc-algoritma.png">
+                    <div class="video-kurgu"><span>Video Kurgusu</span><img class="kati-ikonlar"
+                            src="images/video-editing.png"></div>
                 </div>
 
 
