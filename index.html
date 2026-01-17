@@ -163,7 +163,7 @@
 
         .tiklama-menusu_baslik {
             color: rgb(255, 248, 148);
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 600;
             padding: 0.75rem 0.875rem;
             border-bottom: 0.0625rem solid rgba(255, 255, 255, .12);
@@ -171,6 +171,12 @@
             gap: 0.625rem;
             align-items: center;
             justify-content: space-between;
+        }
+
+        .tiklama-etiketi {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            font-weight: 400;
         }
 
         .tiklama-menusu_buton {
@@ -196,11 +202,6 @@
 
         .tiklama-menusu_buton:last-child {
             border-bottom: 0;
-        }
-
-        .tiklama-etiketi {
-            font-size: 1.2rem;
-            opacity: 0.8;
         }
 
         .ilerleme {
@@ -462,13 +463,20 @@
             gap: 0.5rem;
             font-size: 1.1rem;
             font-weight: 550;
-            color: rgb(192, 28, 192);
             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
             text-shadow: 1px 1px 1px black;
         }
 
-        .modellab {
+        .modellab,
+        .modellab button {
             color: #6f9b6f;
+            border-color: #6f9b6f;
+        }
+
+        .mikrobiyoloji,
+        .mikrobiyoloji button {
+            color: rgb(192, 28, 192);
+            border-color: rgb(192, 28, 192);
         }
 
         .mikrobiyoloji img,
@@ -509,8 +517,9 @@
         }
 
         .hakkinda a {
-            color: rgb(14, 33, 83);
+            color: rgb(7, 30, 88);
             font-weight: 600;
+            font-family: 'Times New Roman', Times, serif;
         }
 
         .grafikler {
@@ -594,21 +603,13 @@
             right: 0;
         }
 
-        .bilisim {
-            display: inline-flex;
-            flex-direction: column;
-            row-gap: 1rem;
-            position: relative;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
         .bilisim-baslik {
             display: inline-flex;
             align-items: center;
-            gap: 1rem;
             justify-content: center;
+            gap: 1rem;
             color: #000000;
-            -webkit-text-stroke: 1px rgb(22, 177, 86);
+            -webkit-text-stroke: 0.05rem rgb(22, 177, 86);
             font-size: 1.75rem;
             font-weight: 600;
             padding: 0.4rem 0.8rem;
@@ -616,24 +617,54 @@
             box-shadow: 0 0 1rem rgb(36, 167, 19);
         }
 
-        .bilisim>div:not(.bilisim-baslik) {
-            display: grid;
-            grid-template-columns: 2.6rem 1fr;
-            column-gap: 1rem;
-            align-items: start;
-        }
-
-        .bilisim>div:not(.bilisim-baslik)>span {
-            font-size: 1.2rem;
-            text-decoration: underline;
-            min-width: 0;
-        }
-
-        .kati-ikonlar {
+        .bilisim-baslik-ikon {
             height: 2rem;
             width: auto;
-            justify-self: center;
-            align-self: start;
+        }
+
+        .algoritma,
+        .modelleme,
+        .klavye,
+        .molekuler,
+        .video-kurgu {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .algoritma>img,
+        .modelleme>img,
+        .klavye>img,
+        .molekuler>img,
+        .video-kurgu>img {
+            flex: 0 0 2.6rem;
+            width: 2.6rem;
+            height: auto;
+            display: block;
+        }
+
+        .algoritma>button,
+        .modelleme>button,
+        .klavye>button,
+        .molekuler>button,
+        .video-kurgu>button {
+            flex: 0 0 2rem;
+            width: 2rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+        }
+
+        .algoritma>span,
+        .modelleme>span,
+        .klavye>span,
+        .molekuler>span,
+        .video-kurgu>span {
+            flex: 0 1 auto;
+            min-width: 0;
+            white-space: normal;
+            overflow-wrap: anywhere;
         }
 
         .pc-kodlama {
@@ -658,6 +689,41 @@
             width: 4rem;
             top: 30%;
             left: 20%;
+        }
+
+        .ayrinti-toggler {
+            background-color: transparent;
+            font-size: 0.7rem;
+            border: 1px solid black;
+            border-radius: 0.3rem;
+            width: 1rem;
+            height: 0.7rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+            cursor: pointer;
+        }
+
+        .ayrinti-toggler i {
+            display: block;
+            line-height: 1;
+            transform-origin: 50% 50%;
+            transition: transform 180ms ease;
+        }
+
+        .ayrinti-toggler.is-open i {
+            transform: rotateX(180deg);
+        }
+
+        .mikrobiyoloji-ayrinti,
+        .modellab-ayrinti {
+            display: none;
+        }
+
+        .mikrobiyoloji-ayrinti.is-open,
+        .modellab-ayrinti.is-open {
+            display: block;
         }
 
         @media (max-width: 768px) {
@@ -735,11 +801,6 @@
             <span>/cuneytinan</span>
         </a>
 
-        <a data-ctc-brand="Instagram" href="https://www.instagram.com/science.art_/" target="_blank" rel="noopener">
-            <i class="fa-brands fa-instagram"></i>
-            <span>/science.art_</span>
-        </a>
-
     </div>
 
 
@@ -797,11 +858,16 @@
             </div>
 
             <div class="staj">Staj:</div>
-            <div class="mikrobiyoloji" title="22.01.2024 - 16.02.2024">1-Mikrobiyoloji ve Bitki Laboratuvarı <img
+            <div class="mikrobiyoloji"><button id="ayrinti1" class="ayrinti-toggler" type="button"><i
+                        class="fa-solid fa-caret-down"></i></button>Mikrobiyoloji ve Bitki Laboratuvarı <img
                     src="images/mikrobiyoloji.png"></div>
-            <div class="modellab" title="22.07.2024 - 16.08.2024">2-ModelLab Ofisi (Sanal Laboratuvar) <img
+            <div class="mikrobiyoloji-ayrinti"> 22.01.2024 - 16.02.2024 tarihleri arasında 1.zorunlu stajımı, Doç. Dr.
+                Mine Gül ŞEKER yürürlüğünde 20 iş günü yaparak gerçekleştirdim.</div>
+            <div class="modellab"><button id="ayrinti2" class="ayrinti-toggler" type="button"><i
+                        class="fa-solid fa-caret-down"></i></button>ModelLab Ofisi (Sanal Laboratuvar) <img
                     src="images/modellab.png"></div>
-
+            <div class="modellab-ayrinti"> 22.07.2024 - 16.07.2024 tarihleri arasında 2.zorunlu stajımı, Doç. Dr.
+                Abdulkadir KOÇAK yürürlüğünde 20 iş günü yaparak gerçekleştirdim.</div>
         </div>
 
 
@@ -892,28 +958,32 @@
 
 
                     <div class="bilisim-baslik"> Bilişim
-                        Becerileri <img class="kati-ikonlar" src="images/bilisim.png"> </div>
+                        Becerileri <img class="bilisim-baslik-ikon" src="images/bilisim.png"> </div>
 
-                    <div class="algoritma"><img class="kati-ikonlar" src="images/algoritma.png"> <span>Algoritma
-                            Kurma / Mantıksal Analiz</span></div>
+                    <div class="algoritma"> <img src="images/algoritma.png"> <span>Algoritma Kurma
+                            / Mantıksal Analiz </span> <button id="ayrinti3" class="ayrinti-toggler" type="button"><i
+                                class="fa-solid fa-caret-down"></i></button></div>
 
-                    <div class="modelleme"><img class="kati-ikonlar" src="images/3b-modelleme.png"> <span>3B Modelleme /
-                            Çizim</span></div>
-                    <div class="klavye"><img class="kati-ikonlar" src="images/klavye-hizi.png"><span>Klavye Hızlı
-                            Yazabilme </span></div>
-                    <div class="molekuler"><img class="kati-ikonlar"
-                            src="images/molekuler-modelleme.png"><span>Moleküler Modelleme
-                            Programları</span></div>
+                    <div class="modelleme"><img src="images/3b-modelleme.png"> <span>3B Modelleme /
+                            Çizim</span> <button id="ayrinti4" class="ayrinti-toggler" type="button"><i
+                                class="fa-solid fa-caret-down"></i></button> </div>
+                    <div class="klavye"><img src="images/klavye-hizi.png"><span>Klavye Hızlı
+                            Yazabilme </span> <button id="ayrinti5" class="ayrinti-toggler" type="button"><i
+                                class="fa-solid fa-caret-down"></i></button> </div>
+                    <div class="molekuler"><img src="images/molekuler-modelleme.png"><span>Moleküler Modelleme
+                            Programları</span> <button id="ayrinti6" class="ayrinti-toggler" type="button"><i
+                                class="fa-solid fa-caret-down"></i></button> </div>
 
-
-                    <div class="video-kurgu"><img class="kati-ikonlar" src="images/video-editing.png"><span>Video
-                            Kurgusu</span></div>
+                    <div class="video-kurgu"><img src="images/video-editing.png"><span>Video
+                            Kurgusu</span> <button id="ayrinti7" class="ayrinti-toggler" type="button"><i
+                                class="fa-solid fa-caret-down"></i></button> </div>
 
                     <img class="pc-protein" src="images/protein-3d.png">
 
                     <img class="pc-algoritma" src="images/pc-algoritma.png">
 
                     <img class="pc-kodlama" src="images/kodlama.png">
+
                 </div>
 
 
@@ -924,17 +994,20 @@
 
     </div>
 
-
-
-
-
     <script>
         // --- Unified action sheet for all ticker links (copy + open; phone/email get extra actions) ---
         (() => {
             const openInNewTab = (url) => {
-                const w = window.open(url, "_blank", "noopener");
-                if (!w) window.location.href = url;
+                const w = window.open(url, "_blank"); // <-- features YOK
+                if (w) {
+                    try { w.opener = null; } catch (_) { }
+                    try { w.focus(); } catch (_) { }
+                    return;
+                }
+                // Pop-up gerçekten engellendiyse fallback
+                window.location.assign(url);
             };
+
 
             const openInApp = (url) => {
                 // For schemes like mailto: / tel: use same-tab navigation
@@ -1067,10 +1140,16 @@
 
                 if (act === "gmail") {
                     closeSheet();
-                    const w = window.open(p.gmailUrl, "_blank", "noopener");
-                    if (!w) openInApp(`mailto:${encodeURIComponent(p.email)}`);
+                    const w = window.open(p.gmailUrl, "_blank"); // <-- "noopener" KALDIR
+                    if (w) {
+                        try { w.opener = null; } catch (_) { }
+                        try { w.focus(); } catch (_) { }
+                    } else {
+                        openInApp(`mailto:${encodeURIComponent(p.email)}`);
+                    }
                     return;
                 }
+
 
                 if (act === "mailto") {
                     closeSheet();
@@ -1144,8 +1223,8 @@
 
                     return {
                         type,
-                        title: "Telefon",
-                        label,
+                        title: "Telefon:",
+                        label: "+90 534 327 34 62",
                         href,
                         phoneDigits: digits,
                         copyValue: digits ? `+${digits}` : "",
@@ -1169,8 +1248,8 @@
 
                     return {
                         type,
-                        title: "E-posta",
-                        label,
+                        title: "E-posta:",
+                        label: "cuneytinan37@gmail.com",
                         href,
                         email,
                         gmailUrl,
@@ -1182,7 +1261,7 @@
 
                 // Generic links
                 const brand = (a.dataset.ctcBrand || "").trim();
-                const brandTitle = brand ? `${brand} bağlantısı` : "Bağlantı";
+                const brandTitle = brand ? `${brand} hesabı` : "Bağlantı";
                 return {
                     type: "link",
                     title: brandTitle,
@@ -1353,7 +1432,28 @@
         });
     </script>
 
+    <script>
+        // Tek listener: sayfada kaç tane ayrıntı toggler olursa olsun çalışır (minimum kod + event delegation)
+        document.addEventListener("click", (e) => {
+            // Tıklama ikonun üstüne de gelse butonu yakala
+            const btn = e.target.closest(".ayrinti-toggler");
+            if (!btn) return;
 
+            // Butonun içinde olduğu "satır" (senin yapında bu satırlar .mikrobiyoloji ve .modellab)
+            const row = btn.closest(".mikrobiyoloji, .modellab");
+            if (!row) return;
+
+            // Senin HTML'de detay div'i, satırın hemen altındaki "bir sonraki kardeş" eleman
+            const detail = row.nextElementSibling;
+            if (!detail) return;
+
+            // State: tek kaynak butonun .is-open sınıfı
+            // - Butonda .is-open varsa ikon döner
+            // - Detay div'inde .is-open varsa görünür olur
+            btn.classList.toggle("is-open");
+            detail.classList.toggle("is-open");
+        });
+    </script>
 
 </body>
 
