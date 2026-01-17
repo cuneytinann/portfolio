@@ -467,6 +467,11 @@
             text-shadow: 1px 1px 1px black;
         }
 
+        .modellab button,
+        .mikrobiyoloji button {
+            outline: 1px solid black;
+        }
+
         .modellab,
         .modellab button {
             color: #6f9b6f;
@@ -526,6 +531,7 @@
             display: flex;
             gap: 1rem;
             padding: 1rem 0 0 1rem;
+            align-items: baseline;
         }
 
         .esit4 {
@@ -667,6 +673,10 @@
             overflow-wrap: anywhere;
         }
 
+        .klavye-ayrinti {
+            width: 20rem;
+        }
+
         .pc-kodlama {
             position: absolute;
             opacity: 0.3;
@@ -717,12 +727,14 @@
         }
 
         .mikrobiyoloji-ayrinti,
-        .modellab-ayrinti {
+        .modellab-ayrinti,
+        .klavye-ayrinti {
             display: none;
         }
 
         .mikrobiyoloji-ayrinti.is-open,
-        .modellab-ayrinti.is-open {
+        .modellab-ayrinti.is-open,
+        .klavye-ayrinti.is-open {
             display: block;
         }
 
@@ -970,6 +982,8 @@
                     <div class="klavye"><img src="images/klavye-hizi.png"><span>Klavye Hızlı
                             Yazabilme </span> <button id="ayrinti5" class="ayrinti-toggler" type="button"><i
                                 class="fa-solid fa-caret-down"></i></button> </div>
+                    <div class="klavye-ayrinti"> ~80 tuş / dakika. Kanıt olarak listedışı youtube videosu linki
+                        koyacağım.</div>
                     <div class="molekuler"><img src="images/molekuler-modelleme.png"><span>Moleküler Modelleme
                             Programları</span> <button id="ayrinti6" class="ayrinti-toggler" type="button"><i
                                 class="fa-solid fa-caret-down"></i></button> </div>
@@ -1440,7 +1454,7 @@
             if (!btn) return;
 
             // Butonun içinde olduğu "satır" (senin yapında bu satırlar .mikrobiyoloji ve .modellab)
-            const row = btn.closest(".mikrobiyoloji, .modellab");
+            const row = btn.closest(".mikrobiyoloji, .modellab, .klavye");
             if (!row) return;
 
             // Senin HTML'de detay div'i, satırın hemen altındaki "bir sonraki kardeş" eleman
