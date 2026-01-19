@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
         crossorigin="anonymous" />
 
-    <style ayrinti>
+    <style ayrintistyle>
         * {
             box-sizing: border-box;
         }
@@ -192,13 +192,13 @@
             background: transparent;
             color: inherit;
             border: 0;
-            border-bottom: 0.0625rem solid rgba(255, 255, 255, .10);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.10);
             text-align: left;
             cursor: pointer;
         }
 
         .tiklama-menusu_buton:hover {
-            background: rgba(255, 255, 255, .06);
+            background: rgba(255, 255, 255, 0.1);
         }
 
         .tiklama-menusu_buton:nth-child(2) {
@@ -254,7 +254,7 @@
         }
     </style>
 
-    <style yerlesim>
+    <style yerlesimstyle>
         .png-ikon,
         .fa-brands {
             height: 1.6rem;
@@ -264,6 +264,10 @@
 
         .fa-brands {
             font-size: 1.5rem;
+        }
+
+        a .png-ikon {
+            margin-bottom: 0.1rem;
         }
 
         .iletisim-bilgi {
@@ -325,7 +329,7 @@
 
         .kep {
             width: 2.2rem;
-            bottom: 0.6rem;
+            bottom: 0.5rem;
             left: -0.4rem;
             transform: rotate(-37deg);
             position: absolute;
@@ -340,10 +344,11 @@
             position: absolute;
             color: rgb(0, 0, 0);
             top: 0;
-            right: -3rem;
+            left: 12.4rem;
             background-color: rgba(255, 255, 255, 0.3);
             border: 2px groove rgba(255, 255, 255, 0.3);
             padding: 0.1rem 0.2rem;
+            border-top-right-radius: 1rem;
         }
 
         .uyruk {
@@ -522,6 +527,10 @@
             border: 1px solid rgb(0, 0, 0);
             cursor: pointer;
             border-radius: 0.5rem;
+        }
+
+        .js-ayrinti-tetik {
+            cursor: pointer;
         }
 
         .ayrinti-toggler i {
@@ -826,28 +835,30 @@
         </a>
 
         <a class="js-contact-email" href="https://mail.google.com/mail/?view=cm&fs=1&to=cuneytinan37@gmail.com"
-            data-email="cuneytinan37@gmail.com" target="_blank" rel="noopener">
+            data-email="cuneytinan37@gmail.com" target="_blank" rel="noopener noreferrer">
             <i class="fa-brands fa-google"></i><span>: cuneytinan37</span>
         </a>
 
-        <a data-ctc-brand="LinkedIn" href="https://www.linkedin.com/in/cuneytinan/" target="_blank" rel="noopener"> <i
-                class="fa-brands fa-linkedin"></i>
+        <a data-ctc-brand="LinkedIn" href="https://www.linkedin.com/in/cuneytinan/" target="_blank"
+            rel="noopener noreferrer"> <i class="fa-brands fa-linkedin"></i>
             <span> /cuneytinan </span>
         </a>
 
-        <a data-ctc-brand="GitHub" href="https://github.com/cuneytinann" target="_blank" rel="noopener"> <i
+        <a data-ctc-brand="GitHub" href="https://github.com/cuneytinann" target="_blank" rel="noopener noreferrer"> <i
                 class="fa-brands fa-github"></i> <span>/cuneytinann </span> </a>
 
-        <a data-ctc-brand="GameBanana" href="https://gamebanana.com/members/1405829" target="_blank" rel="noopener">
+        <a data-ctc-brand="GameBanana" href="https://gamebanana.com/members/1405829" target="_blank"
+            rel="noopener noreferrer">
             <img class="png-ikon" src="images/gamebanana.png">
             <span> /1405829 </span> </a>
 
-        <a data-ctc-brand="Instagram" href="https://www.instagram.com/yarati.ci.fikir/" target="_blank" rel="noopener">
+        <a data-ctc-brand="Instagram" href="https://www.instagram.com/yarati.ci.fikir/" target="_blank"
+            rel="noopener noreferrer">
             <i class="fa-brands fa-instagram"></i>
             <span>/yarati.ci.fikir</span>
         </a>
 
-        <a data-ctc-brand="VSCO" href="https://vsco.co/cuneytinan/gallery" target="_blank" rel="noopener">
+        <a data-ctc-brand="VSCO" href="https://vsco.co/cuneytinan/gallery" target="_blank" rel="noopener noreferrer">
             <i class="fa-brands fa-vsco"></i>
             <span>/cuneytinan</span>
         </a>
@@ -910,9 +921,13 @@
             </div>
 
             <div class="staj"> <span class="staj-yazisi">Staj:</span>
-                <div class="mikrobiyoloji"><button id="ayrinti1" class="ayrinti-toggler" type="button"><i
-                            class="fa-solid fa-caret-down"></i></button>Mikrobiyoloji ve Bitki Laboratuvarı <img
-                        src="images/mikrobiyoloji.png"></div>
+                <div class="mikrobiyoloji js-ayrinti-tetik" data-ayrinti="ayrinti1">
+                    <button id="ayrinti1" class="ayrinti-toggler" type="button">
+                        <i class="fa-solid fa-caret-down"></i>
+                    </button>
+                    Mikrobiyoloji ve Bitki Laboratuvarı
+                    <img src="images/mikrobiyoloji.png">
+                </div>
                 <div id="ayrinti1-detay" class="staj-ayrinti"> 22.01.2024 - 16.02.2024 tarihleri arasında 1.zorunlu
                     stajımı,
                     Doç. Dr.
@@ -923,9 +938,13 @@
                     saf kültür izolasyonu ve temel materyal kullanımları öğrenildi. Ayrıca bu laboratuvarda, kurumsal
                     firmalarla profesyonel ticari işlerin nasıl yürüdüğü gözlemlendi. Ekip çalışmasının önemi kavrandı.
                 </div>
-                <div class="modellab"><button id="ayrinti2" class="ayrinti-toggler" type="button"><i
-                            class="fa-solid fa-caret-down"></i></button>ModelLab Ofisi (Sanal Laboratuvar) <img
-                        src="images/modellab.png"></div>
+                <div class="modellab js-ayrinti-tetik" data-ayrinti="ayrinti2">
+                    <button id="ayrinti2" class="ayrinti-toggler" type="button">
+                        <i class="fa-solid fa-caret-down"></i>
+                    </button>
+                    ModelLab Ofisi (Sanal Laboratuvar)
+                    <img src="images/modellab.png">
+                </div>
                 <div id="ayrinti2-detay" class="staj-ayrinti"> 22.07.2024 - 16.07.2024 tarihleri arasında 2.zorunlu
                     stajımı,
                     Doç. Dr.
@@ -961,9 +980,10 @@
                             class="goldSrc">GoldSrc</span> tabanlı 3B modelleme
                         ortamında, topluluk içinde tanınan çalışmalar ürettim ve bu çalışmalar aracılığıyla maddi ve
                         manevi kazanımlar elde ettim. Bu süreçte edindiğim bağlantılarla, günümüzde popüler bir medya
-                        markası hâline gelen <a href="https://www.instagram.com/darkwebhaber/?hl=tr">DarkWeb
+                        markası hâline gelen <a target="_blank" rel="noopener noreferrer"
+                            href="https://www.instagram.com/darkwebhaber/?hl=tr">DarkWeb
                             Haber</a>’in kurucu ekibinde yer aldım. Hâlihazırda, Instagram’da bilim
-                        odaklı bir platform olan <a
+                        odaklı bir platform olan <a target="_blank" rel="noopener noreferrer"
                             href="https://www.instagram.com/science.art_/?hl=tr">science.art_</a> hesabında moderatörlük
                         yapmaktayım. Analitik düşünme,
                         mantıksal akıl yürütme ve soyut düşünme yönlerimin güçlü olması nedeniyle; algoritma mimarisi ve
@@ -1033,19 +1053,20 @@
                         Bilişim Becerileri <img class="bilisim-baslik-ikon" src="images/bilisim.png">
                     </div>
 
-                    <div class="algoritma">
+                    <div class="algoritma js-ayrinti-tetik" data-ayrinti="ayrinti3">
                         <img src="images/algoritma.png">
                         <div>Algoritma Kurma / Mantıksal Analiz</div>
                         <button id="ayrinti3" class="ayrinti-toggler" type="button">
                             <i class="fa-solid fa-caret-down"></i>
                         </button>
                     </div>
+
                     <div id="ayrinti3-detay" class="bilisim-ayrinti">Gereksinimleri parçalayarak çözümü adımlara böler,
                         akış diyagramı/psödo-kod ile netleştiririm. Edge-case odaklı düşünür; hata ayıklama ve iteratif
                         iyileştirme ile stabil çözümler üretirim. Zaman/bellek verimliliği farkındalığıyla yaklaşırım.
                     </div>
 
-                    <div class="modelleme">
+                    <div class="modelleme js-ayrinti-tetik" data-ayrinti="ayrinti4">
                         <img src="images/3b-modelleme.png">
                         <div>3B Modelleme / Çizim</div>
                         <button id="ayrinti4" class="ayrinti-toggler" type="button">
@@ -1057,7 +1078,7 @@
                         ışıklandırma ve kaplama (texture) düzenlemeleri; kısıtlar içinde optimizasyon ve revizyon
                         döngüsü ile çalışma.</div>
 
-                    <div class="klavye">
+                    <div class="klavye js-ayrinti-tetik" data-ayrinti="ayrinti5">
                         <img src="images/klavye-hizi.png">
                         <div>Klavye Hızlı Yazabilme</div>
                         <button id="ayrinti5" class="ayrinti-toggler" type="button">
@@ -1070,19 +1091,21 @@
                         linki eklenebilir).
                     </div>
 
-                    <div class="molekuler">
+
+                    <div class="molekuler js-ayrinti-tetik" data-ayrinti="ayrinti6">
                         <img src="images/3b-molekuler.png">
                         <div>Moleküler Modelleme Programları</div>
                         <button id="ayrinti6" class="ayrinti-toggler" type="button">
                             <i class="fa-solid fa-caret-down"></i>
                         </button>
                     </div>
+
                     <div id="ayrinti6-detay" class="bilisim-ayrinti">PyMOL ile protein/ligand yapılarını görselleştirme
                         ve temel yapı analizi (aktif bölge, etkileşim gözlemi, format yönetimi). GROMACS’te temel iş
                         akışına giriş: sistem hazırlama, minimizasyon ve kısa koşu denemeleri. Linux/terminal
                         kullanımına aşinalık.</div>
 
-                    <div class="video-kurgu">
+                    <div class="video-kurgu js-ayrinti-tetik" data-ayrinti="ayrinti7">
                         <img src="images/video-editing.png">
                         <div>Video Kurgusu</div>
                         <button id="ayrinti7" class="ayrinti-toggler" type="button">
@@ -1220,9 +1243,9 @@
         At an early age (12–16), in Valve’s <span class="goldSrc">GoldSrc</span>-based 3D modeling environment that
         requires algorithmic knowledge, I produced recognized work within the community and gained both material
         and non-material benefits through these projects. With the connections I built in that period, I joined the
-        founding team of <a href="https://www.instagram.com/darkwebhaber/?hl=tr">DarkWeb Haber</a>, which has since
+        founding team of <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/darkwebhaber/?hl=tr">DarkWeb Haber</a>, which has since
         become a popular media brand. Currently, I moderate the science-focused Instagram platform
-        <a href="https://www.instagram.com/science.art_/?hl=tr">science.art_</a>. Due to my strengths in analytical
+        <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/science.art_/?hl=tr">science.art_</a>. Due to my strengths in analytical
         thinking, logical reasoning, and abstract thinking, I believe roles that require problem-solving in algorithm
         architecture and structured systems suit me well.
       `.trim(),
@@ -1401,18 +1424,7 @@
             const applyLanguage = (lang) => {
                 document.documentElement.lang = lang;
 
-                const applyYeniMezunLayout = (lang) => {
-                    const el = document.querySelector(".yeni-mezun");
-                    if (!el) return;
 
-                    rememberAttr(el, "style");
-
-                    if (lang === "en") {
-                        el.style.right = "-4rem";
-                    } else {
-                        restoreDyn(el, "attr:style");
-                    }
-                };
 
                 for (const t of inlineTargets) {
                     const container = document.querySelector(t.sel);
@@ -1447,7 +1459,6 @@
                 applyPercentFormat(lang);
                 applyAgnoAria(lang);
                 translateOverlayIfAny(lang);
-                applyYeniMezunLayout(lang);
             };
 
             applyLanguage(state.lang);
@@ -1456,9 +1467,14 @@
 
         document.addEventListener("click", (e) => {
             const btn = e.target.closest(".ayrinti-toggler");
-            if (!btn || !btn.id) return;
+            const row = e.target.closest(".js-ayrinti-tetik[data-ayrinti]");
 
-            const detail = document.getElementById(`${btn.id}-detay`);
+            if (!btn && !row) return;
+
+            const id = btn?.id || row?.dataset.ayrinti;
+            if (!id) return;
+
+            const detail = document.getElementById(`${id}-detay`);
             if (!detail) return;
 
             const groupClass = detail.classList.contains("bilisim-ayrinti")
@@ -1481,7 +1497,9 @@
                 if (openBtn) openBtn.classList.remove("is-open");
             });
 
-            btn.classList.toggle("is-open", !wasOpen);
+            const realBtn = document.getElementById(id);
+
+            if (realBtn) realBtn.classList.toggle("is-open", !wasOpen);
             detail.classList.toggle("is-open", !wasOpen);
         });
 
@@ -1616,7 +1634,6 @@
                     return;
                 }
 
-                // Open actions
                 if (act === "open") {
                     closeSheet();
                     openInNewTab(p.openUrl || p.href);
@@ -1625,7 +1642,7 @@
 
                 if (act === "gmail") {
                     closeSheet();
-                    const w = window.open(p.gmailUrl, "_blank"); // <-- "noopener" KALDIR
+                    const w = window.open(p.gmailUrl, "_blank");
                     if (w) {
                         try { w.opener = null; } catch (_) { }
                         try { w.focus(); } catch (_) { }
@@ -1861,7 +1878,7 @@
 
             const recalc = () => {
                 track.style.animation = "none";
-                track.offsetHeight; // reflow
+                track.offsetHeight;
 
                 const shiftPx = set.scrollWidth;
                 track.style.setProperty("--shift", `${shiftPx}px`);
