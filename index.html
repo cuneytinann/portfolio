@@ -106,6 +106,11 @@
             will-change: transform;
             transform: translate3d(0, 0, 0);
             animation: ticker var(--dur, 20s) linear infinite;
+            animation-fill-mode: both;
+        }
+
+        .iletisim-bilgi.is-reverse .iletisim-bilgi_akan-metin {
+            animation-direction: reverse;
         }
 
         .iletisim-bilgi:hover .iletisim-bilgi_akan-metin {
@@ -1009,7 +1014,7 @@
 
                     <div title="C# (C Sharp)">
                         <span class="dil-beyaz"><img class="png-ikon" src="images/csharp.png"></span>
-                        <div class="ilerleme" data-value="85">
+                        <div class="ilerleme" data-value="80">
                             <span></span>
                         </div>
                     </div>
@@ -1023,14 +1028,14 @@
 
                     <div title="CSS">
                         <span class="dil-beyaz"><i class="fa-brands fa-css"></i></span>
-                        <div class="ilerleme" data-value="75">
+                        <div class="ilerleme" data-value="85">
                             <span></span>
                         </div>
                     </div>
 
                     <div title="JavaScript">
                         <span class="dil-siyah"><i class="fa-brands fa-js"></i></span>
-                        <div class="ilerleme" data-value="25">
+                        <div class="ilerleme" data-value="75">
                             <span></span>
                         </div>
                     </div>
@@ -1041,7 +1046,7 @@
                     <img src="images/ogrenme-listesi.png">
                     <span> Öğreneceğim: </span>
                     <div class="ilerleme" data-value="0">
-                        <label>MySql</label>
+                        <label>Node.js</label>
                         <label>PostgreSQL</label>
                         <label>MongoDB</label>
                         <label>PHP</label>
@@ -1800,7 +1805,8 @@
             {
                 gapRem: 4,
                 remPerSecond: 6,
-                hoverPause: true
+                hoverPause: true,
+                reverse: true
             }
         );
 
@@ -1833,9 +1839,11 @@
             const opts = {
                 gapRem: Number.isFinite(options.gapRem) ? options.gapRem : 4,
                 remPerSecond: Number.isFinite(options.remPerSecond) ? options.remPerSecond : 6,
-                hoverPause: options.hoverPause !== false
+                hoverPause: options.hoverPause !== false,
+                reverse: options.reverse === true
             };
 
+            container.classList.toggle("is-reverse", opts.reverse);
             container.innerHTML = "";
 
             if (!opts.hoverPause) {
