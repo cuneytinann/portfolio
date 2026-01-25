@@ -63,6 +63,56 @@
             padding: 0;
         }
 
+        .DNA_YUKLEMESI {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9;
+            background: rgba(0, 0, 0, 0);
+        }
+
+        .DNA_YUKLEMESI.is-hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 280ms ease, visibility 0s linear 280ms;
+        }
+
+        .DNA_KART {
+            width: 22rem;
+            max-width: calc(100vw - 2rem);
+            padding: 0.9rem 1rem 1rem;
+            border-radius: 1rem;
+            background: rgba(0, 0, 0, 0.72);
+            border: 1px solid rgba(0, 0, 0, 0.25);
+            box-shadow: 0 0.75rem 2.25rem rgba(0, 0, 0, 0.22);
+            backdrop-filter: blur(3px);
+        }
+
+        .DNA_BASLIK {
+            margin: 0 0 3rem;
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            color: rgb(255, 255, 255);
+            user-select: none;
+        }
+
+        .DNA_HELIX_ARALIK {
+            width: 15rem;
+            height: 20rem;
+            margin: 0 auto;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .DNA_YUKLEMESI {
+                display: none !important;
+            }
+        }
+
         .fa-phone {
             color: rgb(0, 0, 255);
         }
@@ -1141,6 +1191,209 @@
     <script>
 
         (() => {
+
+             const overlay = document.createElement("div");
+            overlay.className = "DNA_YUKLEMESI";
+
+            const card = document.createElement("div");
+            card.className = "DNA_KART";
+
+            const title = document.createElement("div");
+            title.className = "DNA_BASLIK";
+            title.textContent = "YÜKLENİYOR...";
+
+            const mount = document.createElement("div");
+            mount.className = "DNA_HELIX_ARALIK";
+
+            card.appendChild(title);
+            card.appendChild(mount);
+            overlay.appendChild(card);
+            document.body.appendChild(overlay);
+
+            const hideOverlay = () => {
+                if (!overlay || overlay.classList.contains("is-hidden")) return;
+                overlay.classList.add("is-hidden");
+                setTimeout(() => {
+                    try { overlay.remove(); } catch (_) { }
+                }, 320);
+            };
+
+            const host = mount;
+            host.style.position = "relative";
+            host.style.pointerEvents = "none";
+
+            const shadow = host.attachShadow({ mode: "open" });
+
+            const PAIRS = 22;
+            const SPACING = 14;
+            const AMP = 52;
+            const NODE_SIZE = 10;
+            const SPEED = 0.0275;
+
+            shadow.innerHTML = `
+                <style>
+                    .dna{
+                        position: relative;
+                        width: 240px;
+                        height: ${PAIRS * SPACING}px;
+                        margin: 0 auto;
+                        filter: drop-shadow(0 0 18px rgba(124, 255, 203, 0.12));
+                    }
+                    .node{
+                        position: absolute;
+                        width: ${NODE_SIZE}px;
+                        height: ${NODE_SIZE}px;
+                        border-radius: 50%;
+                        transform: translate(-50%, -50%) scale(var(--s, 1));
+                        opacity: var(--o, 1);
+                        z-index: var(--z, 1);
+                        box-shadow: 0 0 15px rgba(124, 255, 203, 0.9);
+                        background: #7cffcb;
+                        will-change: left, top, transform, opacity;
+                    }
+                    .node.b{
+                        background: #88b6ff;
+                        box-shadow: 0 0 15px rgba(136, 182, 255, 0.75);
+                    }
+                    .rung{
+                        position: absolute;
+                        height: 2px;
+                        border-radius: 3px;
+                        background: rgba(255, 255, 255, 0.22);
+                        box-shadow: 0 0 12px rgba(255, 255, 255, 0.08);
+                        opacity: 0.35;
+                        z-index: 0;
+                        transform-origin: 0 50%;
+                        will-change: transform, width, left, top, opacity;
+                    }
+                </style>
+                <div class="dna" id="dna"></div>
+            `;
+
+            const dna = shadow.getElementById("dna");
+            const nodesA = [];
+            const nodesB = [];
+            const rungs = [];
+
+            for (let i = 0; i < PAIRS; i++) {
+                const rung = document.createElement("div");
+                rung.className = "rung";
+
+                const a = document.createElement("div");
+                a.className = "node a";
+
+                const b = document.createElement("div");
+                b.className = "node b";
+
+                dna.appendChild(rung);
+                dna.appendChild(a);
+                dna.appendChild(b);
+
+                rungs.push(rung);
+                nodesA.push(a);
+                nodesB.push(b);
+            }
+
+            let t = 0;
+            let rafId = null;
+
+            const setNode = (el, x, y, depth) => {
+                const scale = 0.65 + depth * 0.70;
+                const opacity = 0.25 + depth * 0.85;
+                const z = Math.round(depth * 100);
+
+                el.style.left = `${x}px`;
+                el.style.top = `${y}px`;
+                el.style.setProperty("--s", scale.toFixed(3));
+                el.style.setProperty("--o", opacity.toFixed(3));
+                el.style.setProperty("--z", z);
+            };
+
+            const animate = () => {
+                const center = 240 / 2;
+
+                for (let i = 0; i < PAIRS; i++) {
+                    const angle = t + i * 0.45;
+                    const x = Math.sin(angle) * AMP;
+
+                    const yBase = i * SPACING;
+                    const yOffset = Math.cos(angle) * 3;
+
+                    const xA = center + x;
+                    const yA = yBase + yOffset;
+
+                    const xB = center - x;
+                    const yB = yBase - yOffset;
+
+                    const depthA = (Math.cos(angle) + 1) / 2;
+                    const depthB = 1 - depthA;
+
+                    setNode(nodesA[i], xA, yA, depthA);
+                    setNode(nodesB[i], xB, yB, depthB);
+
+                    const dx = xB - xA;
+                    const dy = yB - yA;
+                    const dist = Math.hypot(dx, dy);
+
+                    const usable = Math.max(dist - NODE_SIZE, 0);
+                    const rot = Math.atan2(dy, dx);
+
+                    const rung = rungs[i];
+                    rung.style.left = `${xA}px`;
+                    rung.style.top = `${yA}px`;
+                    rung.style.width = `${usable}px`;
+                    rung.style.transform = `rotate(${rot}rad) translateX(${NODE_SIZE / 2}px)`;
+
+                    const vis = 1 - Math.abs(Math.cos(angle));
+                    rung.style.opacity = (0.12 + 0.65 * vis).toFixed(3);
+                }
+
+                t += SPEED;
+                rafId = requestAnimationFrame(animate);
+            };
+
+            const stop = () => {
+                if (rafId) cancelAnimationFrame(rafId);
+                rafId = null;
+            };
+
+            document.addEventListener("visibilitychange", () => {
+                if (document.hidden) stop();
+                else if (!rafId) animate();
+            });
+
+            animate();
+
+            const waitWindowLoad = new Promise((resolve) => {
+                if (document.readyState === "complete") return resolve();
+                window.addEventListener("load", () => resolve(), { once: true });
+            });
+
+            const waitBackground = new Promise((resolve) => {
+                const urls = ["images/arkaplan.png", "images/defter.png"];
+                if (!urls.length) return resolve();
+
+                let remaining = urls.length;
+                const done = () => {
+                    remaining -= 1;
+                    if (remaining <= 0) resolve();
+                };
+
+                urls.forEach((u) => {
+                    const img = new Image();
+                    img.onload = done;
+                    img.onerror = done;
+                    img.src = u;
+                });
+            });
+            const EXTRA_MS = 5000;
+
+            Promise.allSettled([waitWindowLoad, waitBackground]).then(() => {
+                setTimeout(() => {
+                    stop();
+                    hideOverlay();
+                }, EXTRA_MS);
+            });
 
             const flags = document.querySelectorAll(".uyruk, .cubuk-bayrak");
 
