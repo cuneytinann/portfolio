@@ -1659,9 +1659,10 @@
                 overlay.querySelectorAll(".tiklama-menusu_buton").forEach(btn => {
                     rememberProp(btn, "textContent");
                     if (lang === "en") btn.textContent = translateDynamicString(btn.textContent, "en");
+                    else if (btn.dataset.ctcFlash === "1") { /* keep flash text */ }
                     else restoreDyn(btn, "textContent");
                 });
-            };
+};
 
             let rafScheduled = false;
             const scheduleDynTranslate = () => {
@@ -1849,8 +1850,9 @@
 
             const flashBtn = (btn, okText, failText) => {
                 const prev = btn.textContent;
+                btn.dataset.ctcFlash = "1";
                 btn.textContent = okText;
-                setTimeout(() => { btn.textContent = prev; }, 900);
+                setTimeout(() => { btn.textContent = prev; delete btn.dataset.ctcFlash; }, 900);
             };
 
             overlay.addEventListener("click", (e) => {
@@ -1888,6 +1890,7 @@
                 if (act === "copy") {
                     const ok = await copyText(p.copyValue || p.href || "");
                     flashBtn(btn, ok ? "Kopyalandı" : "Kopyalanamadı", "Kopyalanamadı");
+      setTimeout(closeSheet, 350);
                     return;
                 }
 
