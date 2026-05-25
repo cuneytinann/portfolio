@@ -1,0 +1,3730 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cüneyt İnan — Frontend Developer</title>
+
+    <meta
+      name="description"
+      content="Cüneyt İnan — Frontend Developer. Vanilla JavaScript ve React ile modern, kullanıcı odaklı arayüzler. Freelance projeler için iletişime geçin."
+    />
+    <meta name="author" content="Cüneyt İnan" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/icons/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png" />
+    <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/icons/site.webmanifest" />
+
+    <!-- Open Graph (sosyal medya paylaşım önizlemesi) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://cuneytinan.com/" />
+    <meta property="og:title" content="Cüneyt İnan — Frontend Developer" />
+    <meta
+      property="og:description"
+      content="Vanilla JavaScript ve React ile modern, kullanıcı odaklı arayüzler. Freelance projeler için iletişime geçin."
+    />
+    <meta property="og:image" content="https://cuneytinan.com/icons/android-chrome-512x512.png" />
+    <meta name="twitter:card" content="summary" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      crossorigin="anonymous"
+    />
+
+    <style ayrintistil>
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        font-size: clamp(12px, 10px + 0.6vw, 18px);
+        font-size: 16px;
+        scrollbar-width: auto;
+        scrollbar-color: auto auto;
+        margin: 0;
+        padding: 0;
+        --arkaplan-renk: rgb(225, 224, 220);
+      }
+
+      body {
+        margin: 0;
+        padding: 1rem;
+        background-color: var(--arkaplan-renk);
+        position: relative;
+        z-index: 0;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+        background-image: url("images/arkaplan.jpg");
+        background-size: 100% auto;
+        background-repeat: no-repeat;
+        background-position: center center;
+        opacity: 0.6;
+      }
+
+      /* Dikey/dar ekranlar (mobil): yükseklik %100, genişlik orantılı */
+      @media (max-aspect-ratio: 1/1) {
+        body::before {
+          background-size: auto 100%;
+        }
+      }
+
+      ::selection {
+        background-color: rgba(29, 31, 28, 0.5);
+        color: rgb(173, 255, 47);
+        text-shadow: 1px 1px 2px rgb(50, 51, 46);
+      }
+
+      a,
+      a:visited,
+      a:hover {
+        color: rgb(0, 0, 0);
+        text-decoration-line: none;
+      }
+
+      p {
+        margin: 0;
+        padding: 0;
+      }
+
+      .DNA_YUKLEMESI {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9;
+        background: rgba(0, 0, 0, 0);
+      }
+
+      .DNA_YUKLEMESI.is-hidden {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition:
+          opacity 280ms ease,
+          visibility 0s linear 280ms;
+      }
+
+      .DNA_KART {
+        width: 18rem;
+        padding: 0.9rem 1rem 1rem;
+        border-radius: 1rem;
+        background: rgba(0, 0, 0, 0.72);
+        border: 1px solid rgba(0, 0, 0, 0.25);
+        box-shadow: 0 0.75rem 2.25rem rgba(0, 0, 0, 0.22);
+        backdrop-filter: blur(3px);
+      }
+
+      .DNA_BASLIK {
+        margin: 1rem 0 3rem;
+        text-align: center;
+        font-size: 1.1rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        color: rgb(255, 255, 255);
+        user-select: none;
+      }
+
+      .DNA_HELIX_ARALIK {
+        width: 15rem;
+        height: 20rem;
+        margin: 0 auto;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .DNA_YUKLEMESI {
+          display: none !important;
+        }
+      }
+
+      .fa-phone {
+        color: rgb(0, 0, 255);
+      }
+
+      .fa-whatsapp {
+        color: rgb(171, 255, 46);
+      }
+
+      .fa-icon {
+        color: rgb(255, 255, 0);
+      }
+
+      .fa-instagram {
+        color: rgb(243, 111, 243);
+      }
+
+      .fa-linkedin {
+        color: rgb(82, 82, 250);
+      }
+
+      .fa-google {
+        color: rgb(221, 71, 51);
+      }
+
+      .fa-html5 {
+        color: rgb(233, 90, 7);
+      }
+
+      .fa-css {
+        color: rgb(92, 176, 255);
+      }
+
+      .fa-js {
+        color: rgb(216, 216, 2);
+      }
+
+      .iletisim-bilgi_akan-metin {
+        display: inline-flex;
+        align-items: center;
+        width: max-content;
+        will-change: transform;
+        transform: translate3d(0, 0, 0);
+        animation: ticker var(--dur, 20s) linear infinite;
+        animation-fill-mode: both;
+      }
+
+      .iletisim-bilgi.is-reverse .iletisim-bilgi_akan-metin {
+        animation-direction: reverse;
+      }
+
+      .iletisim-bilgi:hover .iletisim-bilgi_akan-metin {
+        animation-play-state: paused;
+      }
+
+      .iletisim-bilgi_ic-parca {
+        display: inline-flex;
+        align-items: center;
+      }
+
+      .iletisim-bilgi_baglanti {
+        flex: 0 0 auto;
+        white-space: nowrap;
+      }
+
+      .iletisim-bilgi_baglanti a {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .iletisim-bilgi_bosluk-ayar {
+        flex: 0 0 auto;
+        width: var(--gap, 4rem);
+      }
+
+      @keyframes ticker {
+        to {
+          transform: translate3d(calc(-1 * var(--shift, 0px)), 0, 0);
+        }
+      }
+
+      .tiklama-arka {
+        position: fixed;
+        inset: 0;
+        display: none;
+        z-index: 9999;
+        background: rgba(82, 180, 167, 0);
+      }
+
+      .tiklama-arka.is-open {
+        display: block;
+      }
+
+      .tiklama-menusu {
+        position: fixed;
+        left: 50%;
+        top: var(--ctc-top, 3rem);
+        transform: translateX(-50%);
+        width: 20rem;
+        background: var(--ctc-bg, rgb(20, 20, 20));
+        color: var(--ctc-fg, rgb(255, 255, 255));
+        border: 1px solid var(--ctc-border, rgba(255, 255, 255, 0.12));
+        border-radius: var(--ctc-radius, 0.875rem);
+        box-shadow: 0 0.75rem 2.25rem rgba(0, 0, 0, 0.35);
+        overflow: hidden;
+        font-family:
+          system-ui,
+          -apple-system,
+          Segoe UI,
+          Roboto,
+          Arial,
+          sans-serif;
+      }
+
+      .tiklama-menusu_baslik {
+        color: rgb(255, 248, 148);
+        font-size: 1.1rem;
+        font-weight: 600;
+        padding: 0.75rem 0.875rem;
+        border-bottom: 0.0625rem solid rgba(255, 255, 255, 0.12);
+        display: flex;
+        gap: 0.625rem;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .tiklama-etiketi {
+        font-size: 0.9rem;
+        opacity: 0.7;
+        font-weight: 400;
+      }
+
+      .tiklama-menusu_buton {
+        width: 100%;
+        padding: 0.875rem;
+        font-size: 0.9375rem;
+        background: transparent;
+        color: inherit;
+        border: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        text-align: left;
+        cursor: pointer;
+      }
+
+      .tiklama-menusu_buton:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      .tiklama-menusu_buton:nth-child(2) {
+        text-decoration: underline;
+        color: rgb(101, 140, 247);
+      }
+
+      .tiklama-menusu_buton:last-child {
+        border-bottom: 0;
+      }
+
+      .ilerleme {
+        --percent: 0;
+        width: 6rem;
+        height: 6rem;
+        border-radius: 50%;
+        background: conic-gradient(
+          rgb(60, 109, 245) calc(var(--percent) * 1%),
+          rgb(224, 224, 224) 0
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        border: 1px solid rgb(0, 0, 0);
+      }
+
+      .ilerleme::before {
+        content: "";
+        position: absolute;
+        width: 3rem;
+        height: 3rem;
+        background: var(--arkaplan-renk);
+        border-radius: 50%;
+        border: 1px solid rgb(0, 0, 0);
+      }
+
+      .ilerleme * {
+        position: relative;
+        font-size: 1.2rem;
+        font-weight: bold;
+        z-index: 3;
+      }
+
+      .ogrenecegim .ilerleme {
+        flex-direction: column;
+        width: 12rem;
+        height: 12rem;
+      }
+
+      .ogrenecegim .ilerleme::before {
+        width: 9rem;
+        height: 9rem;
+      }
+    </style>
+
+    <style yerlesimstil>
+      .png-ikon,
+      .fa-brands {
+        height: 1.6rem;
+        line-height: 1.6rem;
+        width: auto;
+      }
+
+      .fa-brands {
+        font-size: 1.5rem;
+      }
+
+      a .png-ikon {
+        margin-bottom: 0.1rem;
+      }
+
+      .iletisim-bilgi {
+        height: 2rem;
+        line-height: 2rem;
+        margin-bottom: 1rem;
+        border: solid rgb(255, 0, 0);
+        border-width: 1px 0;
+        box-shadow: 0 0 3px;
+        overflow: hidden;
+        cursor: pointer;
+        white-space: nowrap;
+        background-color: rgba(230, 5, 5, 0.25);
+      }
+
+      .iletisim-bilgi span {
+        font-size: 1.4rem;
+        font-weight: 500;
+        color: rgb(0, 0, 0);
+      }
+
+      .iletisim-bilgi a:hover span {
+        color: rgba(101, 94, 233, 0.7);
+      }
+
+      .ilk-bakis {
+        display: flex;
+        gap: 1rem;
+        flex-direction: row-reverse;
+        /* switch edilebilir. sağ - sol */
+      }
+
+      .ilk-bakis.is-swapped {
+        flex-direction: row;
+      }
+
+      .sag-taraf {
+        flex: 3;
+      }
+
+      .sol-taraf {
+        flex: 1;
+      }
+
+      .ilk-bakis > * {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .ad-uyruk {
+        display: flex;
+        align-items: last baseline;
+        justify-content: space-between;
+      }
+
+      .ad {
+        font-size: 2rem;
+        color: rgb(0, 0, 0);
+        font-weight: 700;
+        padding-left: 0.5rem;
+        position: relative;
+      }
+
+      .kep {
+        width: 2.2rem;
+        bottom: 0.5rem;
+        left: -0.4rem;
+        transform: rotate(-37deg);
+        position: absolute;
+      }
+
+      .yeni-mezun {
+        display: none;
+      }
+
+      .uyruk {
+        height: 2.4rem;
+        width: auto;
+        max-width: 5rem;
+        object-fit: contain;
+        filter: drop-shadow(0 0.1rem 0.2rem rgba(0, 0, 0, 0.25));
+      }
+
+      .selfie {
+        width: 100%;
+        height: auto;
+        border: 4px dashed rgb(0, 126, 0);
+        display: block;
+      }
+
+      .selfie-sargi {
+        position: relative;
+        display: block;
+      }
+
+      .satranc-rozet {
+        position: relative;
+        flex: 0 0 auto;
+        width: 2rem;
+        height: 2rem;
+        margin-left: auto;
+        margin-right: auto;
+        align-self: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgb(20, 20, 20);
+        border: 2px solid rgb(255, 255, 255);
+        border-radius: 0.45rem;
+        box-shadow: 0 0.15rem 0.5rem rgba(0, 0, 0, 0.35);
+        cursor: help;
+        outline: none;
+        transition: transform 0.18s ease, box-shadow 0.18s ease;
+      }
+
+      .satranc-ikon {
+        font-size: 1.1rem;
+        line-height: 1;
+        color: rgb(255, 255, 255);
+      }
+
+      .satranc-rozet:hover,
+      .satranc-rozet:focus-visible {
+        transform: translateY(-2px) scale(1.08);
+        box-shadow: 0 0.35rem 0.8rem rgba(0, 0, 0, 0.45);
+      }
+
+      .satranc-balon {
+        position: absolute;
+        bottom: calc(100% + 0.5rem);
+        left: 50%;
+        transform: translateX(-50%) translateY(0.3rem);
+        white-space: nowrap;
+        background: rgb(20, 20, 20);
+        color: rgb(255, 255, 255);
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 0.8rem;
+        font-weight: 500;
+        letter-spacing: 0.01em;
+        padding: 0.4rem 0.65rem;
+        border-radius: 0.45rem;
+        box-shadow: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.4);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.18s ease, transform 0.18s ease,
+          visibility 0.18s ease;
+        pointer-events: none;
+        z-index: 6;
+      }
+
+      .satranc-balon::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 0.4rem solid transparent;
+        border-top-color: rgb(20, 20, 20);
+      }
+
+      .satranc-rozet:hover .satranc-balon,
+      .satranc-rozet:focus-visible .satranc-balon {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(-50%) translateY(0);
+      }
+
+      .dogum {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+      }
+
+      .dogum-tarihi,
+      .dogum-yeri {
+        font-size: 1rem;
+        color: rgb(0, 0, 0);
+        font-weight: 600;
+      }
+
+      .ehliyet {
+        font-weight: 700;
+        position: relative;
+        cursor: help;
+        outline: none;
+      }
+
+      .ehliyet-balon {
+        position: absolute;
+        bottom: calc(100% + 0.5rem);
+        left: 50%;
+        transform: translateX(-50%) translateY(0.3rem);
+        white-space: nowrap;
+        background: rgb(20, 20, 20);
+        color: rgb(255, 255, 255);
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 0.78rem;
+        font-weight: 500;
+        letter-spacing: 0.01em;
+        padding: 0.35rem 0.6rem;
+        border-radius: 0.4rem;
+        box-shadow: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.4);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.18s ease, transform 0.18s ease,
+          visibility 0.18s ease;
+        pointer-events: none;
+        z-index: 6;
+      }
+
+      .ehliyet-balon::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 0.35rem solid transparent;
+        border-top-color: rgb(20, 20, 20);
+      }
+
+      .ehliyet:hover .ehliyet-balon,
+      .ehliyet:focus-visible .ehliyet-balon {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(-50%) translateY(0);
+      }
+
+      .bolum {
+        font-size: 1.4rem;
+        color: rgb(112, 0, 112);
+        text-align: center;
+        font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+      }
+
+      .universite {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: rgb(0, 0, 255);
+        text-align: center;
+        margin-bottom: 0.5rem;
+      }
+
+      .kart-bilgi {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .kart-sol {
+        display: flex;
+        align-items: baseline;
+        gap: 1rem;
+      }
+
+      .kart-etiket {
+        font-weight: 600;
+        letter-spacing: 0.02em;
+      }
+
+      .kart-metin {
+        font-size: 0.75rem;
+        opacity: 0.75;
+        text-decoration: underline;
+      }
+
+      .kart-sag {
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: rgb(92, 78, 214);
+        text-shadow: 1px 1px 3px rgb(150, 150, 255);
+        padding: 0.25rem 0.5rem;
+        border-radius: 0.75rem;
+        background: rgb(240, 248, 255);
+        border: 1px solid rgb(230, 230, 230);
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+      }
+
+      .cubuk-bar {
+        height: 1rem;
+        border-radius: 9rem;
+        width: 100%;
+        background: rgb(238, 238, 238);
+        overflow: hidden;
+        margin-bottom: 1rem;
+        outline: 1px solid rgb(0, 0, 0);
+      }
+
+      .cubuk-dolgu {
+        height: 100%;
+        border-radius: 9rem;
+        width: var(--w);
+        background: var(--grad);
+      }
+
+      .tema-agno {
+        --w: 77%;
+        --grad: linear-gradient(
+          90deg,
+          rgb(215, 245, 215) 0%,
+          rgb(167, 230, 167) 50%,
+          rgb(111, 209, 111) 100%
+        );
+      }
+
+      .cubuk-bayrak {
+        height: 1.5rem;
+        width: auto;
+      }
+
+      .tema-dil {
+        --w: 70%;
+        --grad: linear-gradient(
+          90deg,
+          rgb(255, 216, 74) 0%,
+          rgb(255, 154, 46) 45%,
+          rgb(255, 74, 46) 75%,
+          rgb(179, 0, 0) 100%
+        );
+      }
+
+      .staj {
+        display: flex;
+        flex-direction: column;
+        row-gap: 0.5rem;
+      }
+
+      .staj-yazisi {
+        font-size: 1.5rem;
+        color: rgb(152, 167, 152);
+        font-weight: 600;
+        -webkit-text-stroke: 1px rgb(12, 97, 23);
+      }
+
+      .mikrobiyoloji,
+      .modellab {
+        display: flex;
+        align-items: center;
+        column-gap: 0.5rem;
+        font-size: 1.1rem;
+        font-weight: 550;
+        font-family:
+          "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+        text-shadow: 1px 1px 1px rgb(0, 0, 0);
+      }
+
+      .modellab,
+      .modellab button {
+        color: rgb(57, 202, 57);
+        border-color: rgb(57, 202, 57);
+      }
+
+      .mikrobiyoloji,
+      .mikrobiyoloji button {
+        color: rgb(192, 28, 192);
+        border-color: rgb(192, 28, 192);
+      }
+
+      .staj button {
+        outline: 1px solid rgba(0, 0, 0, 0.5);
+      }
+
+      .staj img {
+        width: 2rem;
+        height: auto;
+      }
+
+      /* Kolon swap açıkken staj başlığında toggle buton ile ikon yer değiştirir:
+         normal [toggle] LAB ADI [ikon]  ->  swap [ikon] LAB ADI [toggle] */
+      .ilk-bakis.is-swapped .mikrobiyoloji,
+      .ilk-bakis.is-swapped .modellab {
+        flex-direction: row-reverse;
+        align-self: flex-start;
+      }
+
+      /* Swap'te lab adı tek satırda kalsın ki toggle buton metne bitişik dursun,
+         aksi halde çok satırlı metinde buton sağa kopuk görünüyordu */
+      .ilk-bakis.is-swapped .staj1-baslik,
+      .ilk-bakis.is-swapped .staj2-baslik {
+        white-space: nowrap;
+      }
+
+      .staj-ayrinti {
+        background-color: rgb(255, 249, 166);
+        padding: 0.5rem;
+        border: 1px solid rgb(0, 0, 0);
+        line-height: 1.2;
+      }
+
+      .staj .ayrinti-toggler {
+        font-size: 0.7rem;
+        width: 1rem;
+        height: 0.7rem;
+      }
+
+      .ayrinti-toggler {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background-color: transparent;
+        line-height: 1;
+        border: 1px solid rgb(0, 0, 0);
+        cursor: pointer;
+        border-radius: 0.5rem;
+      }
+
+      .js-ayrinti-tetik {
+        cursor: pointer;
+      }
+
+      .ayrinti-toggler i {
+        display: block;
+        line-height: 1;
+        transform-origin: 50% 50%;
+        transition: transform 180ms ease;
+      }
+
+      .ayrinti-toggler.is-open i {
+        transform: rotateX(180deg);
+      }
+
+      .bilisim-ayrinti,
+      .staj-ayrinti {
+        display: none;
+      }
+
+      .bilisim-ayrinti.is-open,
+      .staj-ayrinti.is-open {
+        display: block;
+      }
+
+      .hakkinda {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 1rem 1.5rem 1.25rem;
+        border: 0.5rem ridge rgb(197, 150, 21);
+        font-weight: 500;
+        color: rgb(0, 0, 0);
+        font-size: 0.875rem;
+        text-align: justify;
+        background: url("images/defter.jpg") repeat-x left top / auto 100%;
+        opacity: 0.9;
+        font-family:
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          Oxygen,
+          Ubuntu,
+          Cantarell,
+          "Open Sans",
+          "Helvetica Neue",
+          sans-serif;
+        line-height: 1.5;
+        text-indent: 1.5em;
+      }
+
+      .hakkimda {
+        color: rgb(255, 48, 48);
+        text-indent: 0;
+        font-size: 1.5rem;
+        font-weight: bolder;
+        line-height: 1;
+      }
+
+      .iki-paragraf {
+        display: flex;
+        row-gap: 0.5rem;
+        column-gap: 1rem;
+      }
+
+      .hakkinda .bolum-mbg {
+        text-shadow: 1px 1px 1px rgb(241, 131, 241);
+      }
+
+      .hakkinda .ort-308 {
+        text-shadow: 1px 1px 1px rgb(164, 164, 247);
+      }
+
+      .hakkinda .biyoinformatik {
+        color: rgb(2, 71, 2);
+        font-weight: bolder;
+      }
+
+      .hakkinda .goldSrc {
+        color: rgb(255, 215, 0);
+        text-shadow: 0 0 0.5rem rgb(0, 0, 0);
+      }
+
+      .hakkinda a {
+        color: rgb(7, 30, 88);
+        font-weight: 600;
+        font-family: "Times New Roman", Times, serif;
+      }
+
+      .hakkinda .yenilikci {
+        text-shadow: 0 0 2px rgb(172, 255, 48);
+      }
+
+      .grafikler {
+        display: flex;
+        gap: 1rem;
+        padding: 1rem 0 0 1rem;
+        align-items: baseline;
+      }
+
+      .esit4 {
+        flex: 2;
+        display: grid;
+        column-gap: 1.5rem;
+        row-gap: 1.5rem;
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .ogrenecegim {
+        flex: 2;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        row-gap: 0.5rem;
+      }
+
+      .bilisim {
+        flex: 3;
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        row-gap: 1rem;
+        position: relative;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0 3rem;
+      }
+
+      .dil-siyah,
+      .dil-beyaz {
+        display: flex;
+        align-items: center;
+        padding: 0.2rem 0.4rem;
+        height: 2rem;
+        width: fit-content;
+        border-radius: 0.5rem;
+        border-width: 1px;
+        border-style: dotted;
+      }
+
+      .dil-siyah {
+        border-color: rgb(255, 255, 255);
+        background-color: rgb(0, 0, 0);
+      }
+
+      .dil-beyaz {
+        border-color: rgb(0, 0, 0);
+        background-color: rgb(255, 255, 255);
+      }
+
+      .esit4 div,
+      .ogrenecegim {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .ogrenecegim span {
+        font-size: 1.7rem;
+        font-weight: 700;
+        font-family:
+          "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+        color: rgb(241, 75, 75);
+        -webkit-text-stroke: 1px rgb(104, 18, 18);
+      }
+
+      .ogrenecegim label {
+        font-size: 1.6rem;
+        color: rgb(60, 109, 245);
+        text-shadow: 0.5rem 0.5rem 0.5rem rgb(0, 0, 0);
+        font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+      }
+
+      .ogrenecegim img {
+        position: absolute;
+        z-index: -1;
+        opacity: 0.4;
+        border-radius: 1rem;
+      }
+
+      .bilisim-baslik {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        align-self: stretch;
+        gap: 1rem;
+        color: rgb(0, 0, 0);
+        -webkit-text-stroke: 0.05rem rgb(22, 177, 86);
+        font-size: 1.75rem;
+        font-weight: 600;
+        padding: 0.4rem 0.8rem;
+        border-radius: 0.7rem;
+        box-shadow: 0 0 1rem rgb(36, 167, 19);
+      }
+
+      .bilisim-baslik-ikon {
+        height: 2rem;
+        width: auto;
+      }
+
+      .algoritma,
+      .modelleme,
+      .klavye,
+      .molekuler,
+      .video-kurgu {
+        display: flex;
+        align-items: center;
+        column-gap: 0.5rem;
+        width: 100%;
+        min-width: 0;
+      }
+
+      .algoritma > img,
+      .modelleme > img,
+      .klavye > img,
+      .molekuler > img,
+      .video-kurgu > img {
+        width: 2.6rem;
+        height: auto;
+        flex: 0 0 2.6rem;
+      }
+
+      .algoritma > div,
+      .modelleme > div,
+      .klavye > div,
+      .molekuler > div,
+      .video-kurgu > div {
+        flex: 1 1 auto;
+        white-space: normal;
+        min-width: 0;
+      }
+
+      .algoritma > button,
+      .modelleme > button,
+      .klavye > button,
+      .molekuler > button,
+      .video-kurgu > button {
+        flex: 0 0 1.5rem;
+        width: 1.5rem;
+        height: 1rem;
+        line-height: 1;
+      }
+
+      .bilisim-ayrinti {
+        background-color: black;
+        color: rgb(19, 201, 19);
+        padding: 0.5rem;
+        border-radius: 4px;
+        border: 2px solid rgb(35, 190, 35);
+      }
+
+      .pc-kodlama {
+        position: absolute;
+        opacity: 0.4;
+        width: 3rem;
+        bottom: 25%;
+        left: 30%;
+        z-index: -2;
+      }
+
+      .pc-protein {
+        position: absolute;
+        opacity: 0.5;
+        width: 7rem;
+        top: 35%;
+        right: 10%;
+        z-index: -2;
+      }
+
+      .pc-algoritma {
+        position: absolute;
+        opacity: 0.25;
+        width: 4rem;
+        top: 30%;
+        left: 20%;
+        z-index: -2;
+      }
+
+      @media (max-width: 768px) {
+        .ilk-bakis,
+        .ilk-bakis.is-swapped,
+        .iki-paragraf,
+        .grafikler {
+          flex-direction: column;
+        }
+
+        /* Tek kolona düşünce sütun değiştirme anlamsız → gizle */
+        .kontrol-satiri .kolon-swap {
+          display: none;
+        }
+
+        /* Swap mobilde devre dışı → staj başlığı da normal yönde kalsın */
+        .ilk-bakis.is-swapped .mikrobiyoloji,
+        .ilk-bakis.is-swapped .modellab {
+          flex-direction: row;
+        }
+
+        .grafikler {
+          padding: 0.5rem;
+          overflow: hidden;
+        }
+
+        .esit4,
+        .ogrenecegim {
+          margin: 0 auto;
+        }
+
+        .bilisim {
+          margin: 4rem 0 0;
+        }
+      }
+
+      @media (max-width: 480px) {
+      }
+
+      /* === YETKINLIKLER === */
+      .yetkinlikler {
+        margin: 1.5rem 0 0;
+        padding: 1rem 1.25rem;
+        background: rgba(255, 255, 255, 0.4);
+        border-radius: 0.875rem;
+        box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        backdrop-filter: blur(4px);
+      }
+
+      /* Akademik + staj bölümünü saran beyazımsı cam kutu */
+      .akademik-kart {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        margin: 0.5rem 0 0;
+        padding: 1rem 1.25rem;
+        background: rgba(255, 255, 255, 0.4);
+        border-radius: 0.875rem;
+        box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        backdrop-filter: blur(4px);
+      }
+
+      .yetkinlik-baslik {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: rgb(0, 0, 0);
+        -webkit-text-stroke: 0.04rem rgb(142, 45, 215);
+        margin-bottom: 0.75rem;
+        letter-spacing: 0.04em;
+      }
+
+      .yetkinlik-listesi {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem 0.6rem;
+      }
+
+      .yetkinlik-rozet {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.35rem 0.7rem;
+        background: rgb(20, 20, 20);
+        color: rgb(255, 255, 255);
+        border-radius: 0.5rem;
+        font-size: 0.875rem;
+        font-weight: 500;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        transition: transform 0.18s ease, box-shadow 0.18s ease;
+      }
+
+      .yetkinlik-rozet:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 0.4rem 0.9rem rgba(0, 0, 0, 0.25);
+      }
+
+      .yetkinlik-rozet .fa-html5 { color: rgb(233, 90, 7); }
+      .yetkinlik-rozet .fa-css { color: rgb(92, 176, 255); }
+      .yetkinlik-rozet .fa-js { color: rgb(216, 216, 2); }
+      .yetkinlik-rozet .fa-react { color: rgb(97, 218, 251); }
+      .yetkinlik-rozet .fa-git-alt { color: rgb(240, 80, 50); }
+      .yetkinlik-rozet .fa-mobile-screen { color: rgb(172, 255, 48); }
+
+      /* === PROJELER === */
+      .proje-beceri-satiri {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.25rem;
+        align-items: stretch;
+        margin: 1.25rem 0 0;
+      }
+
+      .proje-beceri-satiri > .projeler,
+      .proje-beceri-satiri > .beceriler {
+        flex: 1 1 20rem;
+        min-width: 18rem;
+        margin: 0;
+      }
+
+      /* Dar alanda yan yana sıkışmasın → alt alta diz */
+      @media (max-width: 900px) {
+        .proje-beceri-satiri {
+          flex-direction: column;
+        }
+        .proje-beceri-satiri > .projeler,
+        .proje-beceri-satiri > .beceriler {
+          flex: 1 1 auto;
+          width: 100%;
+          min-width: 0;
+        }
+      }
+
+      .beceriler {
+        padding: 1rem 1.25rem;
+        background: rgba(255, 255, 255, 0.4);
+        border-radius: 0.875rem;
+        box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        backdrop-filter: blur(4px);
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+      }
+
+      .beceri-baslik {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.6rem;
+        color: rgb(0, 0, 0);
+        -webkit-text-stroke: 0.04rem rgb(12, 97, 23);
+        font-size: 1.4rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        margin-bottom: 0.3rem;
+      }
+
+      .beceri-baslik-ikon {
+        height: 1.5rem;
+        width: auto;
+      }
+
+      .algoritma,
+      .modelleme,
+      .klavye,
+      .yaratici {
+        display: flex;
+        align-items: center;
+        column-gap: 0.6rem;
+        width: 100%;
+        min-width: 0;
+        padding: 0.4rem 0.55rem;
+        background: rgba(0, 0, 0, 0.04);
+        border-radius: 0.5rem;
+        border-left: 3px solid rgb(34, 160, 60);
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: rgb(20, 20, 20);
+      }
+
+      .algoritma > img,
+      .modelleme > img,
+      .klavye > img {
+        width: 1.8rem;
+        height: auto;
+        flex: 0 0 1.8rem;
+      }
+
+      .algoritma > div,
+      .modelleme > div,
+      .klavye > div,
+      .yaratici > .yaratici-yazi {
+        flex: 1 1 auto;
+        min-width: 0;
+      }
+
+      .algoritma > .ayrinti-toggler,
+      .modelleme > .ayrinti-toggler,
+      .klavye > .ayrinti-toggler,
+      .yaratici > .ayrinti-toggler {
+        flex: 0 0 1.5rem;
+        width: 1.5rem;
+        height: 1rem;
+        line-height: 1;
+      }
+
+      /* Yaratıcı düşünme - RGB ışıltılı özel stil (yazı ile senkron) */
+      .yaratici {
+        position: relative;
+        border-left-color: transparent;
+        background: linear-gradient(
+          90deg,
+          hsla(0, 90%, 55%, 0.16),
+          hsla(60, 90%, 50%, 0.14),
+          hsla(120, 80%, 45%, 0.13),
+          hsla(180, 80%, 45%, 0.13),
+          hsla(240, 85%, 60%, 0.14),
+          hsla(300, 85%, 60%, 0.15),
+          hsla(360, 90%, 55%, 0.16)
+        );
+        background-size: 200% auto;
+        animation: yaratici-parilti 6s linear infinite;
+      }
+
+      /* RGB animasyonlu sol kenar çubuğu */
+      .yaratici::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 3px;
+        border-radius: 0.5rem 0 0 0.5rem;
+        background: linear-gradient(
+          90deg,
+          hsl(0, 90%, 55%),
+          hsl(60, 90%, 50%),
+          hsl(120, 80%, 45%),
+          hsl(180, 80%, 45%),
+          hsl(240, 85%, 60%),
+          hsl(300, 85%, 60%),
+          hsl(360, 90%, 55%)
+        );
+        background-size: 200% auto;
+        animation: yaratici-parilti 6s linear infinite;
+      }
+
+      .yaratici-ikon {
+        flex: 0 0 1.8rem;
+        width: 1.8rem;
+        height: auto;
+      }
+
+      .yaratici-yazi {
+        font-weight: 700;
+        background: linear-gradient(
+          90deg,
+          hsl(0, 90%, 55%),
+          hsl(60, 90%, 50%),
+          hsl(120, 80%, 45%),
+          hsl(180, 80%, 45%),
+          hsl(240, 85%, 60%),
+          hsl(300, 85%, 60%),
+          hsl(360, 90%, 55%)
+        );
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        color: transparent;
+        animation: yaratici-parilti 6s linear infinite;
+      }
+
+      @keyframes yaratici-parilti {
+        to {
+          background-position: 200% center;
+        }
+      }
+
+      .beceri-ayrinti {
+        background-color: rgb(20, 20, 20);
+        color: rgb(120, 230, 120);
+        padding: 0.6rem 0.7rem;
+        border-radius: 0.4rem;
+        border: 1px solid rgba(35, 190, 35, 0.5);
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 0.82rem;
+        line-height: 1.35;
+        display: none;
+      }
+
+      .beceri-ayrinti.is-open {
+        display: block;
+      }
+
+      .projeler {
+        margin: 1.25rem 0 0;
+        padding: 1rem 1.25rem;
+        background: rgba(255, 255, 255, 0.4);
+        border-radius: 0.875rem;
+        box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        backdrop-filter: blur(4px);
+      }
+
+      .projeler-baslik {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: rgb(0, 0, 0);
+        -webkit-text-stroke: 0.04rem rgb(60, 109, 245);
+        margin-bottom: 0.75rem;
+        letter-spacing: 0.04em;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .projeler-baslik i {
+        color: rgb(60, 109, 245);
+        -webkit-text-stroke: 0;
+      }
+
+      .proje-listesi {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+      }
+
+      .proje-ogesi a {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.55rem 0.8rem;
+        background: rgba(0, 0, 0, 0.04);
+        border-radius: 0.5rem;
+        border-left: 3px solid rgb(60, 109, 245);
+        transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      .proje-ogesi a:hover {
+        background: rgba(60, 109, 245, 0.1);
+        border-left-color: rgb(172, 255, 48);
+        transform: translateX(3px);
+      }
+
+      .proje-ad {
+        font-weight: 600;
+        color: rgb(0, 0, 0);
+        font-size: 0.95rem;
+        flex: 0 0 auto;
+        min-width: 11rem;
+        display: inline-flex;
+        flex-direction: column;
+        gap: 0.05rem;
+      }
+
+      .proje-alt-domain {
+        font-size: 0.7rem;
+        font-weight: 400;
+        font-style: italic;
+        color: rgb(110, 110, 110);
+        letter-spacing: 0.01em;
+      }
+
+      .proje-aciklama {
+        flex: 1 1 auto;
+        font-size: 0.85rem;
+        color: rgb(80, 80, 80);
+        font-style: italic;
+      }
+
+      .proje-ikon {
+        flex: 0 0 auto;
+        font-size: 0.8rem;
+        color: rgb(60, 109, 245);
+        opacity: 0.6;
+      }
+
+      .proje-ogesi a:hover .proje-ikon {
+        opacity: 1;
+      }
+
+      @media (max-width: 600px) {
+        .proje-ogesi a {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.2rem;
+        }
+        .proje-ad {
+          min-width: 0;
+        }
+        .proje-ikon {
+          align-self: flex-end;
+        }
+      }
+
+      /* === KONTROL PANELİ (açılır/kapanır) === */
+      .kontrol-paneli {
+        position: fixed;
+        bottom: 1.25rem;
+        /* Yatay ortada başlar; JS sürüklemeyle left'i px olarak set eder */
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 11;
+        touch-action: none;
+      }
+
+      /* Sürükleme sırasında ortalama transform'u kaldırırız (JS left'i px verir) */
+      .kontrol-paneli.js-konumlu {
+        transform: none;
+      }
+
+      .kontrol-icerik {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.6rem;
+        /* Grimsi sürükleme alanı: butonların arkasını kaplar, buradan tutulup
+           panel yatay sürüklenir */
+        background: rgba(45, 45, 50, 0.55);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        padding: 0.55rem;
+        border-radius: 0.9rem;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.28);
+        cursor: grab;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      .kontrol-icerik.suruklarken {
+        cursor: grabbing;
+        user-select: none;
+      }
+
+      /* Panel kapalıyken gri kapsayıcı kaybolur, sadece yuvarlak toggle kalır */
+      .kontrol-paneli.kapali .kontrol-icerik {
+        background: none;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        padding: 0;
+        border: none;
+        box-shadow: none;
+        cursor: default;
+      }
+
+      /* Butonlar ve interaktif öğeler sürükleme tutamacı DEĞİL → kendi imleçleri */
+      .kontrol-icerik button,
+      .kontrol-icerik input,
+      .kontrol-icerik .dil-switch {
+        cursor: pointer;
+      }
+      .kontrol-icerik input[type="range"] {
+        cursor: ew-resize;
+      }
+
+      /* Panel kapalıyken: swap, dil ve dimmer gizlenir; sadece toggle kalır */
+      .kontrol-paneli.kapali .kolon-swap,
+      .kontrol-paneli.kapali .dil-switch,
+      .kontrol-paneli.kapali .dimmer-kontrol {
+        display: none;
+      }
+
+      .kontrol-paneli.kapali .kontrol-satiri {
+        justify-content: flex-end;
+      }
+
+      .panel-toggle {
+        flex: 0 0 auto;
+        width: 2.1rem;
+        height: 2.1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        margin: 0;
+        background: rgba(20, 20, 20, 0.85);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 50%;
+        box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(8px);
+        color: rgb(255, 255, 255);
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+        transition: background 0.2s ease;
+      }
+
+      .panel-toggle:hover {
+        background: rgba(40, 40, 40, 0.9);
+      }
+
+      .panel-toggle i {
+        font-size: 0.85rem;
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      /* Panel açıkken ok sağa (kapatmaya işaret), kapalıyken sola (açmaya) */
+      .kontrol-paneli:not(.kapali) .panel-toggle i {
+        transform: rotate(0deg);
+      }
+      .kontrol-paneli.kapali .panel-toggle i {
+        transform: rotate(180deg);
+      }
+
+      .panel-toggle:focus-visible {
+        outline: 2px solid rgb(60, 109, 245);
+        outline-offset: 2px;
+      }
+
+      .kontrol-satiri {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.5rem;
+      }
+
+      .kolon-swap {
+        flex: 0 0 auto;
+        width: 2.1rem;
+        height: 2.1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        margin: 0;
+        background: rgba(20, 20, 20, 0.85);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 50%;
+        box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(8px);
+        color: rgb(255, 255, 255);
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+        transition: background 0.2s ease, transform 0.2s ease;
+      }
+
+      .kolon-swap i {
+        font-size: 0.95rem;
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .kolon-swap:hover {
+        background: rgba(35, 35, 35, 0.9);
+      }
+
+      .kolon-swap:hover i {
+        transform: rotate(180deg);
+      }
+
+      .kolon-swap.is-swapped i {
+        transform: scaleX(-1);
+      }
+
+      .kolon-swap.is-swapped:hover i {
+        transform: scaleX(-1) rotate(180deg);
+      }
+
+      .kolon-swap:focus-visible {
+        outline: 2px solid rgb(60, 109, 245);
+        outline-offset: 2px;
+      }
+
+      .dil-switch {
+        flex: 0 0 auto;
+        padding: 0;
+        margin: 0;
+        border: none;
+        background: none;
+        cursor: pointer;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      .dil-switch-yol {
+        position: relative;
+        display: flex;
+        align-items: center;
+        width: 5rem;
+        height: 2.1rem;
+        background: rgba(20, 20, 20, 0.85);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 2rem;
+        box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(8px);
+        transition: background 0.2s ease;
+      }
+
+      .dil-switch-etiket {
+        flex: 1;
+        text-align: center;
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        z-index: 2;
+        transition: color 0.2s ease, opacity 0.2s ease;
+        user-select: none;
+      }
+
+      .dil-switch-etiket.dil-tr {
+        color: rgb(255, 255, 255);
+        opacity: 1;
+      }
+      .dil-switch-etiket.dil-en {
+        color: rgb(180, 180, 180);
+        opacity: 0.5;
+      }
+
+      .dil-switch.is-en .dil-switch-etiket.dil-tr {
+        color: rgb(180, 180, 180);
+        opacity: 0.5;
+      }
+      .dil-switch.is-en .dil-switch-etiket.dil-en {
+        color: rgb(255, 255, 255);
+        opacity: 1;
+      }
+
+      .dil-switch-topuz {
+        position: absolute;
+        top: 50%;
+        left: 0.22rem;
+        transform: translateY(-50%);
+        width: 2.25rem;
+        height: 1.6rem;
+        border-radius: 1.6rem;
+        background: rgb(60, 109, 245);
+        box-shadow: 0 0.15rem 0.4rem rgba(0, 0, 0, 0.45);
+        transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+          background 0.2s ease;
+        z-index: 1;
+      }
+
+      .dil-switch.is-en .dil-switch-topuz {
+        transform: translateY(-50%) translateX(calc(5rem - 2.25rem - 0.44rem));
+      }
+
+      .dil-switch:hover .dil-switch-yol {
+        background: rgba(35, 35, 35, 0.9);
+      }
+
+      .dil-switch:focus-visible .dil-switch-yol {
+        outline: 2px solid rgb(60, 109, 245);
+        outline-offset: 2px;
+      }
+
+      @media (max-width: 480px) {
+        .kontrol-paneli {
+          bottom: 0.9rem;
+        }
+        .dil-switch-yol {
+          width: 4.4rem;
+          height: 1.9rem;
+        }
+        .dil-switch-topuz {
+          width: 1.95rem;
+          height: 1.45rem;
+        }
+        .dil-switch.is-en .dil-switch-topuz {
+          transform: translateY(-50%) translateX(calc(4.4rem - 1.95rem - 0.44rem));
+        }
+      }
+
+      /* === DIMMER (LOŞ IŞIK) === */
+      .dimmer-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 5;
+        pointer-events: none;
+        background: rgb(0, 0, 0);
+        opacity: 0;
+        mix-blend-mode: multiply;
+        transition: opacity 0.18s ease;
+      }
+
+      .dimmer-kontrol {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        padding: 0.55rem 0.8rem;
+        background: rgba(20, 20, 20, 0.85);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 2rem;
+        box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(8px);
+        color: rgb(255, 255, 255);
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 0.85rem;
+        user-select: none;
+      }
+
+      .dimmer-kontrol .dimmer-ikon {
+        font-size: 1rem;
+        color: rgb(255, 220, 100);
+        text-shadow: 0 0 8px rgba(255, 220, 100, 0.6);
+        transition: opacity 0.18s ease;
+        width: 1.2rem;
+        text-align: center;
+      }
+
+      .dimmer-kontrol input[type="range"] {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 7rem;
+        height: 0.4rem;
+        border-radius: 0.5rem;
+        background: linear-gradient(
+          to right,
+          rgb(255, 220, 100) 0%,
+          rgb(255, 220, 100) var(--dim-percent, 0%),
+          rgb(60, 60, 80) var(--dim-percent, 0%),
+          rgb(60, 60, 80) 100%
+        );
+        outline: none;
+        cursor: pointer;
+      }
+
+      .dimmer-kontrol input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 1rem;
+        height: 1rem;
+        border-radius: 50%;
+        background: rgb(255, 255, 255);
+        border: 2px solid rgb(60, 109, 245);
+        cursor: pointer;
+        box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+      }
+
+      .dimmer-kontrol input[type="range"]::-moz-range-thumb {
+        width: 1rem;
+        height: 1rem;
+        border-radius: 50%;
+        background: rgb(255, 255, 255);
+        border: 2px solid rgb(60, 109, 245);
+        cursor: pointer;
+        box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+      }
+
+      .dimmer-deger {
+        min-width: 2.5rem;
+        text-align: right;
+        font-variant-numeric: tabular-nums;
+        opacity: 0.85;
+      }
+
+      @media (max-width: 480px) {
+        .dimmer-kontrol {
+          bottom: 0.75rem;
+          right: 0.75rem;
+          padding: 0.45rem 0.65rem;
+          font-size: 0.75rem;
+        }
+        .dimmer-kontrol input[type="range"] {
+          width: 5rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="dimmer-overlay" id="js-dimmer-overlay"></div>
+
+    <div class="kontrol-paneli" id="js-kontrol-paneli">
+      <div class="kontrol-icerik" id="js-kontrol-icerik">
+        <div class="kontrol-satiri" id="js-kontrol-satiri">
+          <button
+            class="panel-toggle"
+            id="js-panel-toggle"
+            type="button"
+            aria-label="Kontrol panelini aç/kapat"
+            aria-expanded="true"
+            title="Kontrol panelini aç/kapat"
+          >
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+
+          <button
+            class="kolon-swap"
+            id="js-kolon-swap"
+            type="button"
+            aria-label="Sütunların yerini değiştir"
+            title="Sütunların yerini değiştir"
+          >
+            <i class="fa-solid fa-left-right"></i>
+          </button>
+
+          <button
+            class="dil-switch"
+            id="js-dil-switch"
+            type="button"
+            role="switch"
+            aria-checked="false"
+            aria-label="Dili İngilizce yap"
+          >
+            <span class="dil-switch-yol">
+              <span class="dil-switch-etiket dil-tr">TR</span>
+              <span class="dil-switch-etiket dil-en">EN</span>
+              <span class="dil-switch-topuz"></span>
+            </span>
+          </button>
+        </div>
+
+        <div class="dimmer-kontrol" id="js-dimmer-kontrol" role="group" aria-label="Ortam ışığı">
+          <i class="fa-solid fa-sun dimmer-ikon" id="js-dimmer-ikon"></i>
+          <input
+            type="range"
+            id="js-dimmer-slider"
+            min="0"
+            max="100"
+            value="0"
+            step="1"
+            aria-label="Loş ışık seviyesi"
+          />
+          <span class="dimmer-deger" id="js-dimmer-deger">%0</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="iletisim-bilgi">
+      <a
+        class="js-contact-email"
+        href="https://mail.google.com/mail/?view=cm&fs=1&to=cuneytinan37@gmail.com"
+        data-email="cuneytinan37@gmail.com"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <i class="fa-brands fa-google"></i><span> : cuneytinan37</span>
+      </a>
+
+      <a
+        data-ctc-brand="LinkedIn"
+        href="https://www.linkedin.com/in/cuneytinan/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <i class="fa-brands fa-linkedin"></i>
+        <span> /cuneytinan </span>
+      </a>
+
+      <a
+        data-ctc-brand="GitHub"
+        href="https://github.com/cuneytinann"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <i class="fa-brands fa-github"></i> <span>/cuneytinann </span>
+      </a>
+
+      <a
+        data-ctc-brand="GameBanana"
+        href="https://gamebanana.com/members/1405829"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img class="png-ikon" src="images/gamebanana.png" />
+        <span> /1405829 </span>
+      </a>
+
+      <a
+        data-ctc-brand="Instagram"
+        href="https://www.instagram.com/yarati.ci.fikir/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <i class="fa-brands fa-instagram"></i>
+        <span>/yarati.ci.fikir</span>
+      </a>
+
+      <a
+        data-ctc-brand="Instagram"
+        href="https://www.instagram.com/cuneytinann/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <i class="fa-brands fa-instagram"></i>
+        <span>/cuneytinann</span>
+      </a>
+
+      <a
+        data-ctc-brand="VSCO"
+        href="https://vsco.co/cuneytinan/gallery"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <i class="fa-brands fa-vsco"></i>
+        <span>/cuneytinan</span>
+      </a>
+    </div>
+
+    <div class="ilk-bakis">
+      <div class="sol-taraf">
+        <div class="ad-uyruk">
+          <span class="ad">
+            <img
+              class="kep"
+              title="22.08.2019 - 01.09.2025"
+              src="images/graduated.png"
+            />
+            Cüneyt İNAN
+          </span>
+
+          <div
+            class="satranc-rozet"
+            tabindex="0"
+            aria-label="Lisanslı Satranç Oyuncusu"
+          >
+            <i class="fa-solid fa-chess-knight satranc-ikon" aria-hidden="true"></i>
+            <span class="satranc-balon">Lisanslı Satranç Oyuncusu</span>
+          </div>
+
+          <img
+            class="uyruk"
+            src="images/turkiye.png"
+            alt="Türkiye"
+            title="Türkiye"
+          />
+        </div>
+
+        <img class="selfie" src="images/selfie.jpg" />
+
+        <div class="dogum">
+          <span class="dogum-tarihi"> 20.01.2001</span>
+          <span class="ehliyet" tabindex="0" aria-label="07.11.2019'dan beri">
+            B <i class="fa-solid fa-car-side"></i>
+            <span class="ehliyet-balon">07.11.2019'dan beri</span>
+          </span>
+          <span class="dogum-yeri"> Gebze / Kocaeli</span>
+        </div>
+
+        <div class="akademik-kart">
+          <span title="22.08.2019 - 01.09.2025" class="bolum"
+            >Moleküler Biyoloji ve Genetik (%100 İngilizce)</span
+          >
+
+        <span title="22.08.2019 - 01.09.2025" class="universite"
+          >Gebze Teknik Üniversitesi</span
+        >
+
+        <div class="kart-bilgi">
+          <div class="kart-sol">
+            <span class="kart-etiket">GANO</span>
+            <span class="kart-metin">3.08 / 4.00</span>
+          </div>
+          <div class="kart-sag">3.08</div>
+        </div>
+
+        <div
+          class="cubuk-bar"
+          role="progressbar"
+          aria-label="GANO"
+          aria-valuemin="0"
+          aria-valuemax="4"
+          aria-valuenow="3.08"
+        >
+          <div class="cubuk-dolgu tema-agno"></div>
+        </div>
+
+        <span class="kart-etiket"
+          >B2 = Upper-Intermediate (Independent User)</span
+        >
+
+        <div class="kart-bilgi">
+          <div class="kart-sol">
+            <img class="cubuk-bayrak" src="images/english.jpg" alt="English" />
+          </div>
+
+          <div class="kart-sag">B2</div>
+        </div>
+
+        <div
+          class="cubuk-bar"
+          role="progressbar"
+          aria-label="English level"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-valuenow="70"
+        >
+          <div class="cubuk-dolgu tema-dil"></div>
+        </div>
+
+        <div class="staj">
+          <span class="staj-yazisi">Staj:</span>
+          <div class="mikrobiyoloji js-ayrinti-tetik" data-ayrinti="ayrinti1">
+            <button id="ayrinti1" class="ayrinti-toggler" type="button">
+              <i class="fa-solid fa-caret-down"></i>
+            </button>
+            <span class="staj1-baslik">Mikrobiyoloji ve Bitki Laboratuvarı</span>
+            <img src="images/mikrobiyoloji.png" alt="" />
+          </div>
+          <div id="ayrinti1-detay" class="staj-ayrinti">
+            22.01.2024 - 16.02.2024 tarihleri arasında 1.zorunlu stajımı, Doç.
+            Dr. Mine Gül ŞEKER yürürlüğünde 20 iş günü yaparak gerçekleştirdim.
+            Bu stajda, temel laboratuvar becerileri edinmenin yanı sıra
+            mikrop-bitki etkileşimini kavradım. En başta; otoklav, bakteri
+            ekimi, gram boyama, saf kültür izolasyonu ve temel materyal
+            kullanımları öğrenildi. Ayrıca bu laboratuvarda, kurumsal firmalarla
+            profesyonel ticari işlerin nasıl yürüdüğü gözlemlendi. Ekip
+            çalışmasının önemi kavrandı.
+          </div>
+          <div class="modellab js-ayrinti-tetik" data-ayrinti="ayrinti2">
+            <button id="ayrinti2" class="ayrinti-toggler" type="button">
+              <i class="fa-solid fa-caret-down"></i>
+            </button>
+            <span class="staj2-baslik">ModelLab Ofisi (Sanal Laboratuvar)</span>
+            <img src="images/modellab.png" alt="" />
+          </div>
+          <div id="ayrinti2-detay" class="staj-ayrinti">
+            22.07.2024 - 16.07.2024 tarihleri arasında 2.zorunlu stajımı, Doç.
+            Dr. Abdulkadir KOÇAK yürürlüğünde 20 iş günü yaparak
+            gerçekleştirdim. Bu stajda, moleküler modellemede kullanılan
+            programlar ve araçlara genel bir bakış elde ettim. Temel olarak;
+            bilim dünyasında kullanılma amaçlarını, bazılarının kullanılma
+            yollarını ve ne anlam ifade ettiği öğretildi. Python dili ve Linux
+            işletim sistemine giriş yapıldı. Terminalda, belirli bir seviyeye
+            kadar temel kodlar (ve scriptler) öğrenildi.
+          </div>
+        </div>
+        </div>
+      </div>
+
+      <div class="sag-taraf">
+        <div class="hakkinda">
+          <span class="hakkimda"> Hakkımda...</span>
+          <div class="iki-paragraf">
+            <p>
+              Gebze Teknik Üniversitesi
+              <span class="bolum-mbg">Moleküler Biyoloji ve Genetik Bölümü</span
+              >'nden, %100 İngilizce yürütülen lisans eğitimimi 2025 yılında
+              <span class="ort-308">3.08</span> genel not ortalamasıyla
+              tamamladım. Akademik süreçte edindiğim analitik düşünme ve problem
+              çözme alışkanlığını, çocukluğumdan beri ilgi duyduğum yazılım
+              dünyasıyla birleştirerek
+              <span class="biyoinformatik">Frontend Geliştirme</span> alanına
+              yöneldim. <strong>Vanilla JavaScript</strong> ve
+              <strong>React</strong> ile modern, kullanıcı odaklı arayüzler
+              geliştiriyor; temiz kod, performans ve detaylara verdiğim önemle
+              fikirleri işlevsel ürünlere dönüştürmeyi hedefliyorum.
+            </p>
+
+            <p>
+              Erken yaşlarda (12–16), algoritmik bilgi gerektiren Valve'ın
+              <span class="goldSrc">GoldSrc</span> tabanlı 3B modelleme
+              ortamında topluluk içinde tanınan çalışmalar ürettim ve bu
+              çalışmalar aracılığıyla maddi ve manevi kazanımlar elde ettim.
+              Bu süreçte edindiğim bağlantılarla, günümüzde popüler bir medya
+              markası hâline gelen
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://www.instagram.com/darkwebhaber/?hl=tr"
+                >DarkWeb Haber</a
+              >'in kurucu ekibinde yer aldım. Hâlihazırda, Instagram'da bilim
+              odaklı bir platform olan
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://www.instagram.com/science.art_/?hl=tr"
+                >science.art_</a
+              >
+              hesabında moderatörlük yapmaktayım. Bu üretim deneyimi ve ekip
+              çalışması geçmişim, freelance projelerde uzun vadeli ve güvenilir
+              iş birlikleri kurmama temel oluşturuyor.
+            </p>
+          </div>
+
+          <p>
+            Adaptif yapım, <span class="yenilikci">yenilikçi</span> düşünme
+            yaklaşımım ve detaylara verdiğim önem ile uzun vadeli hedeflere
+            odaklanırım. Sürekli öğrenmeyi ve gelişmeyi önemseyerek,
+            çalıştığım projelerde kalıcı değer üretmeyi amaçlıyorum.
+          </p>
+        </div>
+
+        <div class="yetkinlikler">
+          <div class="yetkinlik-baslik">Frontend Stack</div>
+          <div class="yetkinlik-listesi">
+            <span class="yetkinlik-rozet"><i class="fa-brands fa-html5"></i> HTML5</span>
+            <span class="yetkinlik-rozet"><i class="fa-brands fa-css"></i> CSS3</span>
+            <span class="yetkinlik-rozet"><i class="fa-brands fa-js"></i> Vanilla JavaScript</span>
+            <span class="yetkinlik-rozet"><i class="fa-brands fa-react"></i> React</span>
+            <span class="yetkinlik-rozet"><i class="fa-brands fa-git-alt"></i> Git</span>
+            <span class="yetkinlik-rozet"><i class="fa-solid fa-mobile-screen"></i> Responsive</span>
+          </div>
+        </div>
+
+        <div class="proje-beceri-satiri">
+          <div class="projeler">
+            <div class="projeler-baslik">
+              <i class="fa-solid fa-code"></i> Projelerim
+            </div>
+            <ul class="proje-listesi">
+              <li class="proje-ogesi">
+                <a href="https://acikarttirma.org" target="_blank" rel="noopener noreferrer">
+                  <span class="proje-ad">acikarttirma.org</span>
+                  <span class="proje-aciklama">Online açık artırma platformu</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square proje-ikon"></i>
+                </a>
+              </li>
+              <li class="proje-ogesi">
+                <a href="https://nobreakchain.com" target="_blank" rel="noopener noreferrer">
+                  <span class="proje-ad">
+                    nobreakchain.com
+                    <small class="proje-alt-domain">alt: zincirikirma.org</small>
+                  </span>
+                  <span class="proje-aciklama">Bağımlılıkla mücadele topluluk platformu</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square proje-ikon"></i>
+                </a>
+              </li>
+              <li class="proje-ogesi">
+                <a href="https://akkushaliyikama.com" target="_blank" rel="noopener noreferrer">
+                  <span class="proje-ad">akkushaliyikama.com</span>
+                  <span class="proje-aciklama">Halı yıkama hizmeti web sitesi</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square proje-ikon"></i>
+                </a>
+              </li>
+              <li class="proje-ogesi">
+                <a href="https://2kbfullfidejs.com" target="_blank" rel="noopener noreferrer">
+                  <span class="proje-ad">2kbfullfidejs.com</span>
+                  <span class="proje-aciklama">GolfStack konseptiyle yazılmış satranç</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square proje-ikon"></i>
+                </a>
+              </li>
+              <li class="proje-ogesi">
+                <a href="https://gamebanana.com/members/1405829" target="_blank" rel="noopener noreferrer">
+                  <span class="proje-ad">CS 1.6 Maps</span>
+                  <span class="proje-aciklama">Topluluk için tasarlanan onlarca harita</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square proje-ikon"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="beceriler">
+            <div class="beceri-baslik">
+              Beceriler
+              <img class="beceri-baslik-ikon" src="images/bilisim.png" alt="" />
+            </div>
+
+            <div class="algoritma js-ayrinti-tetik" data-ayrinti="ayrinti3">
+              <img src="images/algoritma.png" alt="" />
+              <div>Algoritma Kurma / Mantıksal Analiz</div>
+              <button id="ayrinti3" class="ayrinti-toggler" type="button">
+                <i class="fa-solid fa-caret-down"></i>
+              </button>
+            </div>
+            <div id="ayrinti3-detay" class="beceri-ayrinti">
+              Gereksinimleri parçalayarak çözümü adımlara böler, akış
+              diyagramı/psödo-kod ile netleştiririm. Edge-case odaklı düşünür;
+              hata ayıklama ve iteratif iyileştirme ile stabil çözümler
+              üretirim. Zaman/bellek verimliliği farkındalığıyla yaklaşırım.
+            </div>
+
+            <div class="modelleme js-ayrinti-tetik" data-ayrinti="ayrinti4">
+              <img src="images/3b-modelleme.png" alt="" />
+              <div>3B Modelleme / Çizim</div>
+              <button id="ayrinti4" class="ayrinti-toggler" type="button">
+                <i class="fa-solid fa-caret-down"></i>
+              </button>
+            </div>
+            <div id="ayrinti4-detay" class="beceri-ayrinti">
+              Valve Hammer Editor (GoldSrc) ortamında harita/seviye tasarımı ve
+              sahne kurgusu üzerine deneyim. Yerleşim, ölçek/prop dengesi,
+              ışıklandırma ve kaplama (texture) düzenlemeleri; kısıtlar içinde
+              optimizasyon ve revizyon döngüsü ile çalışma.
+            </div>
+
+            <div class="klavye js-ayrinti-tetik" data-ayrinti="ayrinti5">
+              <img src="images/klavye-hizi.png" alt="" />
+              <div>Klavye Hızlı Yazabilme</div>
+              <button id="ayrinti5" class="ayrinti-toggler" type="button">
+                <i class="fa-solid fa-caret-down"></i>
+              </button>
+            </div>
+            <div id="ayrinti5-detay" class="beceri-ayrinti">
+              10 parmak yazım ve klavye kısayolları ile yüksek verimlilikte
+              çalışma. Teknik dokümantasyon, raporlama ve kod yazımında hızlı
+              içerik üretimi. Yazım hızı: ~80 tuş/dk.
+            </div>
+
+            <div class="yaratici js-ayrinti-tetik" data-ayrinti="ayrinti8">
+              <img class="yaratici-ikon" src="images/creativity.png" alt="" />
+              <div class="yaratici-yazi">Yaratıcı Düşünme</div>
+              <button id="ayrinti8" class="ayrinti-toggler" type="button">
+                <i class="fa-solid fa-caret-down"></i>
+              </button>
+            </div>
+            <div id="ayrinti8-detay" class="beceri-ayrinti">
+              Sorunlara alışılmışın dışında, özgün açılardan yaklaşır; farklı
+              disiplinlerden (oyun tasarımı, görsel sanatlar, bilim) edindiğim
+              bakış açılarını birleştiririm. Kısıtları fırsata çeviren pratik ve
+              estetik çözümler üretmekten keyif alırım.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <br />
+
+    <script>
+      (() => {
+        const overlay = document.createElement("div");
+        overlay.className = "DNA_YUKLEMESI";
+
+        const card = document.createElement("div");
+        card.className = "DNA_KART";
+
+        const title = document.createElement("div");
+        title.className = "DNA_BASLIK";
+        title.textContent = "YÜKLENİYOR...";
+
+        const mount = document.createElement("div");
+        mount.className = "DNA_HELIX_ARALIK";
+
+        card.appendChild(title);
+        card.appendChild(mount);
+        overlay.appendChild(card);
+        document.body.appendChild(overlay);
+
+        const hideOverlay = () => {
+          if (!overlay || overlay.classList.contains("is-hidden")) return;
+          overlay.classList.add("is-hidden");
+          setTimeout(() => {
+            try {
+              overlay.remove();
+            } catch (_) {}
+          }, 320);
+        };
+
+        const host = mount;
+        host.style.position = "relative";
+        host.style.pointerEvents = "none";
+
+        const shadow = host.attachShadow({ mode: "open" });
+
+        const PAIRS = 22;
+        const SPACING = 14;
+        const AMP = 52;
+        const NODE_SIZE = 10;
+        const SPEED = 0.0275;
+
+        shadow.innerHTML = `
+                <style>
+                    .dna{
+                        position: relative;
+                        width: 240px;
+                        height: ${PAIRS * SPACING}px;
+                        margin: 0 auto;
+                        filter: drop-shadow(0 0 18px rgba(124, 255, 203, 0.12));
+                    }
+                    .node{
+                        position: absolute;
+                        width: ${NODE_SIZE}px;
+                        height: ${NODE_SIZE}px;
+                        border-radius: 50%;
+                        transform: translate(-50%, -50%) scale(var(--s, 1));
+                        opacity: var(--o, 1);
+                        z-index: var(--z, 1);
+                        box-shadow: 0 0 15px rgba(124, 255, 203, 0.9);
+                        background: #7cffcb;
+                        will-change: left, top, transform, opacity;
+                    }
+                    .node.b{
+                        background: #88b6ff;
+                        box-shadow: 0 0 15px rgba(136, 182, 255, 0.75);
+                    }
+                    .rung{
+                        position: absolute;
+                        height: 2px;
+                        border-radius: 3px;
+                        background: rgba(255, 255, 255, 0.22);
+                        box-shadow: 0 0 12px rgba(255, 255, 255, 0.08);
+                        opacity: 0.35;
+                        z-index: 0;
+                        transform-origin: 0 50%;
+                        will-change: transform, width, left, top, opacity;
+                    }
+                </style>
+                <div class="dna" id="dna"></div>
+            `;
+
+        const dna = shadow.getElementById("dna");
+        const nodesA = [];
+        const nodesB = [];
+        const rungs = [];
+
+        for (let i = 0; i < PAIRS; i++) {
+          const rung = document.createElement("div");
+          rung.className = "rung";
+
+          const a = document.createElement("div");
+          a.className = "node a";
+
+          const b = document.createElement("div");
+          b.className = "node b";
+
+          dna.appendChild(rung);
+          dna.appendChild(a);
+          dna.appendChild(b);
+
+          rungs.push(rung);
+          nodesA.push(a);
+          nodesB.push(b);
+        }
+
+        let t = 0;
+        let rafId = null;
+
+        const setNode = (el, x, y, depth) => {
+          const scale = 0.65 + depth * 0.7;
+          const opacity = 0.25 + depth * 0.85;
+          const z = Math.round(depth * 100);
+
+          el.style.left = `${x}px`;
+          el.style.top = `${y}px`;
+          el.style.setProperty("--s", scale.toFixed(3));
+          el.style.setProperty("--o", opacity.toFixed(3));
+          el.style.setProperty("--z", z);
+        };
+
+        const animate = () => {
+          const center = 240 / 2;
+
+          for (let i = 0; i < PAIRS; i++) {
+            const angle = t + i * 0.45;
+            const x = Math.sin(angle) * AMP;
+
+            const yBase = i * SPACING;
+            const yOffset = Math.cos(angle) * 3;
+
+            const xA = center + x;
+            const yA = yBase + yOffset;
+
+            const xB = center - x;
+            const yB = yBase - yOffset;
+
+            const depthA = (Math.cos(angle) + 1) / 2;
+            const depthB = 1 - depthA;
+
+            setNode(nodesA[i], xA, yA, depthA);
+            setNode(nodesB[i], xB, yB, depthB);
+
+            const dx = xB - xA;
+            const dy = yB - yA;
+            const dist = Math.hypot(dx, dy);
+
+            const usable = Math.max(dist - NODE_SIZE, 0);
+            const rot = Math.atan2(dy, dx);
+
+            const rung = rungs[i];
+            rung.style.left = `${xA}px`;
+            rung.style.top = `${yA}px`;
+            rung.style.width = `${usable}px`;
+            rung.style.transform = `rotate(${rot}rad) translateX(${NODE_SIZE / 2}px)`;
+
+            const vis = 1 - Math.abs(Math.cos(angle));
+            rung.style.opacity = (0.12 + 0.65 * vis).toFixed(3);
+          }
+
+          t += SPEED;
+          rafId = requestAnimationFrame(animate);
+        };
+
+        const stop = () => {
+          if (rafId) cancelAnimationFrame(rafId);
+          rafId = null;
+        };
+
+        document.addEventListener("visibilitychange", () => {
+          if (document.hidden) stop();
+          else if (!rafId) animate();
+        });
+
+        animate();
+
+        const waitWindowLoad = new Promise((resolve) => {
+          if (document.readyState === "complete") return resolve();
+          window.addEventListener("load", () => resolve(), { once: true });
+        });
+
+        const waitBackground = new Promise((resolve) => {
+          const urls = ["images/arkaplan.jpg", "images/defter.jpg"];
+          if (!urls.length) return resolve();
+
+          let remaining = urls.length;
+          const done = () => {
+            remaining -= 1;
+            if (remaining <= 0) resolve();
+          };
+
+          urls.forEach((u) => {
+            const img = new Image();
+            img.onload = done;
+            img.onerror = done;
+            img.src = u;
+          });
+        });
+        const EXTRA_MS = 2500;
+
+        Promise.allSettled([waitWindowLoad, waitBackground]).then(() => {
+          setTimeout(() => {
+            stop();
+            hideOverlay();
+          }, EXTRA_MS);
+        });
+
+        const flags = document.querySelectorAll(".uyruk, .cubuk-bayrak");
+
+        // Bayraklardan dil değiştirme kaldırıldı.
+        // Dil değişimi artık sağ alttaki fixed dil switch ile yapılıyor.
+
+        // Varsayılan dil: İngilizce. Ancak tarayıcı/bölge dili Türkçe ise
+        // (ör. tr, tr-TR) varsayılan Türkçe olur. localStorage'daki kayıtlı
+        // tercih (aşağıda) her zaman bunu ezer.
+        const tarayiciDili = () => {
+          try {
+            const diller = navigator.languages || [navigator.language || ""];
+            const turkce = diller.some(
+              (d) => typeof d === "string" && d.toLowerCase().startsWith("tr"),
+            );
+            return turkce ? "tr" : "en";
+          } catch (_) {
+            return "en";
+          }
+        };
+
+        const state = {
+          lang: tarayiciDili(),
+        };
+
+        const backup = new Map();
+
+        const dynBackup = new WeakMap();
+
+        const rememberProp = (el, prop) => {
+          if (!el) return;
+          let rec = dynBackup.get(el);
+          if (!rec) {
+            rec = {};
+            dynBackup.set(el, rec);
+          }
+          if (!(prop in rec)) rec[prop] = el[prop];
+        };
+
+        const rememberAttr = (el, attr) => {
+          if (!el) return;
+          const k = `attr:${attr}`;
+          let rec = dynBackup.get(el);
+          if (!rec) {
+            rec = {};
+            dynBackup.set(el, rec);
+          }
+          if (!(k in rec)) rec[k] = el.getAttribute(attr);
+        };
+
+        const restoreDyn = (el, propOrAttr) => {
+          if (!el) return;
+          const rec = dynBackup.get(el);
+          if (!rec) return;
+
+          if (propOrAttr.startsWith("attr:")) {
+            const attr = propOrAttr.slice(5);
+            const v = rec[propOrAttr];
+            if (v == null) el.removeAttribute(attr);
+            else el.setAttribute(attr, v);
+            return;
+          }
+
+          if (propOrAttr in rec) el[propOrAttr] = rec[propOrAttr];
+        };
+
+        const ensureInlineSpan = (container, key) => {
+          if (!container) return null;
+
+          let span = container.querySelector(":scope > span.i18n-inline");
+          if (span) return span;
+
+          for (const node of Array.from(container.childNodes)) {
+            if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) {
+              span = document.createElement("span");
+              span.className = "i18n-inline";
+              span.textContent = node.textContent.trim();
+
+              if (!backup.has(key)) backup.set(key, span.textContent);
+              container.replaceChild(span, node);
+              return span;
+            }
+          }
+          return null;
+        };
+
+        const targets = [
+          {
+            key: "docTitle",
+            getEl: () => document.querySelector("head title"),
+            prop: "textContent",
+            en: "Cüneyt İnan — Frontend Developer",
+          },
+
+          {
+            key: "hakkimdaHead",
+            sel: ".hakkimda",
+            prop: "textContent",
+            en: "About me...",
+          },
+          {
+            key: "bolum",
+            sel: ".bolum",
+            prop: "textContent",
+            en: "Molecular Biology and Genetics (100% English)",
+          },
+          {
+            key: "universite",
+            sel: ".universite",
+            prop: "textContent",
+            en: "Gebze Technical University",
+          },
+
+          {
+            key: "agnoLabel",
+            sel: ".kart-bilgi .kart-sol .kart-etiket",
+            prop: "textContent",
+            en: "GPA",
+          },
+
+          {
+            key: "aboutP1",
+            sel: ".hakkinda .iki-paragraf p:nth-of-type(1)",
+            prop: "innerHTML",
+            en: `
+        I completed my undergraduate education in 2025 at Gebze Technical University, Department of
+        <span class="bolum-mbg">Molecular Biology and Genetics</span> (100% English), with a GPA of <span class="ort-308">3.08 / 4.00</span>. Combining the analytical thinking and problem-solving habits I developed during my academic studies with my long-standing interest in software, I have moved into <span class="biyoinformatik">Frontend Development</span>. I build modern, user-focused interfaces with <strong>Vanilla JavaScript</strong> and <strong>React</strong>, aiming to turn ideas into functional products with clean code, performance, and attention to detail.
+      `.trim(),
+          },
+          {
+            key: "aboutP2",
+            sel: ".hakkinda .iki-paragraf p:nth-of-type(2)",
+            prop: "innerHTML",
+            en: `
+        At an early age (12–16), in Valve's <span class="goldSrc">GoldSrc</span>-based 3D modeling environment that
+        requires algorithmic knowledge, I produced recognized work within the community and gained both material
+        and non-material benefits through these projects. With the connections I built in that period, I joined the
+        founding team of <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/darkwebhaber/?hl=tr">DarkWeb Haber</a>, which has since
+        become a popular media brand. Currently, I moderate the science-focused Instagram platform
+        <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/science.art_/?hl=tr">science.art_</a>. This production experience and team-work background form the foundation for building long-term, reliable collaborations in freelance projects.
+      `.trim(),
+          },
+          {
+            key: "aboutP3",
+            sel: ".hakkinda > p:nth-of-type(1)",
+            prop: "innerHTML",
+            en: `
+        With my adaptive nature, <span class="yenilikci">innovative</span> approach, and attention to detail,
+        I focus on long-term goals. Valuing continuous learning and improvement, I aim to create lasting value
+        in the projects I work on.
+      `.trim(),
+          },
+
+          {
+            key: "satrancBalon",
+            sel: ".satranc-balon",
+            prop: "textContent",
+            en: "Licensed Chess Player",
+          },
+          {
+            key: "satrancAria",
+            sel: ".satranc-rozet",
+            prop: "ariaLabel",
+            en: "Licensed Chess Player",
+          },
+
+          {
+            key: "ehliyetBalon",
+            sel: ".ehliyet-balon",
+            prop: "textContent",
+            en: "Since 07.11.2019",
+          },
+          {
+            key: "ehliyetAria",
+            sel: ".ehliyet",
+            prop: "ariaLabel",
+            en: "Since 07.11.2019",
+          },
+
+          {
+            key: "yetkinlikBaslik",
+            sel: ".yetkinlik-baslik",
+            prop: "textContent",
+            en: "Frontend Stack",
+          },
+
+          {
+            key: "stajYazisi",
+            sel: ".staj-yazisi",
+            prop: "textContent",
+            en: "Internship:",
+          },
+          {
+            key: "staj1Baslik",
+            sel: ".staj1-baslik",
+            prop: "textContent",
+            en: "Microbiology and Plant Laboratory",
+          },
+          {
+            key: "staj2Baslik",
+            sel: ".staj2-baslik",
+            prop: "textContent",
+            en: "ModelLab Office (Virtual Laboratory)",
+          },
+          {
+            key: "staj1Detay",
+            sel: "#ayrinti1-detay",
+            prop: "textContent",
+            en: "Between 22.01.2024 and 16.02.2024, I completed my first mandatory internship (20 business days) under Assoc. Prof. Mine Gül ŞEKER. Besides fundamental laboratory skills, I learned microbe–plant interaction. Autoclaving, bacterial inoculation, Gram staining, pure culture isolation and basic material handling were covered. I also observed how professional commercial work is conducted with corporate firms, and grasped the importance of teamwork.",
+          },
+          {
+            key: "staj2Detay",
+            sel: "#ayrinti2-detay",
+            prop: "textContent",
+            en: "Between 22.07.2024 and 16.07.2024, I completed my second mandatory internship (20 business days) under Assoc. Prof. Abdulkadir KOÇAK. I gained an overview of the programs and tools used in molecular modeling: their purpose in science, how some are used and what they mean. I was introduced to Python and Linux, and learned basic commands and scripts in the terminal up to a certain level.",
+          },
+
+          {
+            key: "beceriBaslik",
+            sel: ".beceri-baslik",
+            prop: "innerHTML",
+            en: 'Skills <img class="beceri-baslik-ikon" src="images/bilisim.png" alt="" />',
+          },
+          {
+            key: "beceriAlgoritma",
+            sel: ".algoritma > div",
+            prop: "textContent",
+            en: "Algorithm Design / Logical Analysis",
+          },
+          {
+            key: "beceriModelleme",
+            sel: ".modelleme > div",
+            prop: "textContent",
+            en: "3D Modeling / Drawing",
+          },
+          {
+            key: "beceriKlavye",
+            sel: ".klavye > div",
+            prop: "textContent",
+            en: "Fast Typing",
+          },
+          {
+            key: "beceriYaratici",
+            sel: ".yaratici > .yaratici-yazi",
+            prop: "textContent",
+            en: "Creative Thinking",
+          },
+          {
+            key: "beceri3Detay",
+            sel: "#ayrinti3-detay",
+            prop: "textContent",
+            en: "I break requirements into steps and clarify the solution with flowcharts/pseudocode. I think with an edge-case focus; I produce stable solutions through debugging and iterative improvement, with awareness of time/memory efficiency.",
+          },
+          {
+            key: "beceri4Detay",
+            sel: "#ayrinti4-detay",
+            prop: "textContent",
+            en: "Experience in map/level design and scene composition in Valve Hammer Editor (GoldSrc): layout, scale/prop balance, lighting and texture editing; working within constraints through optimization and revision cycles.",
+          },
+          {
+            key: "beceri5Detay",
+            sel: "#ayrinti5-detay",
+            prop: "textContent",
+            en: "High-efficiency work with 10-finger typing and keyboard shortcuts. Fast content production in technical documentation, reporting and coding. Typing speed: ~80 keys/min.",
+          },
+          {
+            key: "beceri8Detay",
+            sel: "#ayrinti8-detay",
+            prop: "textContent",
+            en: "I approach problems from original, unconventional angles; I combine perspectives from different disciplines (game design, visual arts, science). I enjoy producing practical and aesthetic solutions that turn constraints into opportunities.",
+          },
+          {
+            key: "projelerBaslik",
+            sel: ".projeler-baslik",
+            prop: "innerHTML",
+            en: '<i class="fa-solid fa-code"></i> My Projects',
+          },
+          {
+            key: "proje1Aciklama",
+            sel: ".proje-listesi li:nth-of-type(1) .proje-aciklama",
+            prop: "textContent",
+            en: "Online auction platform",
+          },
+          {
+            key: "proje2Aciklama",
+            sel: ".proje-listesi li:nth-of-type(2) .proje-aciklama",
+            prop: "textContent",
+            en: "Community platform for fighting addiction",
+          },
+          {
+            key: "proje3Aciklama",
+            sel: ".proje-listesi li:nth-of-type(3) .proje-aciklama",
+            prop: "textContent",
+            en: "Carpet cleaning service website",
+          },
+          {
+            key: "proje4Aciklama",
+            sel: ".proje-listesi li:nth-of-type(4) .proje-aciklama",
+            prop: "textContent",
+            en: "Chess written with the GolfStack concept",
+          },
+          {
+            key: "proje5Aciklama",
+            sel: ".proje-listesi li:nth-of-type(5) .proje-aciklama",
+            prop: "textContent",
+            en: "Dozens of community-designed maps",
+          },
+        ];
+
+        const inlineTargets = [];
+
+        const bilisimRowTitles = [];
+
+        const applyPercentFormat = (lang) => {
+          document.querySelectorAll(".ilerleme[data-value]").forEach((el) => {
+            const value = el.getAttribute("data-value");
+            const span = el.querySelector(":scope > span");
+            if (!span) return;
+            span.textContent = lang === "en" ? `${value}%` : `%${value}`;
+          });
+        };
+
+        const applyAgnoAria = (lang) => {
+          document.querySelectorAll(".cubuk-bar[aria-label]").forEach((el) => {
+            const v = el.getAttribute("aria-label");
+            if (!v) return;
+            if (v.trim() !== "GANO" && v.trim() !== "GPA") return;
+
+            rememberAttr(el, "aria-label");
+            if (lang === "en") el.setAttribute("aria-label", "GPA");
+            else restoreDyn(el, "attr:aria-label");
+          });
+        };
+
+        const trToEn = new Map([
+          ["Bağlantı seçenekleri", "Link options"],
+          ["Bağlantı", "Link"],
+          ["Kopyala", "Copy"],
+          ["Yeni sekmede aç", "Open in new tab"],
+          ["İptal", "Cancel"],
+          ["Ara", "Call"],
+          ["WhatsApp'dan Ulaş!", "Contact via WhatsApp"],
+          ["gmail'den e-posta gönder", "Send email via Gmail"],
+          ["Başka e-posta uygulaması kullan", "Use another email app"],
+          ["Telefon:", "Phone:"],
+          ["E-posta:", "Email:"],
+          ["Kopyalandı", "Copied"],
+          ["Kopyalanamadı", "Copy failed"],
+        ]);
+        const enToTr = new Map(
+          Array.from(trToEn.entries()).map(([tr, en]) => [en, tr]),
+        );
+
+        const translateDynamicString = (s, lang) => {
+          const t = (s || "").trim();
+          if (!t) return s;
+
+          if (lang === "en" && trToEn.has(t)) return trToEn.get(t);
+          if (lang === "tr" && enToTr.has(t)) return enToTr.get(t);
+
+          if (lang === "en" && / hesabı$/.test(t))
+            return t.replace(/ hesabı$/, " account");
+          if (lang === "tr" && / account$/.test(t))
+            return t.replace(/ account$/, " hesabı");
+
+          return s;
+        };
+
+        const translateOverlayIfAny = (lang) => {
+          const overlay = document.querySelector(".tiklama-arka");
+          const menu = document.querySelector(".tiklama-menusu");
+          if (!overlay || !menu) return;
+
+          rememberAttr(menu, "aria-label");
+          const aria = menu.getAttribute("aria-label") || "";
+          const newAria = translateDynamicString(aria, lang);
+          if (lang === "en") {
+            if (newAria !== aria) menu.setAttribute("aria-label", newAria);
+          } else {
+            restoreDyn(menu, "attr:aria-label");
+          }
+
+          const titleEl = overlay.querySelector("#ctcTitle");
+          if (titleEl) {
+            rememberProp(titleEl, "textContent");
+            if (lang === "en")
+              titleEl.textContent = translateDynamicString(
+                titleEl.textContent,
+                "en",
+              );
+            else restoreDyn(titleEl, "textContent");
+          }
+
+          overlay.querySelectorAll(".tiklama-menusu_buton").forEach((btn) => {
+            rememberProp(btn, "textContent");
+            if (lang === "en")
+              btn.textContent = translateDynamicString(btn.textContent, "en");
+            else if (btn.dataset.ctcFlash === "1") {
+              /* keep flash text */
+            } else restoreDyn(btn, "textContent");
+          });
+        };
+
+        let rafScheduled = false;
+        const scheduleDynTranslate = () => {
+          if (rafScheduled) return;
+          rafScheduled = true;
+          requestAnimationFrame(() => {
+            rafScheduled = false;
+            translateOverlayIfAny(state.lang);
+            applyPercentFormat(state.lang);
+            applyAgnoAria(state.lang);
+          });
+        };
+
+        const obs = new MutationObserver(scheduleDynTranslate);
+        obs.observe(document.body, {
+          childList: true,
+          subtree: true,
+          characterData: true,
+        });
+
+        const applyLanguage = (lang) => {
+          document.documentElement.lang = lang;
+
+          for (const t of inlineTargets) {
+            const container = document.querySelector(t.sel);
+            if (!container) continue;
+
+            const span = ensureInlineSpan(container, t.key);
+            if (!span) continue;
+
+            if (lang === "en") span.textContent = t.en;
+            else span.textContent = backup.get(t.key) ?? span.textContent;
+          }
+
+          for (const t of bilisimRowTitles) {
+            const el = document.querySelector(t.sel);
+            if (!el) continue;
+
+            if (!backup.has(t.key)) backup.set(t.key, el.textContent);
+            if (lang === "en") el.textContent = t.en;
+            else el.textContent = backup.get(t.key);
+          }
+
+          for (const t of targets) {
+            const el = t.getEl ? t.getEl() : document.querySelector(t.sel);
+            if (!el) continue;
+
+            if (!backup.has(t.key)) backup.set(t.key, el[t.prop]);
+
+            if (lang === "en") el[t.prop] = t.en;
+            else el[t.prop] = backup.get(t.key);
+          }
+
+          applyPercentFormat(lang);
+          applyAgnoAria(lang);
+          translateOverlayIfAny(lang);
+        };
+
+        // === DİL SWITCH (fixed toggle) ===
+        const dilSwitch = document.getElementById("js-dil-switch");
+        if (dilSwitch) {
+          const senkronize = (lang) => {
+            dilSwitch.classList.toggle("is-en", lang === "en");
+            dilSwitch.setAttribute("aria-checked", lang === "en" ? "true" : "false");
+            dilSwitch.setAttribute(
+              "aria-label",
+              lang === "en" ? "Switch language to Turkish" : "Dili İngilizce yap",
+            );
+          };
+
+          const dilDegistir = () => {
+            state.lang = state.lang === "tr" ? "en" : "tr";
+            applyLanguage(state.lang);
+            senkronize(state.lang);
+            try {
+              localStorage.setItem("site-lang", state.lang);
+            } catch (_) {}
+          };
+
+          dilSwitch.addEventListener("click", dilDegistir);
+          dilSwitch.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              dilDegistir();
+            }
+          });
+
+          // Kayıtlı dil tercihi varsa uygula
+          try {
+            const kayit = localStorage.getItem("site-lang");
+            if (kayit === "en" || kayit === "tr") {
+              state.lang = kayit;
+            }
+          } catch (_) {}
+
+          senkronize(state.lang);
+        }
+
+        applyLanguage(state.lang);
+      })();
+
+      // === KOLON SWAP (sağ-sol sütun değiştirme) ===
+      (() => {
+        const swapBtn = document.getElementById("js-kolon-swap");
+        const ilkBakis = document.querySelector(".ilk-bakis");
+        if (!swapBtn || !ilkBakis) return;
+
+        const ticker = document.querySelector(".iletisim-bilgi");
+        // Ticker'ın varsayılan akış yönü (createStateInfoTicker reverse:true ile
+        // kurulur -> soldan sağa). Swap açıkken bu yönü tersine çeviririz.
+        const tickerVarsayilanReverse = true;
+
+        const senkronize = (swapped) => {
+          ilkBakis.classList.toggle("is-swapped", swapped);
+          swapBtn.classList.toggle("is-swapped", swapped);
+          swapBtn.setAttribute("aria-pressed", swapped ? "true" : "false");
+          // swapped ise varsayılanın tersi yön
+          if (ticker) {
+            ticker.classList.toggle(
+              "is-reverse",
+              swapped ? !tickerVarsayilanReverse : tickerVarsayilanReverse,
+            );
+          }
+        };
+
+        const swapla = () => {
+          const yeni = !ilkBakis.classList.contains("is-swapped");
+          senkronize(yeni);
+          try {
+            localStorage.setItem("kolon-swap", yeni ? "1" : "0");
+          } catch (_) {}
+        };
+
+        swapBtn.addEventListener("click", swapla);
+
+        // Kayıtlı tercih varsa uygula
+        let baslangic = false;
+        try {
+          baslangic = localStorage.getItem("kolon-swap") === "1";
+        } catch (_) {}
+        senkronize(baslangic);
+      })();
+
+      // === KONTROL PANELİ AÇ/KAPA ===
+      (() => {
+        const panel = document.getElementById("js-kontrol-paneli");
+        const toggle = document.getElementById("js-panel-toggle");
+        if (!panel || !toggle) return;
+
+        const senkronize = (kapali) => {
+          panel.classList.toggle("kapali", kapali);
+          toggle.setAttribute("aria-expanded", kapali ? "false" : "true");
+        };
+
+        const degistir = () => {
+          const yeni = !panel.classList.contains("kapali");
+          senkronize(yeni);
+          try {
+            localStorage.setItem("panel-kapali", yeni ? "1" : "0");
+          } catch (_) {}
+        };
+
+        toggle.addEventListener("click", degistir);
+
+        // Kayıtlı tercih varsa uygula
+        let baslangic = false;
+        try {
+          baslangic = localStorage.getItem("panel-kapali") === "1";
+        } catch (_) {}
+        senkronize(baslangic);
+      })();
+
+      // === PANEL YATAY SÜRÜKLEME (mouse + dokunmatik) ===
+      (() => {
+        const panel = document.getElementById("js-kontrol-paneli");
+        const tutamac = document.getElementById("js-kontrol-icerik");
+        if (!panel || !tutamac) return;
+
+        const KENAR = 32; // ekran kenarından min boşluk (2rem) - scrollbar payı
+
+        // Panel left'ini (px) verilen değere, ekran sınırları içinde kalacak
+        // şekilde uygular. Dikey eksen hiç değişmez (hep altta sabit).
+        const uygulaX = (solPx) => {
+          const w = panel.offsetWidth;
+          const enFazla = window.innerWidth - w - KENAR;
+          const enAz = KENAR;
+          const sinirli = Math.max(enAz, Math.min(enFazla, solPx));
+          panel.classList.add("js-konumlu");
+          panel.style.left = sinirli + "px";
+          return sinirli;
+        };
+
+        // Kayıtlı konumu yükle (yoksa ortada kalır - CSL left:50% + transform)
+        let kayitliX = null;
+        try {
+          const k = localStorage.getItem("panel-x");
+          if (k !== null) kayitliX = Number(k);
+        } catch (_) {}
+        if (kayitliX !== null && Number.isFinite(kayitliX)) {
+          uygulaX(kayitliX);
+        }
+
+        let suruluyor = false;
+        let baslangicPointerX = 0;
+        let baslangicSolPx = 0;
+
+        // Bu öğelerin üstünden sürükleme başlamaz (kendi işlevleri var)
+        const interaktifMi = (hedef) =>
+          hedef.closest(
+            "button, input, .dil-switch, .dimmer-kontrol, a, [role='switch']",
+          );
+
+        const baslat = (e) => {
+          if (interaktifMi(e.target)) return; // butona basıldıysa sürükleme yok
+          suruluyor = true;
+          baslangicPointerX = e.clientX;
+          // Mevcut sol konumu px olarak al (ortalanmışsa gerçek konumdan oku)
+          const rect = panel.getBoundingClientRect();
+          baslangicSolPx = rect.left;
+          panel.classList.add("js-konumlu");
+          panel.style.left = baslangicSolPx + "px";
+          tutamac.classList.add("suruklarken");
+          try {
+            tutamac.setPointerCapture(e.pointerId);
+          } catch (_) {}
+          e.preventDefault();
+        };
+
+        const hareket = (e) => {
+          if (!suruluyor) return;
+          const fark = e.clientX - baslangicPointerX;
+          uygulaX(baslangicSolPx + fark);
+          e.preventDefault();
+        };
+
+        const bitir = (e) => {
+          if (!suruluyor) return;
+          suruluyor = false;
+          tutamac.classList.remove("suruklarken");
+          try {
+            tutamac.releasePointerCapture(e.pointerId);
+          } catch (_) {}
+          // Son konumu kaydet
+          try {
+            const solPx = parseFloat(panel.style.left) || 0;
+            localStorage.setItem("panel-x", String(Math.round(solPx)));
+          } catch (_) {}
+        };
+
+        tutamac.addEventListener("pointerdown", baslat);
+        tutamac.addEventListener("pointermove", hareket);
+        tutamac.addEventListener("pointerup", bitir);
+        tutamac.addEventListener("pointercancel", bitir);
+
+        // Pencere yeniden boyutlanınca paneli ekran içinde tut
+        window.addEventListener("resize", () => {
+          if (panel.classList.contains("js-konumlu")) {
+            uygulaX(parseFloat(panel.style.left) || 0);
+          }
+        });
+      })();
+
+      document.addEventListener("click", (e) => {
+        const btn = e.target.closest(".ayrinti-toggler");
+        const row = e.target.closest(".js-ayrinti-tetik[data-ayrinti]");
+
+        if (!btn && !row) return;
+
+        const id = btn?.id || row?.dataset.ayrinti;
+        if (!id) return;
+
+        const detail = document.getElementById(`${id}-detay`);
+        if (!detail) return;
+
+        const groupClass = detail.classList.contains("beceri-ayrinti")
+          ? "beceri-ayrinti"
+          : detail.classList.contains("bilisim-ayrinti")
+            ? "bilisim-ayrinti"
+            : detail.classList.contains("staj-ayrinti")
+              ? "staj-ayrinti"
+              : null;
+
+        if (!groupClass) return;
+
+        const wasOpen = detail.classList.contains("is-open");
+
+        document
+          .querySelectorAll(`.${groupClass}.is-open`)
+          .forEach((openDetail) => {
+            if (openDetail === detail) return;
+
+            openDetail.classList.remove("is-open");
+
+            const openBtnId = openDetail.id.replace(/-detay$/, "");
+            const openBtn = document.getElementById(openBtnId);
+            if (openBtn) openBtn.classList.remove("is-open");
+          });
+
+        const realBtn = document.getElementById(id);
+
+        if (realBtn) realBtn.classList.toggle("is-open", !wasOpen);
+        detail.classList.toggle("is-open", !wasOpen);
+      });
+
+      (() => {
+        const openInNewTab = (url) => {
+          const w = window.open(url, "_blank");
+          if (w) {
+            try {
+              w.opener = null;
+            } catch (_) {}
+            try {
+              w.focus();
+            } catch (_) {}
+            return;
+          }
+          window.location.assign(url);
+        };
+
+        const openInApp = (url) => {
+          window.location.href = url;
+        };
+
+        const copyText = async (text) => {
+          try {
+            await navigator.clipboard.writeText(text);
+            return true;
+          } catch (_) {
+            const ta = document.createElement("textarea");
+            ta.value = text;
+            ta.setAttribute("readonly", "");
+            ta.style.position = "fixed";
+            ta.style.left = "-9999px";
+            document.body.appendChild(ta);
+            ta.select();
+            try {
+              const ok = document.execCommand("copy");
+              document.body.removeChild(ta);
+              return ok;
+            } catch (e) {
+              document.body.removeChild(ta);
+              return false;
+            }
+          }
+        };
+
+        const isLikelyMobile = () =>
+          window.matchMedia("(pointer: coarse)").matches ||
+          /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+        const overlay = document.createElement("div");
+        overlay.className = "tiklama-arka";
+        overlay.innerHTML = `
+            <div class="tiklama-menusu" role="dialog" aria-modal="true" aria-label="Bağlantı seçenekleri">
+                <div class="tiklama-menusu_baslik">
+                    <div id="ctcTitle">Bağlantı</div>
+                    <div class="tiklama-etiketi" id="ctcLabel"></div>
+                </div>
+                <div id="ctcActions"></div>
+            </div>
+        `;
+        document.body.appendChild(overlay);
+
+        const titleEl = overlay.querySelector("#ctcTitle");
+        const labelEl = overlay.querySelector("#ctcLabel");
+        const actionsEl = overlay.querySelector("#ctcActions");
+
+        let active = null;
+
+        const closeSheet = () => overlay.classList.remove("is-open");
+        const positionSheetUnderTicker = () => {
+          const band = document.querySelector(".iletisim-bilgi");
+          if (!band) return;
+
+          const r = band.getBoundingClientRect();
+          const rootPx =
+            parseFloat(getComputedStyle(document.documentElement).fontSize) ||
+            16;
+
+          const topRem = (r.bottom + 0.5 * rootPx) / rootPx;
+          overlay.style.setProperty("--ctc-top", `${topRem}rem`);
+        };
+
+        const openSheet = (payload) => {
+          active = payload;
+          titleEl.textContent = payload.title || "Bağlantı";
+          labelEl.textContent = payload.label || "";
+
+          actionsEl.innerHTML = (payload.actions || [])
+            .map(
+              (a) =>
+                `<button type="button" class="tiklama-menusu_buton" data-act="${a.act}">${a.text}</button>`,
+            )
+            .join("");
+
+          positionSheetUnderTicker();
+          overlay.classList.add("is-open");
+        };
+
+        const flashBtn = (btn, okText, failText) => {
+          const prev = btn.textContent;
+          btn.dataset.ctcFlash = "1";
+          btn.textContent = okText;
+          setTimeout(() => {
+            btn.textContent = prev;
+            delete btn.dataset.ctcFlash;
+          }, 900);
+        };
+
+        overlay.addEventListener("click", (e) => {
+          if (e.target === overlay) closeSheet();
+        });
+
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape" && overlay.classList.contains("is-open"))
+            closeSheet();
+        });
+
+        window.addEventListener("resize", () => {
+          if (overlay.classList.contains("is-open")) positionSheetUnderTicker();
+        });
+        window.addEventListener(
+          "scroll",
+          () => {
+            if (overlay.classList.contains("is-open"))
+              positionSheetUnderTicker();
+          },
+          { passive: true },
+        );
+
+        overlay
+          .querySelector(".tiklama-menusu")
+          .addEventListener("click", async (e) => {
+            const btn = e.target.closest("button[data-act]");
+            if (!btn) return;
+
+            const act = btn.getAttribute("data-act");
+            const p = active;
+
+            if (!p) {
+              closeSheet();
+              return;
+            }
+
+            if (act === "cancel") {
+              closeSheet();
+              return;
+            }
+
+            if (act === "copy") {
+              const ok = await copyText(p.copyValue || p.href || "");
+              flashBtn(
+                btn,
+                ok ? "Kopyalandı" : "Kopyalanamadı",
+                "Kopyalanamadı",
+              );
+              setTimeout(closeSheet, 350);
+              return;
+            }
+
+            if (act === "open") {
+              closeSheet();
+              openInNewTab(p.openUrl || p.href);
+              return;
+            }
+
+            if (act === "gmail") {
+              closeSheet();
+              const w = window.open(p.gmailUrl, "_blank");
+              if (w) {
+                try {
+                  w.opener = null;
+                } catch (_) {}
+                try {
+                  w.focus();
+                } catch (_) {}
+              } else {
+                openInApp(`mailto:${encodeURIComponent(p.email)}`);
+              }
+              return;
+            }
+
+            if (act === "mailto") {
+              closeSheet();
+              openInApp(`mailto:${encodeURIComponent(p.email)}`);
+              return;
+            }
+
+            if (act === "call") {
+              closeSheet();
+              openInApp(`tel:+${p.phoneDigits}`);
+              return;
+            }
+
+            if (act === "wa") {
+              closeSheet();
+              openInNewTab(`https://wa.me/${p.phoneDigits}`);
+              return;
+            }
+
+            closeSheet();
+          });
+
+        const cleanLabel = (a) =>
+          (a.textContent || "").trim().replace(/\s+/g, " ");
+
+        const extractPhoneDigits = (a) => {
+          const fromData = (a.dataset.phone || "").replace(/\D/g, "");
+          if (fromData) return fromData;
+
+          const href = (a.getAttribute("href") || "").trim();
+          if (href.startsWith("tel:"))
+            return href.replace(/^tel:\+?/, "").replace(/\D/g, "");
+
+          const wa = href.match(/wa\.me\/(\d+)/i);
+          if (wa && wa[1]) return wa[1];
+
+          return "";
+        };
+
+        const extractEmail = (a) => {
+          const fromData = (a.dataset.email || "").trim();
+          if (fromData) return fromData;
+
+          const href = (a.getAttribute("href") || "").trim();
+          if (href.startsWith("mailto:"))
+            return decodeURIComponent(href.slice(7)).split("?")[0].trim();
+
+          const toParam = href.match(/[?&]to=([^&]+)/i);
+          if (toParam && toParam[1])
+            return decodeURIComponent(toParam[1]).trim();
+
+          return "";
+        };
+
+        const getType = (a) => {
+          const href = (a.getAttribute("href") || "").trim();
+          if (
+            a.dataset.phone ||
+            href.startsWith("tel:") ||
+            /wa\.me\//i.test(href)
+          )
+            return "phone";
+          if (
+            a.dataset.email ||
+            href.startsWith("mailto:") ||
+            /mail\.google\.com\/mail/i.test(href)
+          )
+            return "email";
+          return "link";
+        };
+
+        const buildPayload = (a) => {
+          const type = getType(a);
+          const href = (a.getAttribute("href") || "").trim();
+          const label = cleanLabel(a) || href;
+
+          if (type === "phone") {
+            const digits = extractPhoneDigits(a);
+            const actions = [
+              { act: "copy", text: "Kopyala" },
+              { act: "wa", text: "WhatsApp'dan Ulaş!" },
+            ];
+            if (isLikelyMobile())
+              actions.splice(1, 0, { act: "call", text: "Ara" });
+            actions.push({ act: "cancel", text: "İptal" });
+
+            return {
+              type,
+              title: "Telefon:",
+              label: "+90 534 327 34 62",
+              href,
+              phoneDigits: digits,
+              copyValue: digits ? `+${digits}` : "",
+              openUrl: digits ? `https://wa.me/${digits}` : href,
+              actions,
+            };
+          }
+
+          if (type === "email") {
+            const email = extractEmail(a);
+            const gmailUrl = /mail\.google\.com\/mail/i.test(href)
+              ? href
+              : `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(email)}`;
+
+            const actions = [
+              { act: "copy", text: "Kopyala" },
+              { act: "gmail", text: "gmail'den e-posta gönder" },
+              { act: "mailto", text: "Başka e-posta uygulaması kullan" },
+              { act: "cancel", text: "İptal" },
+            ];
+
+            return {
+              type,
+              title: "E-posta:",
+              label: "cuneytinan37@gmail.com",
+              href,
+              email,
+              gmailUrl,
+              copyValue: email,
+              openUrl: gmailUrl,
+              actions,
+            };
+          }
+
+          const brand = (a.dataset.ctcBrand || "").trim();
+          const brandTitle = brand ? `${brand} hesabı` : "Bağlantı";
+          return {
+            type: "link",
+            title: brandTitle,
+            label,
+            href,
+            copyValue: href,
+            openUrl: href,
+            actions: [
+              { act: "copy", text: "Kopyala" },
+              { act: "open", text: "Yeni sekmede aç" },
+              { act: "cancel", text: "İptal" },
+            ],
+          };
+        };
+
+        document.addEventListener("click", (e) => {
+          if (e.target.closest(".tiklama-arka")) return;
+
+          const a = e.target.closest(".iletisim-bilgi a");
+          if (!a) return;
+
+          e.preventDefault();
+
+          const payload = buildPayload(a);
+          if (
+            !payload ||
+            (!payload.href && !payload.email && !payload.phoneDigits)
+          )
+            return;
+
+          openSheet(payload);
+        });
+      })();
+
+      createStateInfoTickerFromSelector(".iletisim-bilgi > *", {
+        gapRem: 4,
+        remPerSecond: 6,
+        hoverPause: true,
+        // Varsayılan yön soldan sağa (reverse:true). Kolon swap açık kayıtlıysa
+        // ticker de ters yönde kurulur ki swap ile tutarlı olsun.
+        reverse: (() => {
+          try {
+            return localStorage.getItem("kolon-swap") === "1" ? false : true;
+          } catch (_) {
+            return true;
+          }
+        })(),
+      });
+
+      function createStateInfoTickerFromSelector(selector, options = {}) {
+        const nodes = Array.from(document.querySelectorAll(selector || ""));
+        return createStateInfoTicker(nodes, options);
+      }
+
+      function createStateInfoTicker(items, options = {}) {
+        const container = document.querySelector(".iletisim-bilgi");
+        if (!container) return;
+
+        const rawList = Array.isArray(items) ? items : [];
+        const list = rawList
+          .map((x) => (typeof x === "string" ? x.trim() : x))
+          .filter((x) =>
+            typeof x === "string" ? x.length > 0 : x && x.nodeType === 1,
+          );
+
+        if (list.length < 2) {
+          container.innerHTML = "";
+          if (list.length === 1) {
+            if (typeof list[0] === "string") {
+              container.textContent = list[0];
+            } else {
+              container.appendChild(list[0].cloneNode(true));
+            }
+          }
+          return;
+        }
+
+        const opts = {
+          gapRem: Number.isFinite(options.gapRem) ? options.gapRem : 4,
+          remPerSecond: Number.isFinite(options.remPerSecond)
+            ? options.remPerSecond
+            : 6,
+          hoverPause: options.hoverPause !== false,
+          reverse: options.reverse === true,
+        };
+
+        container.classList.toggle("is-reverse", opts.reverse);
+        container.classList.toggle("no-hover-pause", !opts.hoverPause);
+        container.innerHTML = "";
+
+        const track = document.createElement("div");
+        track.className = "iletisim-bilgi_akan-metin";
+        track.style.setProperty("--gap", `${opts.gapRem}rem`);
+        container.appendChild(track);
+
+        // Bir "set": her öğenin ARKASINA gap eklenir.
+        // Böylece set genişliği = (öğeler + her öğe için bir gap) olur ve
+        // iki set arka arkaya dizildiğinde dikiş noktasındaki boşluk da
+        // tam olarak bir gap kadar olur => kusursuz, sıçramasız döngü.
+        const buildSet = () => {
+          const set = document.createElement("div");
+          set.className = "iletisim-bilgi_ic-parca";
+
+          for (const it of list) {
+            const item = document.createElement("span");
+            item.className = "iletisim-bilgi_baglanti";
+
+            if (typeof it === "string") {
+              item.textContent = it;
+            } else {
+              item.appendChild(it.cloneNode(true));
+            }
+            set.appendChild(item);
+
+            const gapEl = document.createElement("span");
+            gapEl.className = "iletisim-bilgi_bosluk-ayar";
+            set.appendChild(gapEl);
+          }
+          return set;
+        };
+
+        // İki özdeş set: biri ölçüm/akış, biri devamlılık için klon.
+        const set = buildSet();
+        track.appendChild(set);
+        track.appendChild(buildSet());
+
+        const recalc = () => {
+          // Animasyonu sıfırla ki yeni --shift değeri temiz uygulansın
+          track.style.animation = "none";
+          // reflow tetikle
+          void track.offsetHeight;
+
+          // Tek bir set'in tam genişliği (gap dahil) = kayma mesafesi.
+          // İki set yan yana olduğu için bir set kadar kaydırınca
+          // görüntü birebir başa sarar.
+          const shiftPx = set.getBoundingClientRect().width;
+          if (shiftPx <= 0) {
+            // Henüz ölçülemiyorsa bir sonraki frame'de tekrar dene
+            requestAnimationFrame(recalc);
+            return;
+          }
+          track.style.setProperty("--shift", `${shiftPx}px`);
+
+          const rootFontPx =
+            parseFloat(getComputedStyle(document.documentElement).fontSize) ||
+            16;
+          const shiftRem = shiftPx / rootFontPx;
+          const durationSec = shiftRem / Math.max(0.1, opts.remPerSecond);
+          track.style.setProperty("--dur", `${durationSec}s`);
+
+          // Animasyonu geri ver
+          track.style.animation = "";
+        };
+
+        // İlk ölçüm: layout oturduktan sonra
+        requestAnimationFrame(() => requestAnimationFrame(recalc));
+
+        // Fontlar yüklenince (Font Awesome ikonları genişliği değiştirir)
+        // yeniden ölç — "boşluk/zıplama"nın ana sebebi buydu.
+        if (document.fonts && document.fonts.ready) {
+          document.fonts.ready.then(() => recalc());
+        }
+
+        // Ticker içindeki resimler (ör. gamebanana.png) yüklenince yeniden ölç
+        track.querySelectorAll("img").forEach((img) => {
+          if (!img.complete) {
+            img.addEventListener("load", recalc, { once: true });
+            img.addEventListener("error", recalc, { once: true });
+          }
+        });
+
+        // Konteyner boyutu değişince yeniden ölç (responsive + zoom)
+        if (typeof ResizeObserver !== "undefined") {
+          let rAF = null;
+          const ro = new ResizeObserver(() => {
+            if (rAF) cancelAnimationFrame(rAF);
+            rAF = requestAnimationFrame(recalc);
+          });
+          ro.observe(container);
+        } else {
+          let t;
+          window.addEventListener("resize", () => {
+            clearTimeout(t);
+            t = setTimeout(recalc, 150);
+          });
+        }
+      }
+
+      document.querySelectorAll(".ilerleme").forEach((el) => {
+        const value = el.getAttribute("data-value");
+        el.style.setProperty("--percent", value);
+        const span = el.querySelector("span");
+        if (span) span.textContent = "%" + value;
+      });
+
+      /* === DIMMER (LOŞ IŞIK) === */
+      (() => {
+        const overlay = document.getElementById("js-dimmer-overlay");
+        const slider = document.getElementById("js-dimmer-slider");
+        const deger = document.getElementById("js-dimmer-deger");
+        const ikon = document.getElementById("js-dimmer-ikon");
+        const kontrol = document.getElementById("js-dimmer-kontrol");
+
+        if (!overlay || !slider || !deger || !ikon || !kontrol) return;
+
+        // Maks loşluk: 0.65 → tamamen siyah olmaz, yazılar hâlâ okunabilir kalır
+        const MAX_DIM = 0.65;
+
+        const uygula = (val) => {
+          const yuzde = Math.max(0, Math.min(100, Number(val) || 0));
+          const opacity = (yuzde / 100) * MAX_DIM;
+
+          overlay.style.opacity = opacity.toFixed(3);
+
+          // Slider dolgusu: soldan topuza kadar parlak (sarı), sonrası koyu
+          slider.style.setProperty("--dim-percent", `${yuzde}%`);
+
+          // Dil EN ise farklı format
+          const lang = document.documentElement.lang?.toLowerCase() === "en" ? "en" : "tr";
+          deger.textContent = lang === "en" ? `${yuzde}%` : `%${yuzde}`;
+
+          // İkon: 0 = güneş, >50 = ay, arası geçiş için opaklık
+          if (yuzde >= 50) {
+            ikon.className = "fa-solid fa-moon dimmer-ikon";
+            ikon.style.color = "rgb(180, 200, 255)";
+            ikon.style.textShadow = "0 0 8px rgba(180, 200, 255, 0.6)";
+          } else {
+            ikon.className = "fa-solid fa-sun dimmer-ikon";
+            ikon.style.color = "rgb(255, 220, 100)";
+            ikon.style.textShadow = "0 0 8px rgba(255, 220, 100, 0.6)";
+          }
+        };
+
+        slider.addEventListener("input", (e) => {
+          uygula(e.target.value);
+          // Sadece kullanıcı değiştirince kaydet
+          try {
+            const yuzde = Math.max(0, Math.min(100, Number(e.target.value) || 0));
+            localStorage.setItem("dimmer-deger", String(yuzde));
+          } catch (_) {}
+        });
+
+        // Kayıtlı değer varsa yükle
+        let baslangic = 0;
+        try {
+          const kayit = localStorage.getItem("dimmer-deger");
+          if (kayit !== null) baslangic = Number(kayit) || 0;
+        } catch (_) {}
+
+        slider.value = String(baslangic);
+        uygula(baslangic);
+
+        // Dil değiştiğinde % formatını güncelle
+        const obs = new MutationObserver(() => uygula(slider.value));
+        obs.observe(document.documentElement, { attributes: true, attributeFilter: ["lang"] });
+      })();
+    </script>
+
+    <!-- Vercel Web Analytics (gizlilik dostu, çerezsiz trafik analizi) -->
+    <script defer src="/_vercel/insights/script.js"></script>
+  </body>
+</html>
